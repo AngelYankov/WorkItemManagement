@@ -1,6 +1,4 @@
-﻿![](Teamwork%20Assignment.001.png)
-
-OOP Teamwork Assignment  
+[OOP Teamwork Assignment  ]([url](url))
 
 Project Description  
 
@@ -107,3 +105,5 @@ Teamwork Requirements
 Refer to the teamwork requirements document found along with the project requirements.  Teamwork defense  
 
 Prepare a list of commands to demonstrate how the program works.  
+
+[text](https://learn.telerikacademy.com/mod/page/view.php?id=14864)
