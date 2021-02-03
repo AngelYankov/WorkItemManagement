@@ -1,15 +1,14 @@
-[OOP Teamwork Assignment  ]([url](url))
-
-Project Description  
+**Project Description  **
 
 Design and implement a Work Item Management (WIM) Console Application.  
 
-Functional Requirements  
+**Functional Requirements  **
 
 Application should support multiple teams. Each team has name, members, and boards.  Member has name, list of work items and activity history.  
 
 - Name should be unique in the application  
-- Name is a string between 5 and 15 symbols.  
+- Name is a string between 5 and 15 symbols. 
+ 
 
 Board has name, list of work items and activity history.  
 
@@ -18,7 +17,7 @@ Board has name, list of work items and activity history.
 
 There are 3 types of work items: bug, story, and feedback.  
 
-Bug  
+**Bug  **
 
 Bug has ID, title, description, steps to reproduce, priority, severity, status, assignee, comments, and history.  
 
@@ -32,7 +31,7 @@ Bug has ID, title, description, steps to reproduce, priority, severity, status, 
 - Comments is a list of comments (string messages with author).  
 - History is a list of all changes (string messages) that were done to the bug.  
 
-Story  
+**Story  **
 
 Story has ID, title, description, priority, size, status, assignee, comments, and history.  
 
@@ -45,7 +44,7 @@ Story has ID, title, description, priority, size, status, assignee, comments, an
 - Comments is a list of comments (string messages with author).  
 - History is a list of all changes (string messages) that were done to the story.  
 
-Feedback  
+**Feedback  **
 
 Feedback has ID, title, description, rating, status, comments, and history.  
 
@@ -56,9 +55,9 @@ Feedback has ID, title, description, rating, status, comments, and history.
 - Comments is a list of comments (string messages with author).  
 - History is a list of all changes (string messages) that were done to the feedback.  
 
-***Note: IDs of work items should be unique in the application i.e. if we have a bug with ID X then we cannot have Story of Feedback with ID X.***  
+_**Note: IDs of work items should be unique in the application i.e. if we have a bug with ID X then we cannot have Story of Feedback with ID X.**__
 
-Operations  
+**Operations ** 
 
 Application should support the following operations:  
 
@@ -85,7 +84,7 @@ Application should support the following operations:
 - Filter by status and/or assignee  
 - Sort by title/priority/severity/size/rating  
 
-General Requirements  
+**General Requirements  **
 
 - Follow the OOP best practices:  
   - Proper use data encapsulation  
@@ -100,10 +99,11 @@ General Requirements
 - Cover functionality with unit tests (80% code coverage)  
 - Use Git to keep your source code and for team collaboration  
 
-Teamwork Requirements 
+**Teamwork Requirements** 
 
-Refer to the teamwork requirements document found along with the project requirements.  Teamwork defense  
+Refer to the teamwork requirements document found along with the project requirements.  
+
+**Teamwork defense**  
 
 Prepare a list of commands to demonstrate how the program works.  
 
-[text](https://learn.telerikacademy.com/mod/page/view.php?id=14864)
