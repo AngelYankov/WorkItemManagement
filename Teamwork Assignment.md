@@ -6,7 +6,9 @@ Design and implement a Work Item Management (WIM) Console Application.
 
 **Functional Requirements**
 
-Application should support multiple teams. Each team has name, members, and boards.  Member has name, list of work items and activity history.  
+Application should support multiple teams. Each team has name, members, and boards.  
+
+Member has name, list of work items and activity history.  
 
 - Name should be unique in the application  
 - Name is a string between 5 and 15 symbols. 
