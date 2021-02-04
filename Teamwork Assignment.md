@@ -1,6 +1,6 @@
 <img src="https://webassets.telerikacademy.com/images/default-source/logos/telerik-academy.svg)" alt="logo" width="300px" style="margin-top: 20px;"/>
 
-# OOP Teamwork Assignment <br><br> Team9 TaskManagementApplication
+# OOP Teamwork Assignment <br><br> Team 3 TaskManagementApplication
 
 ### Members:
 
