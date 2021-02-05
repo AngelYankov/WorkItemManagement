@@ -6,7 +6,7 @@ namespace WorkItemManagementConsoleApp
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Testing merging branches");
+            Console.WriteLine("Testing merging branches - Angel");
         }
     }
 }
