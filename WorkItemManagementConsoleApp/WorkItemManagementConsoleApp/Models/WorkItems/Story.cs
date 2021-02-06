@@ -1,17 +1,18 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
-using WorkItemManagementConsoleApp.Common;
-using WorkItemManagementConsoleApp.WorkItem.Contracts;
+using WorkItemManagementConsoleApp.Models.Enums;
+using WorkItemManagementConsoleApp.Models.Contracts;
+using WorkItemManagementConsoleApp.Models.Abstract;
 
-namespace WorkItemManagementConsoleApp.WorkItem.WorkItems
+namespace WorkItemManagementConsoleApp.Models.WorkItems
 {
-    class Story : WorkItem, IStory
+    public class Story : WorkItem, IStory
     {
         private Member assignee;
 
-        public Feedback(int Id, string title, string description, IDictionary<string, List<string>> comments, List<string> history, Member assignee, PriorityType priority, StoryStatusType storyStatus, SizeType size)
-            : base(int Id, string title, string description, IDictionary<string, List<string>> comments, List<string> history)
+        public Story(int Id, string title, string description, IDictionary<string, List<string>> comments, List<string> history, Member assignee, PriorityType priority, StoryStatusType storyStatus, SizeType size)
+            : base( title, description, /*comments*/ history)
         {
             this.Assignee = assignee;
         }
@@ -23,7 +24,7 @@ namespace WorkItemManagementConsoleApp.WorkItem.WorkItems
         public StoryStatusType StoryStatus { get; }
         public SizeType Size { get; }
 
-        public override string ToString()
+        /*public override string ToString()
         {
             StringBuilder sb = new StringBuilder();
             sb.AppendLine("Story ----");
@@ -34,6 +35,6 @@ namespace WorkItemManagementConsoleApp.WorkItem.WorkItems
             sb.AppendLine($"Size: {Size}");
 
             return sb.ToString();
-        }
+        }*/
     }
 }

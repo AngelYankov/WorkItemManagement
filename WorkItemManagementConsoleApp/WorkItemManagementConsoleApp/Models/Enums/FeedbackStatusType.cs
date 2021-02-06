@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace WorkItemManagementConsoleApp.Common
+namespace WorkItemManagementConsoleApp.Models.Enums
 {
     public enum FeedbackStatusType
     {

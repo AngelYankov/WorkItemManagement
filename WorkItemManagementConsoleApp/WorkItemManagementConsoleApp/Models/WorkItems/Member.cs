@@ -1,11 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
-using WorkItemManagementConsoleApp.WorkItem.Contracts;
+using WorkItemManagementConsoleApp.Models.Contracts;
 
-namespace WorkItemManagementConsoleApp.WorkItem.WorkItems
+namespace WorkItemManagementConsoleApp.Models.WorkItems
 {
-    class Member : IMember
+    public class Member : IMember
     {
         private string name;
 
