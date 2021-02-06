@@ -9,12 +9,11 @@ namespace WorkItemManagementConsoleApp.Models.WorkItems
 {
     public class Feedback : WorkItem, IFeedback
     {
-        private int rating;
-
-        public Feedback(string title, string description, IDictionary<string, List<string>> comments, List<string> history, int rating, FeedbackStatusType status)
-            : base( title,  description, /*comments*/ history)
+        public Feedback(string id, string title, string description, IDictionary<Member, List<string>> comments, List<string> history, int rating, FeedbackStatusType status)
+            : base(id, title, description, comments, history)
         {
             this.Rating = rating;
+            this.FeedbackStatus = status;
         }
 
         public int Rating { get; }

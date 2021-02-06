@@ -1,16 +1,15 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using WorkItemManagementConsoleApp.Models.WorkItems;
 
 namespace WorkItemManagementConsoleApp.Models.Contracts
 {
-    public interface IMember
+    public interface ITeam
     {
         string Name { get; }
-
-        List<IWorkItem> WorkItems { get; }
-
-        List<string> ActivityHistory { get; }
+        List<IMember> Members { get; }
+        List<IBoard> Boards { get; }
 
     }
 }

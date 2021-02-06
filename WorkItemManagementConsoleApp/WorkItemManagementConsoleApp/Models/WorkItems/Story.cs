@@ -9,15 +9,13 @@ namespace WorkItemManagementConsoleApp.Models.WorkItems
 {
     public class Story : WorkItem, IStory
     {
-        private Member assignee;
-
-        public Story(int Id, string title, string description, IDictionary<string, List<string>> comments, List<string> history, Member assignee, PriorityType priority, StoryStatusType storyStatus, SizeType size)
-            : base( title, description, /*comments*/ history)
+        public Story(string id,string title, string description, IDictionary<Member, List<string>> comments, List<string> history, Member assignee, PriorityType priority, StoryStatusType storyStatus, SizeType size)
+            : base(id, title, description, comments, history)
         {
             this.Assignee = assignee;
         }
 
-        public Member Assignee { get; set; }
+        public Member Assignee { get; }
 
         public PriorityType Priority { get; }
 

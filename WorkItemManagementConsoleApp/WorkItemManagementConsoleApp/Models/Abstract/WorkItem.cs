@@ -8,16 +8,17 @@ namespace WorkItemManagementConsoleApp.Models.Abstract
 {
     public abstract class WorkItem : IWorkItem
     {
-        private static int id = 0;
+        private static readonly List<string> allIds = new List<string>();
         private string title;
         private string description;
-        public WorkItem(string title, string description,/* Dictionary<Member, List<string>> comments,*/ List<string> history)
+        protected WorkItem(string id, string title, string description, IDictionary<Member, List<string>> comments, List<string> history)
         {
+            EnsureIdIsValid(id);
             this.Title = title;
             this.Description = description;
-            //this.Comments = comments;
+            this.Comments = comments;
             this.History = history;
-            id++;
+            
         }
         public string Title
         {
@@ -43,8 +44,17 @@ namespace WorkItemManagementConsoleApp.Models.Abstract
                 this.description = value;
             }
         }
-        //IDictionary<Member, List<string>> Comments { get; }
         public List<string> History { get; }
 
+        public IDictionary<Member, List<string>> Comments { get; }
+
+        private void EnsureIdIsValid(string id)
+        {
+            if (allIds.Contains(id))
+            {
+                throw new ArgumentException("ID already exists.");
+            }
+            allIds.Add(id);
+        }
     }
 }
