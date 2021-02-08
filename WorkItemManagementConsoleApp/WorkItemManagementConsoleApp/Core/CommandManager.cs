@@ -16,7 +16,7 @@ namespace WorkItemManagementConsoleApp.Core
             List<string> commandParameters = lineParameters.Skip(1).ToList();
             return commandName switch
             {
-                "createmember" =>
+                "createmember" => 
                 "createteam" =>
                 "createboard" =>
                 "createbug" =>
