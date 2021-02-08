@@ -10,14 +10,14 @@ namespace WorkItemManagementConsoleApp.Commands
     public class CreateBoardCommand : Command
     {
         public CreateBoardCommand(IList<string> commandParameters)
-            :base(commandParameters)
+            : base(commandParameters)
         {
 
         }
 
         public override string Execute()
         {
-            if(this.CommandParameters.Count > 2)
+            if (this.CommandParameters.Count != 2)
             {
                 throw new ArgumentException("Parameters count is not valid");
             }
@@ -29,7 +29,7 @@ namespace WorkItemManagementConsoleApp.Commands
 
             for (int i = 0; i < this.Database.AllTeams.Count; i++)
             {
-                if(this.Database.AllTeams[i].Name.Equals(teamName, StringComparison.OrdinalIgnoreCase))
+                if (this.Database.AllTeams[i].Name.Equals(teamName, StringComparison.OrdinalIgnoreCase))
                 {
                     indexExistingTeam = i;
                     teamExist = true;
@@ -42,11 +42,11 @@ namespace WorkItemManagementConsoleApp.Commands
                 throw new ArgumentException("Team does not exist!");
             }
 
-           
-
             IBoard board = this.Factory.CreateBoard(name);
 
-            this.Database.AllTeams[indexExistingTeam].Boards.Add(board);
+            this.Database.AllTeams[indexExistingTeam].AddBoard(board);
+
+            return $"Board '{name}' created in team '{this.Database.AllTeams[indexExistingTeam]}'.";
         }
     }
 }

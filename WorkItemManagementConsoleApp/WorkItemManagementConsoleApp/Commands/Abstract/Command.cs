@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Text;
 using WorkItemManagementConsoleApp.Commands.Contracts;
 using WorkItemManagementConsoleApp.Core.Contracts;
+using WorkItemManagementConsoleApp.Models.Contracts;
 
 namespace WorkItemManagementConsoleApp.Commands.Abstract
 {
@@ -28,5 +29,7 @@ namespace WorkItemManagementConsoleApp.Commands.Abstract
         {
             get => Core.Factory.Instance;
         }
+
+        
     }
 }

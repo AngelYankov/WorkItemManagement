@@ -16,6 +16,7 @@ namespace WorkItemManagementConsoleApp.Models.WorkItems
         public List<IMember> Members { get; }
         public List<IBoard> Boards { get; }
 
+        // add 2 methods for adding members and boards
         public void AddBoard(IBoard board)
         {
             if (this.Boards.Any(x => x.Name.Equals(board.Name, StringComparison.OrdinalIgnoreCase)))
@@ -25,8 +26,27 @@ namespace WorkItemManagementConsoleApp.Models.WorkItems
 
             this.Boards.Add(board);
         }
-        // add 2 methods for adding members and boards
 
+        public void AddMember(IMember member)
+        {
+            if (this.Members.Any(x => x.Name.Equals(member.Name, StringComparison.OrdinalIgnoreCase)))
+            {
+                throw new ArgumentException("Member already exists.");
+            }
 
+            this.Members.Add(member);
+        }
+
+        public int GetIndex(IBoard board)
+        {
+            for (int i = 0; i < Boards.Count; i++)
+            {
+                if (this.Boards[i].Name.Equals(board.Name, StringComparison.OrdinalIgnoreCase))
+                {
+                    return i;
+                }
+            }
+            return -1;
+        }
     }
 }

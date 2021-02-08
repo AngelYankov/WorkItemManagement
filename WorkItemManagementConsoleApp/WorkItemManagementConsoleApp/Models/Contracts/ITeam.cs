@@ -11,5 +11,7 @@ namespace WorkItemManagementConsoleApp.Models.Contracts
         List<IMember> Members { get; }
         List<IBoard> Boards { get; }
 
+        void AddBoard(IBoard board);
+
     }
 }
