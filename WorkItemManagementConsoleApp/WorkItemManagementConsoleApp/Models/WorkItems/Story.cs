@@ -9,19 +9,66 @@ namespace WorkItemManagementConsoleApp.Models.WorkItems
 {
     public class Story : WorkItem, IStory
     {
-        public Story(string id,string title, string description, Member assignee, PriorityType priority, StoryStatusType storyStatus, SizeType size)
+        private IMember assignee;
+        private PriorityType priorityType;
+        private StoryStatusType storyStatus;
+        private SizeType sizeType;
+        public Story(string id,string title, string description, PriorityType priority, StoryStatusType storyStatus, SizeType size)
             : base(id, title, description)
         {
-            this.Assignee = assignee;
+            this.priorityType = priority;
+            this.storyStatus = storyStatus;
+            this.sizeType = size;
         }
 
-        public Member Assignee { get; }
+        public IMember Assignee
+        {
+            get => this.assignee;
+            private set
+            {
+                if (this.assignee == null)
+                {
+                    this.AddHistory($"Story assigned to {value}.");
+                }
+                else
+                {
+                    this.AddHistory($"Story assignee changed from {this.assignee} to {value}.");
+                }
+                this.assignee = value;
+            }
+        }
 
-        public PriorityType Priority { get; }
+        public PriorityType Priority 
+        {
+            get => this.priorityType;
+            private set
+            {
+                this.AddHistory($"Story priority type changed from {this.priorityType} to {value}.");
+                this.priorityType = value;
+            }
+        }
 
-        public StoryStatusType StoryStatus { get; }
-        public SizeType Size { get; }
-
-        //Change Priority/Size/Status of a story
+        public StoryStatusType StoryStatus 
+        {
+            get => this.storyStatus;
+            private set
+            {
+                this.AddHistory($"Story status type changed from {this.storyStatus} to {value}.");
+                this.storyStatus = value;
+            }
+        }
+        public SizeType Size
+        {
+            get => this.sizeType;
+            private set
+            {
+                this.AddHistory($"Story size changed from {this.sizeType} to {value}.");
+                this.sizeType = value;
+            }
+        }
+        public void AddAssignee(IMember member)
+        {
+            this.Assignee = member;
+        }
     }
 }

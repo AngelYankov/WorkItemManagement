@@ -8,10 +8,9 @@ namespace WorkItemManagementConsoleApp.Models.Contracts
     public interface ITeam
     {
         string Name { get; }
-        List<IMember> Members { get; }
-        List<IBoard> Boards { get; }
-
+        IList<IMember> Members { get; }
+        IList<IBoard> Boards { get; }
         void AddBoard(IBoard board);
-
+        void AddMember(IMember member);
     }
 }

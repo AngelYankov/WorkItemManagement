@@ -10,26 +10,36 @@ namespace WorkItemManagementConsoleApp.Commands
     public class CreateBoardCommand : Command
     {
         public CreateBoardCommand(IList<string> commandParameters)
-            : base(commandParameters)
+            :base(commandParameters)
         {
 
         }
 
         public override string Execute()
         {
-            if (this.CommandParameters.Count != 2)
+            if(this.CommandParameters.Count > 2)
             {
                 throw new ArgumentException("Parameters count is not valid");
             }
 
-            string name = this.CommandParameters[0];
+            string name = this.CommandParameters[0]; 
             string teamName = this.CommandParameters[1];
-            int indexExistingTeam = 0;
-            bool teamExist = false;
+            /*int indexExistingTeam = 0;
+            bool teamExist = false;*/
 
+            var team = this.Database.AllTeams.FirstOrDefault(t => t.Name.Equals(teamName, StringComparison.OrdinalIgnoreCase));
+            if (team == null)
+            {
+                throw new ArgumentException("Team does not exist.");
+            }
+            IBoard board = this.Factory.CreateBoard(name);
+            team.AddBoard(board);
+
+
+/*
             for (int i = 0; i < this.Database.AllTeams.Count; i++)
             {
-                if (this.Database.AllTeams[i].Name.Equals(teamName, StringComparison.OrdinalIgnoreCase))
+                if(this.Database.AllTeams[i].Name.Equals(teamName, StringComparison.OrdinalIgnoreCase))
                 {
                     indexExistingTeam = i;
                     teamExist = true;
@@ -41,12 +51,12 @@ namespace WorkItemManagementConsoleApp.Commands
             {
                 throw new ArgumentException("Team does not exist!");
             }
+*/
+           
+/*
 
-            IBoard board = this.Factory.CreateBoard(name);
-
-            this.Database.AllTeams[indexExistingTeam].AddBoard(board);
-
-            return $"Board '{name}' created in team '{this.Database.AllTeams[indexExistingTeam]}'.";
+            this.Database.AllTeams[indexExistingTeam].Boards.Add(board);*/
+            
         }
     }
 }

@@ -7,10 +7,8 @@ namespace WorkItemManagementConsoleApp.Models.Contracts
     public interface IMember
     {
         string Name { get; }
-
-        List<IWorkItem> WorkItems { get; }
-
-        List<string> ActivityHistory { get; }
-        void AddMember(IMember member);
+        IList<IWorkItem> WorkItems { get; }
+        IList<string> ActivityHistory { get; }
+        void AddWorkItems(IWorkItem item);
     }
 }

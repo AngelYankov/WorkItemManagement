@@ -10,7 +10,8 @@ namespace WorkItemManagementConsoleApp.Models.Contracts
         static int Id { get; }
         string Title { get; }
         string Description { get; }
-        IDictionary<Member, List<string>> Comments { get; }
-        List<string> History { get; }
+        IDictionary<IMember, IList<string>> Comments { get; }
+        IList<string> History { get; }
+        void AddHistory(string info);
     }
 }

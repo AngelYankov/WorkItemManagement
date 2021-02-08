@@ -9,40 +9,49 @@ namespace WorkItemManagementConsoleApp.Models.Abstract
     public abstract class WorkItem : IWorkItem
     {
         private static readonly List<string> allIds = new List<string>();
-        private string title;
-        private string description;
+        private readonly string id;
+        private readonly string title;
+        private readonly string description;
+
         protected WorkItem(string id, string title, string description)
         {
             EnsureIdIsValid(id);
-            this.Title = title;
-            this.Description = description;
+            ValidateTitle(title);
+            ValidateDescription(description);
+            this.id = id;
+            this.title = title;
+            this.description = description;
+            this.History = new List<string>();
+            this.Comments = new Dictionary<IMember, IList<string>>();
+        }
+        public string Id
+        {
+            get => this.id;
         }
         public string Title
         {
             get => this.title;
-            private set
-            {
-                if (value.Length < 10 || value.Length > 50)
-                {
-                    throw new ArgumentException("Title should be between 10 and 50 characters");
-                }
-                this.title = value;
-            }
         }
         public string Description
         {
             get => this.description;
-            private set
+        }
+        public IList<string> History { get; }
+        public IDictionary<IMember, IList<string>> Comments { get; }
+        private void ValidateTitle(string title)
+        {
+            if (title.Length < 10 || title.Length > 50)
             {
-                if (value.Length < 10 || value.Length > 500)
-                {
-                    throw new ArgumentException("Description should be between 10 and 500 characters.");
-                }
-                this.description = value;
+                throw new ArgumentException("Title should be between 10 and 50 characters");
             }
         }
-        public List<string> History { get; }
-        public IDictionary<Member, List<string>> Comments { get; }
+        private void ValidateDescription(string description)
+        {
+            if (description.Length < 10 || description.Length > 500)
+            {
+                throw new ArgumentException("Description should be between 10 and 500 characters");
+            }
+        }
 
         private void EnsureIdIsValid(string id)
         {
@@ -52,8 +61,11 @@ namespace WorkItemManagementConsoleApp.Models.Abstract
             }
             allIds.Add(id);
         }
-        // add methods to add comments and history
 
+        public void AddHistory(string info)
+        {
+            this.History.Add(info);
+        }
 
     }
 }

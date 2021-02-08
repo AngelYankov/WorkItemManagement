@@ -9,6 +9,6 @@ namespace WorkItemManagementConsoleApp.Models.Contracts
         string Name { get; }
         List<IWorkItem> WorkItems { get; }
         List<string> ActivityHistory { get; }
-
+        void AddWorkItem(IWorkItem item);
     }
 }

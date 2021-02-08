@@ -7,27 +7,33 @@ namespace WorkItemManagementConsoleApp.Models.WorkItems
 {
     public class Member : IMember
     {
-        private string name;
+        private readonly string name;
+        private readonly IList<IWorkItem> workItems = new List<IWorkItem>();
+        private readonly IList<string> activityHistory = new List<string>();
         public Member(string name)
         {
-            this.Name = name;
+            EnsureNameIsValid(name);
+            this.name = name;
         }
-        public string Name
+        public string Name { get => this.name; }
+        public IList<IWorkItem> WorkItems { get => this.workItems; }
+        public IList<string> ActivityHistory { get => this.activityHistory; }
+        private void EnsureNameIsValid(string name)
         {
-            get => this.name;
-            private set
+            if (name.Length < 5 || name.Length > 15)
             {
-                if (value.Length < 5 || value.Length > 15)
-                {
-                    throw new ArgumentException("Member name should be between 5 and 15 characters.");
-                }
-                this.name = value;
+                throw new ArgumentException("Member name should be between 5 and 15 characters.");
             }
         }
-        public List<IWorkItem> WorkItems { get; }
-        public List<string> ActivityHistory { get; }
+        public void AddWorkItems(IWorkItem item)
+        {
+            this.workItems.Add(item);
+            this.AddActivityHistory($"Item {item.Title} added.");
+        }
+        private void AddActivityHistory(string info)
+        {
+            this.activityHistory.Add(info);
+        }
 
-        //add workitems and activityhistory - methods
-        //Assign/Unassign work item to a person
     }
 }

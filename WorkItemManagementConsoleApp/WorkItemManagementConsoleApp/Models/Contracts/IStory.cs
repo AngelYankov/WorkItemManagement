@@ -8,12 +8,14 @@ namespace WorkItemManagementConsoleApp.Models.Contracts
 {
     public interface IStory : IWorkItem
     {
-        Member Assignee { get; }
+        IMember Assignee { get; }
 
         PriorityType Priority { get; }
 
         StoryStatusType StoryStatus { get; }
 
         SizeType Size { get; }
+        void AddAssignee(IMember member);
+
     }
 }

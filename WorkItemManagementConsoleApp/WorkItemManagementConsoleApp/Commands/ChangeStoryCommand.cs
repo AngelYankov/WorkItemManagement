@@ -4,7 +4,7 @@ using System.Text;
 
 namespace WorkItemManagementConsoleApp.Commands
 {
-    class ChangeSotryCommand
+    class ChangeStoryCommand 
     {
     }
 }

@@ -29,7 +29,6 @@ namespace WorkItemManagementConsoleApp.Commands.Abstract
         {
             get => Core.Factory.Instance;
         }
-
-        
+              
     }
 }
