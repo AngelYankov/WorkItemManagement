@@ -9,9 +9,9 @@ namespace WorkItemManagementConsoleApp.Models.WorkItems
 {
     public class Bug  : WorkItem, IBug
     {
-        public Bug(string id, string title, string descriptions, IDictionary<Member, List<string>> comments, List<string> history,
-            List<string> steps, PriorityType priority, SeverityType severity, BugStatus status, Member assignee)
-            : base(id, title, descriptions, comments, history)
+        public Bug(string id, string title, string description, PriorityType priority, 
+            SeverityType severity, BugStatus status, Member assignee, List<string> steps)
+            : base(id, title, description)
         {
             this.Steps = steps;
             this.Priority = priority;
@@ -25,6 +25,8 @@ namespace WorkItemManagementConsoleApp.Models.WorkItems
         public SeverityType Severity { get; }
         public BugStatus Status { get; }
         public Member Assignee { get; }
+
+        //Change Priority/Severity/Status of a bug
 
     }
 }

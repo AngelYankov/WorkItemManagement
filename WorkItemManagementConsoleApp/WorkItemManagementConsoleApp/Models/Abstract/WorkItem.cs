@@ -11,14 +11,11 @@ namespace WorkItemManagementConsoleApp.Models.Abstract
         private static readonly List<string> allIds = new List<string>();
         private string title;
         private string description;
-        protected WorkItem(string id, string title, string description, IDictionary<Member, List<string>> comments, List<string> history)
+        protected WorkItem(string id, string title, string description)
         {
             EnsureIdIsValid(id);
             this.Title = title;
             this.Description = description;
-            this.Comments = comments;
-            this.History = history;
-            
         }
         public string Title
         {
@@ -45,7 +42,6 @@ namespace WorkItemManagementConsoleApp.Models.Abstract
             }
         }
         public List<string> History { get; }
-
         public IDictionary<Member, List<string>> Comments { get; }
 
         private void EnsureIdIsValid(string id)
@@ -56,5 +52,8 @@ namespace WorkItemManagementConsoleApp.Models.Abstract
             }
             allIds.Add(id);
         }
+        // add methods to add comments and history
+
+
     }
 }

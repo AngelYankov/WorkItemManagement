@@ -9,8 +9,8 @@ namespace WorkItemManagementConsoleApp.Models.WorkItems
 {
     public class Story : WorkItem, IStory
     {
-        public Story(string id,string title, string description, IDictionary<Member, List<string>> comments, List<string> history, Member assignee, PriorityType priority, StoryStatusType storyStatus, SizeType size)
-            : base(id, title, description, comments, history)
+        public Story(string id,string title, string description, Member assignee, PriorityType priority, StoryStatusType storyStatus, SizeType size)
+            : base(id, title, description)
         {
             this.Assignee = assignee;
         }
@@ -22,17 +22,6 @@ namespace WorkItemManagementConsoleApp.Models.WorkItems
         public StoryStatusType StoryStatus { get; }
         public SizeType Size { get; }
 
-        /*public override string ToString()
-        {
-            StringBuilder sb = new StringBuilder();
-            sb.AppendLine("Story ----");
-            sb.AppendLine($"{this.base}");
-            sb.AppendLine($"Assignee: {Priority}");
-            sb.AppendLine($"Priority: {StoryStatus}");
-            sb.AppendLine($"Status: {StoryStatus}");
-            sb.AppendLine($"Size: {Size}");
-
-            return sb.ToString();
-        }*/
+        //Change Priority/Size/Status of a story
     }
 }

@@ -8,11 +8,9 @@ namespace WorkItemManagementConsoleApp.Models.WorkItems
     public class Member : IMember
     {
         private string name;
-        public Member(string name, List<IWorkItem> workItems, List<string> activityHistory)
+        public Member(string name)
         {
             this.Name = name;
-            this.WorkItems = workItems;
-            this.ActivityHistory = activityHistory;
         }
         public string Name
         {
@@ -28,5 +26,8 @@ namespace WorkItemManagementConsoleApp.Models.WorkItems
         }
         public List<IWorkItem> WorkItems { get; }
         public List<string> ActivityHistory { get; }
+
+        //add workitems and activityhistory - methods
+        //Assign/Unassign work item to a person
     }
 }

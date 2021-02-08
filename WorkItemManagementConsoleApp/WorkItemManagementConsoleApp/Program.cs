@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Collections.Generic;
+using WorkItemManagementConsoleApp.Core;
 
 namespace WorkItemManagementConsoleApp
 {
@@ -6,7 +8,7 @@ namespace WorkItemManagementConsoleApp
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Testing merging branches - Angel");
+            Engine.Instance.Run();
         }
     }
 }

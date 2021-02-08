@@ -8,11 +8,9 @@ namespace WorkItemManagementConsoleApp.Models.WorkItems
     public class Board : IBoard
     {
         private string name;
-        public Board(string name, List<IWorkItem> workItems, List<string> activityHistory)
+        public Board(string name)
         {
             this.Name = name;
-            this.WorkItems = workItems;
-            this.ActivityHistory = activityHistory;
         }
         public string Name
         {
@@ -29,5 +27,7 @@ namespace WorkItemManagementConsoleApp.Models.WorkItems
         public List<IWorkItem> WorkItems { get; }
         public List<string> ActivityHistory { get; }
 
+        // add methods for adding workitems and history
+        
     }
 }

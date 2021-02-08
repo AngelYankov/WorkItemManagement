@@ -7,15 +7,15 @@ namespace WorkItemManagementConsoleApp.Models.WorkItems
 {
     public class Team : ITeam
     {
-        public Team(string name, List<IMember> members, List<IBoard> boards)
+        public Team(string name)
         {
             this.Name = name;
-            this.Members = members;
-            this.Boards = boards;
         }
         public string Name { get; }
         public List<IMember> Members { get; }
         public List<IBoard> Boards { get; }
+
+        // add 2 methods for adding members and boards
 
     }
 }
