@@ -8,8 +8,21 @@ using WorkItemManagementConsoleApp.Models.WorkItems;
 
 namespace WorkItemManagementConsoleApp.Core
 {
-    class Factory : IFactory
+    public class Factory : IFactory
     {
+        private static IFactory instance;
+
+        public static IFactory Instance
+        {
+            get
+            {
+                if(instance == null)
+                {
+                    instance = new Factory();
+                }
+                return instance;
+            }
+        }
         public IBoard CreateBoard(string name)
         {
             return new Board(name);
