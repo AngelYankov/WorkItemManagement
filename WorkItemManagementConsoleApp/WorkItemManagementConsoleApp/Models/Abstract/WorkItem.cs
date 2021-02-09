@@ -67,5 +67,16 @@ namespace WorkItemManagementConsoleApp.Models.Abstract
             this.History.Add(info);
         }
 
+        public override string ToString()
+        {
+            StringBuilder sb = new StringBuilder();
+            sb.AppendLine($"ID: {this.id}");
+            sb.AppendLine($"Title: {this.title}");
+            sb.AppendLine($"Description: {this.description}");
+            sb.AppendLine($"Activity history: {string.Join(Environment.NewLine, this.History)}");
+            sb.AppendLine($"Comments: {string.Join(Environment.NewLine, this.Comments)}");
+
+            return sb.ToString().Trim();
+        }
     }
 }

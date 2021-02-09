@@ -7,7 +7,7 @@ namespace WorkItemManagementConsoleApp.Models.Contracts
 {
     public interface IWorkItem
     {
-        static int Id { get; }
+        string Id { get; }
         string Title { get; }
         string Description { get; }
         IDictionary<IMember, IList<string>> Comments { get; }

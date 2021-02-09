@@ -9,5 +9,7 @@ namespace WorkItemManagementConsoleApp.Core.Contracts
     {
         IList<IMember> AllMembers { get; }
         IList<ITeam> AllTeams { get; }
+        IList<IWorkItem> AllWorkItems { get; }
+
     }
 }

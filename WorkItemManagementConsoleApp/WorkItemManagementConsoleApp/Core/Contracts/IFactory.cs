@@ -12,12 +12,9 @@ namespace WorkItemManagementConsoleApp.Core.Contracts
         IMember CreateMember(string name);
         ITeam CreateTeam(string name);
         IBoard CreateBoard(string name);
-        IBug CreateBug(string id, string title, string description, string priority,
-            string severity, string status, Member assignee, List<string> steps);
-        IStory CreateStory(string id, string title, string description, Member assignee,
-            string priority, string storyStatus, string size);
-        IFeedback CreateFeedback(string id, string title, string description, int rating,
-            string status);
+        IBug CreateBug(string id, string title, string description, string priority, string severity, string status, List<string> steps);
+        IStory CreateStory(string id, string title, string description, string priority, string storyStatus, string size);
+        IFeedback CreateFeedback(string id, string title, string description, int rating, string status);
 
     }
 }

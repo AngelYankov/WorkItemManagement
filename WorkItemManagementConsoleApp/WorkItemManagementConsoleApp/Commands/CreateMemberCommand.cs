@@ -15,7 +15,7 @@ namespace WorkItemManagementConsoleApp.Commands
 
         }
 
-        public override string Execute()
+        public override string Execute() // createmember member1
         {
             if(CommandParameters.Count != 1)
             {
@@ -26,13 +26,13 @@ namespace WorkItemManagementConsoleApp.Commands
 
             if (nameExists)
             {
-                throw new ArgumentException("Member already exists.");
+                throw new ArgumentException($"Member: '{name}' already exists.");
             }
 
             IMember member = this.Factory.CreateMember(name);
             this.Database.AllMembers.Add(member);
 
-            return $"Member '{name}' created";
+            return $"Member: '{name}' created";
         }
     }
 }

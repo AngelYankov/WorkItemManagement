@@ -23,10 +23,7 @@ namespace WorkItemManagementConsoleApp.Models.WorkItems
             get => this.rating;
             private set
             {
-                if (value < 1 || value > 10)
-                {
-                    throw new ArgumentException("Rating should be between 1 and 10.");
-                }
+                EnsureRatingIsValid(value);
                 this.AddHistory($"Rating changed from {this.rating} to {value}.");
                 this.rating = value;
             }

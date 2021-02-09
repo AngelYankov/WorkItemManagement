@@ -7,15 +7,15 @@ using WorkItemManagementConsoleApp.Models.Enums;
 
 namespace WorkItemManagementConsoleApp.Models.WorkItems
 {
-    public class Bug  : WorkItem, IBug
+    public class Bug : WorkItem, IBug
     {
         private readonly IList<string> steps;
         private PriorityType priorityType;
         private SeverityType severityType;
         private BugStatus bugStatus;
         private IMember assignee;
-        public Bug(string id, string title, string description, PriorityType priority, 
-            SeverityType severity, BugStatus status, List<string> steps)
+        public Bug(string id, string title, string description, PriorityType priority,
+            SeverityType severity, BugStatus status, IList<string> steps)
             : base(id, title, description)
         {
             this.Priority = priority;
@@ -37,7 +37,7 @@ namespace WorkItemManagementConsoleApp.Models.WorkItems
                 this.priorityType = value;
             }
         }
-        public SeverityType Severity 
+        public SeverityType Severity
         {
             get => this.severityType;
             private set
@@ -46,7 +46,7 @@ namespace WorkItemManagementConsoleApp.Models.WorkItems
                 this.severityType = value;
             }
         }
-        public BugStatus Status 
+        public BugStatus Status
         {
             get => this.bugStatus;
             private set
@@ -76,9 +76,47 @@ namespace WorkItemManagementConsoleApp.Models.WorkItems
             this.Assignee = member;
         }
 
+        public string ChangePriority(PriorityType priorityType)
+        {
+            if (this.Priority == priorityType)
+            {
+                throw new ArgumentException($"Bug priority already at {priorityType}");
+            }
 
+            this.Priority = priorityType;
+            return $"Bug priority changed to {priorityType}";
+        }
+        public string ChangeSeverity(SeverityType severityType)
+        {
+            if(this.Severity == severityType)
+            {
+                throw new ArgumentException($"Bug severity type already at {severityType}");
+            }
+            this.Severity = severityType;
+            return $"Bug severity changed to {severityType}";
+        }
+        public string ChangeStatus(BugStatus bugStatus)
+        {
+            if(this.Status == bugStatus)
+            {
+                throw new ArgumentException($"Bug status already at {bugStatus}");
+            }
+            this.Status = bugStatus;
+            return $"Bug status changed to {bugStatus}";
+        }
 
-        //Change Priority/Severity/Status of a bug
+        public override string ToString()
+        {
+            StringBuilder sb = new StringBuilder();
+            sb.AppendLine("Bug ----");
+            sb.AppendLine(base.ToString());
+            sb.AppendLine($"Priority: {this.priorityType}");
+            sb.AppendLine($"Severity: {this.severityType}");
+            sb.AppendLine($"Status: {this.bugStatus}");
+            sb.AppendLine($"Assignee: {this.assignee}");
+            sb.AppendLine($"Steps: {string.Join(Environment.NewLine, this.steps)}");
 
+            return sb.ToString().Trim();
+        }
     }
 }

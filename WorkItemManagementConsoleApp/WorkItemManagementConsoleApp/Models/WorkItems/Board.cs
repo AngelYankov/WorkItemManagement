@@ -8,8 +8,8 @@ namespace WorkItemManagementConsoleApp.Models.WorkItems
     public class Board : IBoard
     {
         private readonly string name;
-        private readonly List<string> activityHistory = new List<string>();
-        private readonly List<IWorkItem> workItems = new List<IWorkItem>();
+        private readonly IList<string> activityHistory = new List<string>();
+        private readonly IList<IWorkItem> workItems = new List<IWorkItem>();
         public Board(string name)
         {
             EnsureNameIsValid(name);
@@ -19,8 +19,8 @@ namespace WorkItemManagementConsoleApp.Models.WorkItems
         {
             get => this.name;
         }
-        public List<IWorkItem> WorkItems { get => this.workItems; }
-        public List<string> ActivityHistory { get => this.activityHistory;}
+        public IList<IWorkItem> WorkItems { get => this.workItems; }
+        public IList<string> ActivityHistory { get => this.activityHistory;}
         private void EnsureNameIsValid(string name)
         {
             if (name.Length < 5 || name.Length > 10)

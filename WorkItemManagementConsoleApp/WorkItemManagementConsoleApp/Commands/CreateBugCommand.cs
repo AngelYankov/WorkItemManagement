@@ -16,30 +16,40 @@ namespace WorkItemManagementConsoleApp.Commands
 
         }
 
-        public override string Execute()
+        public override string Execute() // createbug board1 team1 
         {
-            if(this.CommandParameters.Count < 10)
+            if(this.CommandParameters.Count < 9)
             {
                 throw new ArgumentException("Parameters count is not valid.");
             }
 
-            string boardName = this.CommandParameters[0];
-            string teamName = this.CommandParameters[1];
+            string teamName = this.CommandParameters[0];
+            string boardName = this.CommandParameters[1];
             string id = this.CommandParameters[2];
             string title = this.CommandParameters[3];
             string description = this.CommandParameters[4];
             string priority = this.CommandParameters[5];
             string severity = this.CommandParameters[6];
             string status = this.CommandParameters[7];
-            string assignee = this.CommandParameters[8];
-            List<string> steps = this.CommandParameters[9].Split(",").ToList();
+            List<string> steps = this.CommandParameters[8].Split(",").ToList();
 
-            int teamIndex = TeamIndex(teamName);
-            int boardIndex = this.Database.AllTeams[teamIndex].GetBoardIndex(boardName);
+            var existingTeam = this.Database.AllTeams.FirstOrDefault(t => t.Name.Equals(teamName, StringComparison.OrdinalIgnoreCase));
+            if(existingTeam == null)
+            {
+                throw new ArgumentException($"Team: '{teamName}' does not exist.");
+            }
 
-            IWorkItem bug = this.Factory.CreateBug(id, title, description, priority, severity, status, assignee, steps);
-            this.Database.AllTeams[teamIndex].Boards[boardIndex].AddWorkItem(bug);
-            return $"Bug {title} with id:{id} added to board:{boardName} in team:{teamName}";
+            var existingBoard = existingTeam.Boards.FirstOrDefault(b => b.Name.Equals(boardName, StringComparison.OrdinalIgnoreCase));
+            if(existingBoard == null)
+            {
+                throw new ArgumentException($"Board: '{boardName}' does not exist.");
+            }
+
+            IWorkItem bug = this.Factory.CreateBug(id, title, description, priority, severity, status, steps);
+            existingBoard.AddWorkItem(bug);
+            this.Database.AllWorkItems.Add(bug);
+
+            return $"Bug: '{title}' with id: '{id}' added to board: '{boardName}' in team: '{teamName}'";
 
         }
     }

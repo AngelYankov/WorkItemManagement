@@ -21,15 +21,14 @@ namespace WorkItemManagementConsoleApp.Core
                 return instance;
             }
         }
-        private readonly List<IMember> allMembers = new List<IMember>();
-        public IList<IMember> AllMembers
-        {
-            get => this.allMembers;
-        }
-        private readonly List<ITeam> allTeams = new List<ITeam>();
-        public IList<ITeam> AllTeams 
-        {
-            get => this.allTeams;
-        }
+        private readonly IList<IMember> allMembers = new List<IMember>();
+        public IList<IMember> AllMembers { get => this.allMembers; }
+
+        private readonly IList<ITeam> allTeams = new List<ITeam>();
+        public IList<ITeam> AllTeams { get => this.allTeams; }
+
+        private readonly IList<IWorkItem> allWorkItems = new List<IWorkItem>();
+        public IList<IWorkItem> AllWorkItems { get => this.allWorkItems; }
+
     }
 }

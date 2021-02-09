@@ -28,7 +28,7 @@ namespace WorkItemManagementConsoleApp.Core
             return new Board(name);
         }
 
-        public IBug CreateBug(string id, string title, string description, string priority, string severity, string status, Member assignee, List<string> steps)
+        public IBug CreateBug(string id, string title, string description, string priority, string severity, string status, List<string> steps)
         {
             bool success1 = Enum.TryParse(priority, true, out PriorityType priorityType);
             if (!success1)
@@ -47,7 +47,7 @@ namespace WorkItemManagementConsoleApp.Core
             {
                 throw new ArgumentException($"Bug status {status} is not valid");
             }
-            return new Bug(id, title, description, priorityType, severityType, bugStatus, assignee, steps);
+            return new Bug(id, title, description, priorityType, severityType, bugStatus, steps);
         }
 
         public IFeedback CreateFeedback(string id, string title, string description, int rating, string status)
@@ -65,7 +65,7 @@ namespace WorkItemManagementConsoleApp.Core
             return new Member(name);
         }
 
-        public IStory CreateStory(string id, string title, string description, Member assignee, string priority, string storyStatus, string size)
+        public IStory CreateStory(string id, string title, string description, string priority, string storyStatus, string size)
         {
             bool success1 = Enum.TryParse(priority, true, out PriorityType priorityType);
             if (!success1)
@@ -84,7 +84,7 @@ namespace WorkItemManagementConsoleApp.Core
             {
                 throw new ArgumentException($"Story size {size} is not valid");
             }
-            return new Story(id, title, description, assignee, priorityType, storyStatusType, sizeType);
+            return new Story(id, title, description, priorityType, storyStatusType, sizeType);
         }
 
         public ITeam CreateTeam(string name)

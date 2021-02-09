@@ -15,7 +15,7 @@ namespace WorkItemManagementConsoleApp.Commands
 
         }
 
-        public override string Execute()
+        public override string Execute() // createteam team1
         {
             if(this.CommandParameters.Count != 1)
             {
@@ -27,12 +27,12 @@ namespace WorkItemManagementConsoleApp.Commands
 
             if (teamExists)
             {
-                throw new ArgumentException("Team already exists");
+                throw new ArgumentException($"Team: '{name}' already exists");
             }
             ITeam team = this.Factory.CreateTeam(name);
             this.Database.AllTeams.Add(team);
 
-            return $"Team '{name}' created";
+            return $"Team: '{name}' created";
         }
     }
 }

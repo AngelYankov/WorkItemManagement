@@ -14,6 +14,9 @@ namespace WorkItemManagementConsoleApp.Models.Contracts
         BugStatus Status { get; }
         IMember Assignee { get; }
         void AddAssignee(IMember member);
+        string ChangePriority(PriorityType priorityType);
+        string ChangeSeverity(SeverityType severityType);
+        string ChangeStatus(BugStatus bugStatus);
 
     }
 }
