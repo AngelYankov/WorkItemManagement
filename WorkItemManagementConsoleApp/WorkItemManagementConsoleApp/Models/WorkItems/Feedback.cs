@@ -11,7 +11,7 @@ namespace WorkItemManagementConsoleApp.Models.WorkItems
     {
         private int rating;
         private FeedbackStatusType feedbackStatus;
-        public Feedback(string id, string title, string description, int rating, FeedbackStatusType status)
+        public Feedback(string id, string title, int rating, FeedbackStatusType status, string description)
             : base(id, title, description)
         {
             EnsureRatingIsValid(rating);
@@ -24,7 +24,7 @@ namespace WorkItemManagementConsoleApp.Models.WorkItems
             private set
             {
                 EnsureRatingIsValid(value);
-                this.AddHistory($"Rating changed from {this.rating} to {value}.");
+                this.AddHistory($"Rating changed from '{this.rating}' to '{value}'.");
                 this.rating = value;
             }
         }
@@ -33,9 +33,27 @@ namespace WorkItemManagementConsoleApp.Models.WorkItems
             get => this.feedbackStatus;
             private set
             {
-                this.AddHistory($"Feedback status changed from {this.feedbackStatus} to {value}.");
+                this.AddHistory($"Feedback status changed from '{this.feedbackStatus}' to '{value}'.");
                 this.feedbackStatus = value;
             }
+        }
+        public string ChangeStatus(FeedbackStatusType status)
+        {
+            if (this.FeedbackStatus== status)
+            {
+                throw new ArgumentException($"Status already at '{status}'.");
+            }
+            this.FeedbackStatus = status;
+            return $"Status changed to {status}.";
+        }
+        public string ChangeRating(int rating)
+        {
+            if (this.Rating == rating)
+            {
+                throw new ArgumentException($"Rating already at '{rating}'.");
+            }
+            this.Rating = rating;
+            return $"Rating changed to '{rating}'.";
         }
         private void EnsureRatingIsValid(int rating)
         {

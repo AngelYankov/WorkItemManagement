@@ -28,36 +28,36 @@ namespace WorkItemManagementConsoleApp.Core
             return new Board(name);
         }
 
-        public IBug CreateBug(string id, string title, string description, string priority, string severity, string status, List<string> steps)
+        public IBug CreateBug(string id, string title, string priority, string severity, string status, List<string> steps, string description)
         {
             bool success1 = Enum.TryParse(priority, true, out PriorityType priorityType);
             if (!success1)
             {
-                throw new ArgumentException($"Bug priority {priority} is not valid");
+                throw new ArgumentException($"Bug priority '{priority}' is not valid");
             }
 
             bool success2 = Enum.TryParse(severity, true, out SeverityType severityType);
             if (!success2)
             {
-                throw new ArgumentException($"Bug severity {severity} is not valid");
+                throw new ArgumentException($"Bug severity '{severity}' is not valid");
             }
 
             bool success3 = Enum.TryParse(status, true, out BugStatus bugStatus);
             if (!success3)
             {
-                throw new ArgumentException($"Bug status {status} is not valid");
+                throw new ArgumentException($"Bug status '{status}' is not valid");
             }
-            return new Bug(id, title, description, priorityType, severityType, bugStatus, steps);
+            return new Bug(id, title, priorityType, severityType, bugStatus, steps, description);
         }
 
-        public IFeedback CreateFeedback(string id, string title, string description, int rating, string status)
+        public IFeedback CreateFeedback(string id, string title, int rating, string status, string description)
         {
             bool success = Enum.TryParse(status, true, out FeedbackStatusType feedbackStatus);
             if (!success)
             {
-                throw new ArgumentException($"Feedback status {status} is not valid");
+                throw new ArgumentException($"Feedback status '{status}' is not valid");
             }
-            return new Feedback(id, title, description, rating, feedbackStatus);
+            return new Feedback(id, title, rating, feedbackStatus, description);
         }
 
         public IMember CreateMember(string name)
@@ -65,26 +65,26 @@ namespace WorkItemManagementConsoleApp.Core
             return new Member(name);
         }
 
-        public IStory CreateStory(string id, string title, string description, string priority, string storyStatus, string size)
+        public IStory CreateStory(string id, string title, string priority, string storyStatus, string size, string description)
         {
             bool success1 = Enum.TryParse(priority, true, out PriorityType priorityType);
             if (!success1)
             {
-                throw new ArgumentException($"Story priority {priority} is not valid");
+                throw new ArgumentException($"Story priority '{priority}' is not valid");
             }
 
             bool success2 = Enum.TryParse(storyStatus, true, out StoryStatusType storyStatusType);
             if (!success2)
             {
-                throw new ArgumentException($"Story status {storyStatus} is not valid");
+                throw new ArgumentException($"Story status '{storyStatus}' is not valid");
             }
 
             bool success3 = Enum.TryParse(size, true, out SizeType sizeType);
             if (!success3)
             {
-                throw new ArgumentException($"Story size {size} is not valid");
+                throw new ArgumentException($"Story size '{size}' is not valid");
             }
-            return new Story(id, title, description, priorityType, storyStatusType, sizeType);
+            return new Story(id, title, priorityType, storyStatusType, sizeType, description);
         }
 
         public ITeam CreateTeam(string name)

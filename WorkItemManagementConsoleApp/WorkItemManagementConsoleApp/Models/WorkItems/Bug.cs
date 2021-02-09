@@ -14,13 +14,13 @@ namespace WorkItemManagementConsoleApp.Models.WorkItems
         private SeverityType severityType;
         private BugStatus bugStatus;
         private IMember assignee;
-        public Bug(string id, string title, string description, PriorityType priority,
-            SeverityType severity, BugStatus status, IList<string> steps)
+        public Bug(string id, string title, PriorityType priority,
+            SeverityType severity, BugStatus status, IList<string> steps, string description)
             : base(id, title, description)
         {
-            this.Priority = priority;
-            this.Severity = severity;
-            this.Status = status;
+            this.priorityType = priority;
+            this.severityType = severity;
+            this.bugStatus = status;
             this.steps = steps;
         }
 
@@ -33,7 +33,7 @@ namespace WorkItemManagementConsoleApp.Models.WorkItems
             get => this.priorityType;
             private set
             {
-                this.AddHistory($"Bug priority type changed from {this.priorityType} to {value}.");
+                this.AddHistory($"Bug priority type changed from '{this.priorityType}' to '{value}'.");
                 this.priorityType = value;
             }
         }
@@ -42,7 +42,7 @@ namespace WorkItemManagementConsoleApp.Models.WorkItems
             get => this.severityType;
             private set
             {
-                this.AddHistory($"Bug severity type changed from {this.severityType} to {value}.");
+                this.AddHistory($"Bug severity type changed from '{this.severityType}' to '{value}'.");
                 this.severityType = value;
             }
         }
@@ -51,7 +51,7 @@ namespace WorkItemManagementConsoleApp.Models.WorkItems
             get => this.bugStatus;
             private set
             {
-                this.AddHistory($"Bug status changed from {this.bugStatus} to {value}.");
+                this.AddHistory($"Bug status changed from '{this.bugStatus}' to '{value}'.");
                 this.bugStatus = value;
             }
         }
@@ -62,11 +62,11 @@ namespace WorkItemManagementConsoleApp.Models.WorkItems
             {
                 if (this.assignee == null)
                 {
-                    this.AddHistory($"Bug assigned to {value}.");
+                    this.AddHistory($"Bug assigned to '{value}'.");
                 }
                 else
                 {
-                    this.AddHistory($"Bug assignee changed from {this.assignee} to {value}.");
+                    this.AddHistory($"Bug assignee changed from '{this.assignee}' to '{value}'.");
                 }
                 this.assignee = value;
             }
@@ -80,29 +80,29 @@ namespace WorkItemManagementConsoleApp.Models.WorkItems
         {
             if (this.Priority == priorityType)
             {
-                throw new ArgumentException($"Bug priority already at {priorityType}");
+                throw new ArgumentException($"Bug priority already at '{priorityType}'");
             }
 
             this.Priority = priorityType;
-            return $"Bug priority changed to {priorityType}";
+            return $"Bug priority changed to '{priorityType}'";
         }
         public string ChangeSeverity(SeverityType severityType)
         {
             if(this.Severity == severityType)
             {
-                throw new ArgumentException($"Bug severity type already at {severityType}");
+                throw new ArgumentException($"Bug severity type already at '{severityType}'");
             }
             this.Severity = severityType;
-            return $"Bug severity changed to {severityType}";
+            return $"Bug severity changed to '{severityType}'";
         }
         public string ChangeStatus(BugStatus bugStatus)
         {
             if(this.Status == bugStatus)
             {
-                throw new ArgumentException($"Bug status already at {bugStatus}");
+                throw new ArgumentException($"Bug status already at '{bugStatus}'");
             }
             this.Status = bugStatus;
-            return $"Bug status changed to {bugStatus}";
+            return $"Bug status changed to '{bugStatus}'";
         }
 
         public override string ToString()
@@ -114,7 +114,7 @@ namespace WorkItemManagementConsoleApp.Models.WorkItems
             sb.AppendLine($"Severity: {this.severityType}");
             sb.AppendLine($"Status: {this.bugStatus}");
             sb.AppendLine($"Assignee: {this.assignee}");
-            sb.AppendLine($"Steps: {string.Join(Environment.NewLine, this.steps)}");
+            sb.AppendLine($"Steps: {string.Join(", ", this.steps)}");
 
             return sb.ToString().Trim();
         }

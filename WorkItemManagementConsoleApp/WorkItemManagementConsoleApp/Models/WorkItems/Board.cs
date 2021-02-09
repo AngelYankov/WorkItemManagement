@@ -31,7 +31,7 @@ namespace WorkItemManagementConsoleApp.Models.WorkItems
         public void AddWorkItem(IWorkItem item)
         {
             this.WorkItems.Add(item);
-            AddHistory($"{item.Title} added.");
+            AddHistory($"'{item.Title}' added.");
         }
         private void AddHistory(string info)
         {

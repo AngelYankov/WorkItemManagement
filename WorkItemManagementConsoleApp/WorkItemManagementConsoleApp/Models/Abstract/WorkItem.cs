@@ -69,11 +69,12 @@ namespace WorkItemManagementConsoleApp.Models.Abstract
 
         public override string ToString()
         {
+            string history = this.History.Count == 0 ? "No history" : string.Join(Environment.NewLine, this.History);
             StringBuilder sb = new StringBuilder();
             sb.AppendLine($"ID: {this.id}");
             sb.AppendLine($"Title: {this.title}");
             sb.AppendLine($"Description: {this.description}");
-            sb.AppendLine($"Activity history: {string.Join(Environment.NewLine, this.History)}");
+            sb.AppendLine($"Activity history: {history}");
             sb.AppendLine($"Comments: {string.Join(Environment.NewLine, this.Comments)}");
 
             return sb.ToString().Trim();

@@ -13,7 +13,7 @@ namespace WorkItemManagementConsoleApp.Models.WorkItems
         private PriorityType priorityType;
         private StoryStatusType storyStatus;
         private SizeType sizeType;
-        public Story(string id,string title, string description, PriorityType priority, StoryStatusType storyStatus, SizeType size)
+        public Story(string id,string title, PriorityType priority, StoryStatusType storyStatus, SizeType size, string description)
             : base(id, title, description)
         {
             this.priorityType = priority;
@@ -28,11 +28,11 @@ namespace WorkItemManagementConsoleApp.Models.WorkItems
             {
                 if (this.assignee == null)
                 {
-                    this.AddHistory($"Story assigned to {value}.");
+                    this.AddHistory($"Story assigned to '{value}'.");
                 }
                 else
                 {
-                    this.AddHistory($"Story assignee changed from {this.assignee} to {value}.");
+                    this.AddHistory($"Story assignee changed from '{this.assignee}' to '{value}'.");
                 }
                 this.assignee = value;
             }
@@ -43,7 +43,7 @@ namespace WorkItemManagementConsoleApp.Models.WorkItems
             get => this.priorityType;
             private set
             {
-                this.AddHistory($"Story priority type changed from {this.priorityType} to {value}.");
+                this.AddHistory($"Story priority type changed from '{this.priorityType}' to '{value}'.");
                 this.priorityType = value;
             }
         }
@@ -53,7 +53,7 @@ namespace WorkItemManagementConsoleApp.Models.WorkItems
             get => this.storyStatus;
             private set
             {
-                this.AddHistory($"Story status type changed from {this.storyStatus} to {value}.");
+                this.AddHistory($"Story status type changed from '{this.storyStatus}' to '{value}'.");
                 this.storyStatus = value;
             }
         }
@@ -62,13 +62,40 @@ namespace WorkItemManagementConsoleApp.Models.WorkItems
             get => this.sizeType;
             private set
             {
-                this.AddHistory($"Story size changed from {this.sizeType} to {value}.");
+                this.AddHistory($"Story size changed from '{this.sizeType}' to '{value}'.");
                 this.sizeType = value;
             }
         }
         public void AddAssignee(IMember member)
         {
             this.Assignee = member;
+        }
+        public string ChangePriority(PriorityType priority)
+        {
+            if (this.Priority == priority)
+            {
+                throw new ArgumentException($"Priority already at '{priority}'.");
+            }
+            this.Priority = priority;
+            return $"Story priority changed to '{priority}'.";
+        }
+        public string ChangeSize(SizeType size)
+        {
+            if (this.Size == size)
+            {
+                throw new ArgumentException($"Size already at '{size}'.");
+            }
+            this.Size = size;
+            return $"Story size changed to '{size}'.";
+        }
+        public string ChangeStatus(StoryStatusType status)
+        {
+            if (this.StoryStatus == status)
+            {
+                throw new ArgumentException($"Status already at '{status}'.");
+            }
+            this.StoryStatus = status;
+            return $"Story status changed to '{status}'.";
         }
     }
 }

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using WorkItemManagementConsoleApp.Commands.Abstract;
+using WorkItemManagementConsoleApp.Core;
 using WorkItemManagementConsoleApp.Models.Contracts;
 
 namespace WorkItemManagementConsoleApp.Commands
@@ -12,34 +13,18 @@ namespace WorkItemManagementConsoleApp.Commands
         public CreateBoardCommand(IList<string> commandParameters)
             :base(commandParameters)
         {
-
         }
-
         public override string Execute() // createboard board1 team1
         {
-            if(this.CommandParameters.Count != 2)
-            {
-                throw new ArgumentException("Parameters count is not valid");
-            }
-
+            Validator.ValidateParameters(this.CommandParameters, 2);
             string name = this.CommandParameters[0];
             string teamName = this.CommandParameters[1];
 
-            var team = this.Database.AllTeams.FirstOrDefault(t => t.Name.Equals(teamName, StringComparison.OrdinalIgnoreCase));
-            if (team == null)
-            {
-                throw new ArgumentException($"Team: '{teamName}' does not exist.");
-            }
-
-            var existingBoard = team.Boards.FirstOrDefault(b => b.Name.Equals(name, StringComparison.OrdinalIgnoreCase));
-            if(existingBoard != null)
-            {
-                throw new ArgumentException($"Board: '{name}' already exists in team: '{teamName}'");
-            }
+            var team = Validator.GetTeam(teamName);
+            Validator.BoardExists(name, team);
 
             IBoard board = this.Factory.CreateBoard(name);
             team.AddBoard(board);
-
             return $"Board: '{name}' was created in team: '{teamName}'";
         }
     }

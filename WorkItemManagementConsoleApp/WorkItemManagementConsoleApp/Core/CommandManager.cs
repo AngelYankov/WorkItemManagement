@@ -17,26 +17,26 @@ namespace WorkItemManagementConsoleApp.Core
             List<string> commandParameters = lineParameters.Skip(1).ToList();
             return commandName switch
             {
-                "createteam" => new CreateTeamCommand(commandParameters),
-                "createmember" => new CreateMemberCommand(commandParameters),
-                "createboard" => new CreateBoardCommand(commandParameters),
-                "createbug" => new CreateBugCommand(commandParameters),
-             /*   "createstory" => new CreateStoryCommand(commandParameters),
-                "createfeedback" =>
-                "showallpeople" =>
+                "createteam" => new CreateTeamCommand(commandParameters), //done
+                "createmember" => new CreateMemberCommand(commandParameters),// done
+                "createboard" => new CreateBoardCommand(commandParameters), //done
+                "createbug" => new CreateBugCommand(commandParameters), // done
+                "createstory" => new CreateStoryCommand(commandParameters),//done
+                "createfeedback" => new CreateFeedbackCommand(commandParameters),//done
+               /* "showallpeople" =>
                 "showallteams" =>
                 "showallboards" =>
                 "showpersonactivity" =>
                 "showteamactivity" =>
-                "showboardactivity" =>
-                "listworkitems" =>
-                "addperson" =>
-                "addcomment" => // Team1 Board2 bug1 Angel commentara tuka
-                "assign" =>
-                "unassign" =>*/
-                "changebug" => new ChangeBugCommand(commandParameters),
-                /*"changestory" =>
-                "changefeedback" =>*/
+                "showboardactivity" =>*/
+                "listworkitems" => new ListWorkItemsCommand(commandParameters), // todo
+                "addperson" => new AddPersonCommand(commandParameters), // todo
+                //"addcomment" => 
+                //"assign" =>
+               // "unassign" =>
+                "changebug" => new ChangeBugCommand(commandParameters),          //done
+                "changestory" => new ChangeStoryCommand(commandParameters),      //done
+                "changefeedback" => new ChangeFeedbackCommand(commandParameters),//done
                 _ => throw new InvalidOperationException("Command does not exist.")
             };
         }

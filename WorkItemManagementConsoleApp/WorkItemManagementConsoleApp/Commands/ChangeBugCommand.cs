@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using WorkItemManagementConsoleApp.Commands.Abstract;
+using WorkItemManagementConsoleApp.Core;
 using WorkItemManagementConsoleApp.Models.Contracts;
 using WorkItemManagementConsoleApp.Models.Enums;
 using WorkItemManagementConsoleApp.Models.WorkItems;
@@ -19,10 +20,7 @@ namespace WorkItemManagementConsoleApp.Commands
 
         public override string Execute() // changebug id severity major
         {
-            if (this.CommandParameters.Count != 3)
-            {
-                throw new ArgumentException("Parameter count is not valid");
-            }
+            Validator.ValidateParameters(this.CommandParameters, 3);
 
             string id = this.CommandParameters[0];
             string property = this.CommandParameters[1];
@@ -37,21 +35,21 @@ namespace WorkItemManagementConsoleApp.Commands
             switch (property)
             {
                 case "priority":
-                    if (Enum.TryParse(type, true, out PriorityType priorityType))
+                    if (!Enum.TryParse(type, true, out PriorityType priorityType))
                     {
-                        throw new ArgumentException($"{type} is not a valid priority type");
+                        throw new ArgumentException($"'{type}' is not a valid priority type");
                     }
                     return bug.ChangePriority(priorityType);
                 case "severity":
-                    if (Enum.TryParse(type, true, out SeverityType severityType))
+                    if (!Enum.TryParse(type, true, out SeverityType severityType))
                     {
-                        throw new ArgumentException($"{type} is not a valid severity type");
+                        throw new ArgumentException($"'{type}' is not a valid severity type");
                     }
                     return bug.ChangeSeverity(severityType);
                 case "status":
-                    if (Enum.TryParse(type, true, out BugStatus bugStatus))
+                    if (!Enum.TryParse(type, true, out BugStatus bugStatus))
                     {
-                        throw new ArgumentException($"{type} is not a valid status type");
+                        throw new ArgumentException($"'{type}' is not a valid status type");
                     }
                     return bug.ChangeStatus(bugStatus);
                 default:
