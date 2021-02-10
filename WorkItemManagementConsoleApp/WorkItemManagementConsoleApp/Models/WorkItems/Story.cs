@@ -7,7 +7,7 @@ using WorkItemManagementConsoleApp.Models.Abstract;
 
 namespace WorkItemManagementConsoleApp.Models.WorkItems
 {
-    public class Story : WorkItem, IStory
+    public class Story : WorkItem, IStory, IWorkItemsAssignee
     {
         private IMember assignee;
         private PriorityType priorityType;
@@ -19,23 +19,6 @@ namespace WorkItemManagementConsoleApp.Models.WorkItems
             this.priorityType = priority;
             this.storyStatus = storyStatus;
             this.sizeType = size;
-        }
-
-        public IMember Assignee
-        {
-            get => this.assignee;
-            private set
-            {
-                if (this.assignee == null)
-                {
-                    this.AddHistory($"Story assigned to '{value}'.");
-                }
-                else
-                {
-                    this.AddHistory($"Story assignee changed from '{this.assignee}' to '{value}'.");
-                }
-                this.assignee = value;
-            }
         }
 
         public PriorityType Priority 
@@ -66,8 +49,28 @@ namespace WorkItemManagementConsoleApp.Models.WorkItems
                 this.sizeType = value;
             }
         }
+        public IMember Assignee
+        {
+            get => this.assignee;
+            private set
+            {
+                if (this.assignee == null)
+                {
+                    this.AddHistory($"Story assigned to '{value.Name}'.");
+                }
+                else
+                {
+                    this.AddHistory($"Story assignee changed from '{this.assignee.Name}' to '{value.Name}'.");
+                }
+                this.assignee = value;
+            }
+        }
         public void AddAssignee(IMember member)
         {
+            if (this.Assignee == member)
+            {
+                throw new ArgumentException($"Story already assigned to '{member.Name}'");
+            }
             this.Assignee = member;
         }
         public string ChangePriority(PriorityType priority)

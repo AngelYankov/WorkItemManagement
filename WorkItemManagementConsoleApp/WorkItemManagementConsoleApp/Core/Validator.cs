@@ -40,7 +40,27 @@ namespace WorkItemManagementConsoleApp.Core
                 throw new ArgumentException($"Member: '{name}' already exists.");
             }
         }
-        public static void BoardExists(string name,ITeam team)
+        public static void MemberExistsInTeam(string name,ITeam team)
+        {
+            bool memberExistsInTeam = team.Members.Any(m => m.Name.Equals(name, StringComparison.OrdinalIgnoreCase));
+
+            if (memberExistsInTeam)
+            {
+                throw new ArgumentException($"Member: '{name}' already exist in team: '{team.Name}'.");
+            }
+        }
+        public static void MemberExistsInAnyTeam(string name)
+        {
+            var isInAnyTeam = Database.Instance.AllTeams
+                               .SelectMany(t => t.Members)
+                               .Any(m => m.Name.Equals(name, StringComparison.OrdinalIgnoreCase));
+            if (!isInAnyTeam)
+            {
+                throw new ArgumentException($"Member: '{name}' is not in any team.");
+            }
+        }
+
+        public static void BoardExistsInTeam(string name,ITeam team)
         {
             var boardExists = team.Boards.Any(b => b.Name.Equals(name, StringComparison.OrdinalIgnoreCase));
             if (boardExists)
@@ -66,6 +86,16 @@ namespace WorkItemManagementConsoleApp.Core
             }
             return existingBoard;
         }
+        public static IMember GetMember(string name)
+        {
+            var member = Database.Instance.AllMembers.FirstOrDefault(m => m.Name.Equals(name, StringComparison.OrdinalIgnoreCase));
+            if (member == null)
+            {
+                throw new ArgumentException($"Member: '{name}' does not exist.");
+            }
+            return member;
+        }
+
 
     }
 }

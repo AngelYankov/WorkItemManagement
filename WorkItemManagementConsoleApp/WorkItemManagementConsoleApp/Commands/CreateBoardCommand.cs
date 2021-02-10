@@ -21,7 +21,7 @@ namespace WorkItemManagementConsoleApp.Commands
             string teamName = this.CommandParameters[1];
 
             var team = Validator.GetTeam(teamName);
-            Validator.BoardExists(name, team);
+            Validator.BoardExistsInTeam(name, team);
 
             IBoard board = this.Factory.CreateBoard(name);
             team.AddBoard(board);

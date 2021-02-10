@@ -7,7 +7,7 @@ using WorkItemManagementConsoleApp.Models.Enums;
 
 namespace WorkItemManagementConsoleApp.Models.WorkItems
 {
-    public class Bug : WorkItem, IBug
+    public class Bug : WorkItem, IBug, IWorkItemsAssignee
     {
         private readonly IList<string> steps;
         private PriorityType priorityType;
@@ -62,17 +62,21 @@ namespace WorkItemManagementConsoleApp.Models.WorkItems
             {
                 if (this.assignee == null)
                 {
-                    this.AddHistory($"Bug assigned to '{value}'.");
+                    this.AddHistory($"Bug assigned to '{value.Name}'.");
                 }
                 else
                 {
-                    this.AddHistory($"Bug assignee changed from '{this.assignee}' to '{value}'.");
+                    this.AddHistory($"Bug assignee changed from '{this.assignee.Name}' to '{value.Name}'.");
                 }
                 this.assignee = value;
             }
         }
         public void AddAssignee(IMember member)
         {
+            if (this.Assignee == member)
+            {
+                throw new ArgumentException($"Bug already assigned to '{member.Name}'");
+            }
             this.Assignee = member;
         }
 
@@ -88,7 +92,7 @@ namespace WorkItemManagementConsoleApp.Models.WorkItems
         }
         public string ChangeSeverity(SeverityType severityType)
         {
-            if(this.Severity == severityType)
+            if (this.Severity == severityType)
             {
                 throw new ArgumentException($"Bug severity type already at '{severityType}'");
             }
@@ -97,7 +101,7 @@ namespace WorkItemManagementConsoleApp.Models.WorkItems
         }
         public string ChangeStatus(BugStatus bugStatus)
         {
-            if(this.Status == bugStatus)
+            if (this.Status == bugStatus)
             {
                 throw new ArgumentException($"Bug status already at '{bugStatus}'");
             }
@@ -113,7 +117,7 @@ namespace WorkItemManagementConsoleApp.Models.WorkItems
             sb.AppendLine($"Priority: {this.priorityType}");
             sb.AppendLine($"Severity: {this.severityType}");
             sb.AppendLine($"Status: {this.bugStatus}");
-            sb.AppendLine($"Assignee: {this.assignee}");
+            sb.AppendLine($"Assignee: {this.assignee.Name}");
             sb.AppendLine($"Steps: {string.Join(", ", this.steps)}");
 
             return sb.ToString().Trim();
