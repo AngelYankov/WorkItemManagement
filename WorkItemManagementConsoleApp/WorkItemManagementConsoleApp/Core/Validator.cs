@@ -96,6 +96,26 @@ namespace WorkItemManagementConsoleApp.Core
             return member;
         }
 
+        public static IWorkItemsAssignee GetWorkItemToAssign(string id)
+        {
+            var workItem = (IWorkItemsAssignee)Database.Instance.AllWorkItems.FirstOrDefault(item => item.Id.Equals(id, StringComparison.OrdinalIgnoreCase));
 
+            if (workItem == null)
+            {
+                throw new ArgumentException($"Work item: '{id}' does not exist.");
+            }
+            return workItem;
+        }
+
+        public static IWorkItem GetWorkItem(string id)
+        {
+            var workItem = Database.Instance.AllWorkItems.FirstOrDefault(item => item.Id.Equals(id, StringComparison.OrdinalIgnoreCase));
+
+            if (workItem == null)
+            {
+                throw new ArgumentException($"Work item: '{id}' does not exist.");
+            }
+            return workItem;
+        }
     }
 }

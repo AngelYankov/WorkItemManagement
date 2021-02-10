@@ -31,9 +31,9 @@ namespace WorkItemManagementConsoleApp.Core
                 "showboardactivity" =>*/
                 "listworkitems" => new ListWorkItemsCommand(commandParameters), // todo
                 "addperson" => new AddPersonCommand(commandParameters), //done
-                //"addcomment" => 
-                "assign" => new AssignCommand(commandParameters),
-               // "unassign" =>
+                "addcomment" => new AddCommentCommand(commandParameters), //done
+                "assign" => new AssignCommand(commandParameters), //done
+                "unassign" => new UnassignCommand(commandParameters), //done
                 "changebug" => new ChangeBugCommand(commandParameters),          //done
                 "changestory" => new ChangeStoryCommand(commandParameters),      //done
                 "changefeedback" => new ChangeFeedbackCommand(commandParameters),//done

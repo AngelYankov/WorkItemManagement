@@ -10,5 +10,6 @@ namespace WorkItemManagementConsoleApp.Models.Contracts
         IList<IWorkItem> WorkItems { get; }
         IList<string> ActivityHistory { get; }
         void AddWorkItems(IWorkItem item);
+        void RemoveWorkItems(IWorkItem item);
     }
 }

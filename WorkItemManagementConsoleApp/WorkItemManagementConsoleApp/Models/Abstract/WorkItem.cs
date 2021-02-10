@@ -67,6 +67,11 @@ namespace WorkItemManagementConsoleApp.Models.Abstract
             this.History.Add(info);
         }
 
+        public void AddComment(IMember member, IList<string> comments)
+        {
+            this.Comments.Add(member, comments);
+        }
+
         public override string ToString()
         {
             string history = this.History.Count == 0 ? "No history" : string.Join(Environment.NewLine, this.History);

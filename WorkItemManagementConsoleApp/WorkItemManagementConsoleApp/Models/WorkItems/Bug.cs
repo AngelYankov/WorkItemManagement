@@ -80,6 +80,19 @@ namespace WorkItemManagementConsoleApp.Models.WorkItems
             this.Assignee = member;
         }
 
+        public void RemoveAssignee()
+        {
+            if (this.Assignee == null)
+            {
+                throw new ArgumentException($"Bug has no assignee.");
+            }
+            this.Assignee = null;
+        }
+        public IMember GetAssignee()
+        {
+            return this.Assignee;
+        }
+
         public string ChangePriority(PriorityType priorityType)
         {
             if (this.Priority == priorityType)

@@ -73,6 +73,19 @@ namespace WorkItemManagementConsoleApp.Models.WorkItems
             }
             this.Assignee = member;
         }
+
+        public void RemoveAssignee()
+        {
+            if (this.Assignee == null)
+            {
+                throw new ArgumentException($"Story has no assignee.");
+            }
+            this.Assignee = null;
+        }
+        public IMember GetAssignee()
+        {
+            return this.Assignee;
+        }
         public string ChangePriority(PriorityType priority)
         {
             if (this.Priority == priority)

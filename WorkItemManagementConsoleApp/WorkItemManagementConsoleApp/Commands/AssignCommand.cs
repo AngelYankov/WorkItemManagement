@@ -23,14 +23,11 @@ namespace WorkItemManagementConsoleApp.Commands
             string idWorkItem = this.CommandParameters[1];
             var member = Validator.GetMember(memberName);
             Validator.MemberExistsInAnyTeam(memberName);
-            
-            var workItem =(IWorkItemsAssignee)this.Database.AllWorkItems.FirstOrDefault(item => item.Id.Equals(idWorkItem, StringComparison.OrdinalIgnoreCase));
-            
-            if (workItem == null)
-            {
-                throw new ArgumentException($"Work item: '{idWorkItem}' does not exist.");
-            }
+
+            var workItem = Validator.GetWorkItemToAssign(idWorkItem);
             workItem.AddAssignee(member);
+            member.AddWorkItems((IWorkItem)workItem);
+
             return $"Work item: '{idWorkItem}' assigned to '{memberName}'";
         }
     }
