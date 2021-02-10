@@ -66,7 +66,14 @@ namespace WorkItemManagementConsoleApp.Models.WorkItems
                 }
                 else
                 {
-                    this.AddHistory($"Bug assignee changed from '{this.assignee.Name}' to '{value.Name}'.");
+                    if (value == null)
+                    {
+                        this.AddHistory($"Bug assignee removed.");
+                    }
+                    else
+                    {
+                        this.AddHistory($"Bug assignee changed from '{this.assignee.Name}' to '{value.Name}'.");
+                    }
                 }
                 this.assignee = value;
             }
@@ -124,13 +131,14 @@ namespace WorkItemManagementConsoleApp.Models.WorkItems
 
         public override string ToString()
         {
+            string assigneetext = this.Assignee == null ? "No assignee" : this.Assignee.Name;
             StringBuilder sb = new StringBuilder();
             sb.AppendLine("Bug ----");
             sb.AppendLine(base.ToString());
             sb.AppendLine($"Priority: {this.priorityType}");
             sb.AppendLine($"Severity: {this.severityType}");
             sb.AppendLine($"Status: {this.bugStatus}");
-            sb.AppendLine($"Assignee: {this.assignee.Name}");
+            sb.AppendLine($"Assignee: {assigneetext}");
             sb.AppendLine($"Steps: {string.Join(", ", this.steps)}");
 
             return sb.ToString().Trim();

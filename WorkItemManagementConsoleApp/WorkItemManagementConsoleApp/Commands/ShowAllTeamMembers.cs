@@ -7,9 +7,9 @@ using WorkItemManagementConsoleApp.Core;
 
 namespace WorkItemManagementConsoleApp.Commands
 {
-    public class ShowAllBoardsCommand : Command
+    public class ShowAllTeamMembers : Command
     {
-        public ShowAllBoardsCommand(IList<string> commandParameters)
+        public ShowAllTeamMembers(IList<string> commandParameters)
             :base(commandParameters)
         {
         }
@@ -17,8 +17,8 @@ namespace WorkItemManagementConsoleApp.Commands
         {
             Validator.ValidateParameters(this.CommandParameters, 0);
             return string.Join(", ", this.Database.AllTeams
-                                    .SelectMany(t => t.Boards)
-                                    .Select(b => b.Name)); 
+                                    .SelectMany(t => t.Members)
+                                    .Select(m => m.Name));
         }
     }
 }

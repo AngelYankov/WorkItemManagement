@@ -41,7 +41,7 @@ namespace WorkItemManagementConsoleApp.Commands
             existingBoard.AddWorkItem(bug);
             this.Database.AllWorkItems.Add(bug);
 
-            return $"Bug: '{title}' with id: '{id}' added to board: '{boardName}' in team: '{teamName}'";
+            return $"Created bug: '{title}' with id: '{id}'. Added to board: '{boardName}' in team: '{teamName}'";
         }
     }
 }

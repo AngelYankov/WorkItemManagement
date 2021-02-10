@@ -6,14 +6,13 @@ using WorkItemManagementConsoleApp.Models.WorkItems;
 
 namespace WorkItemManagementConsoleApp.Models.Contracts
 {
-    public interface IBug : IWorkItem
+    public interface IBug : IWorkItem, IWorkItemsAssignee
     {
         IList<string> Steps { get; }
         PriorityType Priority { get; }
         SeverityType Severity { get; }
         BugStatus Status { get; }
         IMember Assignee { get; }
-        void AddAssignee(IMember member);
         string ChangePriority(PriorityType priorityType);
         string ChangeSeverity(SeverityType severityType);
         string ChangeStatus(BugStatus bugStatus);

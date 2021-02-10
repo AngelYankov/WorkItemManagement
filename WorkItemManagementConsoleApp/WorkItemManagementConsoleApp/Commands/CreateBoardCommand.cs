@@ -25,7 +25,7 @@ namespace WorkItemManagementConsoleApp.Commands
 
             IBoard board = this.Factory.CreateBoard(name);
             team.AddBoard(board);
-            return $"Board: '{name}' was created in team: '{teamName}'";
+            return $"Created board: '{name}' in team: '{teamName}'";
         }
     }
 }

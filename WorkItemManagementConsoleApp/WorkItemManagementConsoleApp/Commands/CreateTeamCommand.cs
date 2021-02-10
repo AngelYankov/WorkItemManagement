@@ -22,7 +22,7 @@ namespace WorkItemManagementConsoleApp.Commands
 
             ITeam team = this.Factory.CreateTeam(name);
             this.Database.AllTeams.Add(team);
-            return $"Team: '{name}' created";
+            return $"Created team: '{name}'.";
         }
     }
 }

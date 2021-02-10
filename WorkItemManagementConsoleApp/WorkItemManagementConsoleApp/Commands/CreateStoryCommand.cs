@@ -38,7 +38,7 @@ namespace WorkItemManagementConsoleApp.Commands
             var story = this.Factory.CreateStory(id, title, priority, status, size, description);
             existingBoard.AddWorkItem(story);
             this.Database.AllWorkItems.Add(story);
-            return $"Story: '{title}' with id: '{id}' added to board: '{boardName}' in team: '{teamName}'";
+            return $"Created story: '{title}' with id: '{id}'. Added to board: '{boardName}' in team: '{teamName}'";
 
         }
     }

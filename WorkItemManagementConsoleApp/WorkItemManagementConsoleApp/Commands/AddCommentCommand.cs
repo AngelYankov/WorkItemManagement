@@ -31,6 +31,7 @@ namespace WorkItemManagementConsoleApp.Commands
                 throw new ArgumentException($"Member: '{memberName}' does not have access to work item: '{idWorkItem}'.");
             }
             workItem.AddComment(member, comments);
+            member.AddActivityHistory($"'{memberName}' added comment to work item: '{idWorkItem}'.");
 
             return $"Member: '{memberName}' added comment: {string.Join(" ", comments)} to work item: '{idWorkItem}'";
         }

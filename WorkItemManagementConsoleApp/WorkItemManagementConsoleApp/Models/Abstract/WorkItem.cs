@@ -79,7 +79,7 @@ namespace WorkItemManagementConsoleApp.Models.Abstract
             sb.AppendLine($"ID: {this.id}");
             sb.AppendLine($"Title: {this.title}");
             sb.AppendLine($"Description: {this.description}");
-            sb.AppendLine($"Activity history: {history}");
+            sb.AppendLine($"Activity history: \n{history}");
             sb.AppendLine($"Comments: {string.Join(Environment.NewLine, this.Comments)}");
 
             return sb.ToString().Trim();

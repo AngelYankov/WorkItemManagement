@@ -17,26 +17,27 @@ namespace WorkItemManagementConsoleApp.Core
             List<string> commandParameters = lineParameters.Skip(1).ToList();
             return commandName switch
             {
-                "createteam" => new CreateTeamCommand(commandParameters), //done
-                "createmember" => new CreateMemberCommand(commandParameters),// done
-                "createboard" => new CreateBoardCommand(commandParameters), //done
-                "createbug" => new CreateBugCommand(commandParameters), // done
-                "createstory" => new CreateStoryCommand(commandParameters),//done
-                "createfeedback" => new CreateFeedbackCommand(commandParameters),//done
-               /* "showallpeople" =>
-                "showallteams" =>
-                "showallboards" =>
-                "showpersonactivity" =>
-                "showteamactivity" =>
-                "showboardactivity" =>*/
+                "createteam" => new CreateTeamCommand(commandParameters), 
+                "createmember" => new CreateMemberCommand(commandParameters),
+                "createboard" => new CreateBoardCommand(commandParameters), 
+                "createbug" => new CreateBugCommand(commandParameters), 
+                "createstory" => new CreateStoryCommand(commandParameters),
+                "createfeedback" => new CreateFeedbackCommand(commandParameters),
+                "showallpeople" => new ShowAllPeopleCommand(commandParameters),
+                "showallteams" => new ShowAllTeamsCommand(commandParameters),
+                "showallboards" => new ShowAllBoardsCommand(commandParameters),
+                "showpersonactivity" => new ShowPersonActivityCommand(commandParameters),
+                "showallteammembers" => new ShowAllTeamMembers(commandParameters),
+                "showteamactivity" => new ShowTeamActivityCommand(commandParameters),
+                "showboardactivity" => new ShowBoardActivityCommand(commandParameters),
                 "listworkitems" => new ListWorkItemsCommand(commandParameters), // todo
-                "addperson" => new AddPersonCommand(commandParameters), //done
-                "addcomment" => new AddCommentCommand(commandParameters), //done
-                "assign" => new AssignCommand(commandParameters), //done
-                "unassign" => new UnassignCommand(commandParameters), //done
-                "changebug" => new ChangeBugCommand(commandParameters),          //done
-                "changestory" => new ChangeStoryCommand(commandParameters),      //done
-                "changefeedback" => new ChangeFeedbackCommand(commandParameters),//done
+                "addperson" => new AddPersonCommand(commandParameters), 
+                "addcomment" => new AddCommentCommand(commandParameters), 
+                "assign" => new AssignCommand(commandParameters), 
+                "unassign" => new UnassignCommand(commandParameters), 
+                "changebug" => new ChangeBugCommand(commandParameters),          
+                "changestory" => new ChangeStoryCommand(commandParameters),      
+                "changefeedback" => new ChangeFeedbackCommand(commandParameters),
                 _ => throw new InvalidOperationException("Command does not exist.")
             };
         }

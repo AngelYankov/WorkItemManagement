@@ -6,7 +6,7 @@ using WorkItemManagementConsoleApp.Models.WorkItems;
 
 namespace WorkItemManagementConsoleApp.Models.Contracts
 {
-    public interface IStory : IWorkItem
+    public interface IStory : IWorkItem, IWorkItemsAssignee
     {
         IMember Assignee { get; }
 
@@ -15,7 +15,6 @@ namespace WorkItemManagementConsoleApp.Models.Contracts
         StoryStatusType StoryStatus { get; }
 
         SizeType Size { get; }
-        void AddAssignee(IMember member);
 
     }
 }

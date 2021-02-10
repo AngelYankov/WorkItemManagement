@@ -22,7 +22,7 @@ namespace WorkItemManagementConsoleApp.Commands
 
             IMember member = this.Factory.CreateMember(name);
             this.Database.AllMembers.Add(member);
-            return $"Member: '{name}' created";
+            return $"Created member: '{name}'";
         }
     }
 }

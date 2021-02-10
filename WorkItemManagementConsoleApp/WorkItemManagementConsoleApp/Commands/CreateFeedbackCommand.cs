@@ -43,7 +43,7 @@ namespace WorkItemManagementConsoleApp.Commands
             var feedback = this.Factory.CreateFeedback(id, title, rating, status, description);
             this.Database.AllWorkItems.Add(feedback);
             existingBoard.AddWorkItem(feedback);
-            return $"Feedback: '{title}' with id: '{id}' added to board: '{boardName}' in team: '{teamName}'";
+            return $"Created feedback: '{title}' with id: '{id}'. Added to board: '{boardName}' in team: '{teamName}'";
         }
     }
 }

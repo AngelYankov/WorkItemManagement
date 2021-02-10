@@ -35,7 +35,7 @@ namespace WorkItemManagementConsoleApp.Models.WorkItems
             this.workItems.Remove(item);
             this.AddActivityHistory($"Item: '{item.Id}' removed.");
         }
-        private void AddActivityHistory(string info)
+        public void AddActivityHistory(string info)
         {
             this.activityHistory.Add(info);
         }
