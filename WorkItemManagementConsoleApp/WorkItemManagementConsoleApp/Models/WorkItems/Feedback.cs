@@ -62,5 +62,16 @@ namespace WorkItemManagementConsoleApp.Models.WorkItems
                 throw new ArgumentException("Rating should be between 1 and 10.");
             }
         }
+
+        public override string ToString()
+        {
+            StringBuilder sb = new StringBuilder();
+            sb.AppendLine("Feedback ----");
+            sb.AppendLine(base.ToString());
+            sb.AppendLine($"Rating: {this.rating}");
+            sb.AppendLine($"Status: {this.feedbackStatus}");
+
+            return sb.ToString().Trim();
+        }
     }
 }

@@ -26,7 +26,5 @@ namespace WorkItemManagementConsoleApp.Models.WorkItems
         {
             this.members.Add(member);
         }
-
-       
     }
 }

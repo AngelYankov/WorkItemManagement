@@ -113,5 +113,19 @@ namespace WorkItemManagementConsoleApp.Models.WorkItems
             this.StoryStatus = status;
             return $"Story status changed to '{status}'.";
         }
+
+        public override string ToString()
+        {
+            string assigneetext = this.Assignee == null ? "No assignee" : this.Assignee.Name;
+            StringBuilder sb = new StringBuilder();
+            sb.AppendLine("Story ----");
+            sb.AppendLine(base.ToString());
+            sb.AppendLine($"Priority: {this.priorityType}");
+            sb.AppendLine($"Status: {this.storyStatus}");
+            sb.AppendLine($"Size: {this.sizeType}");
+            sb.AppendLine($"Assignee: {assigneetext}");
+
+            return sb.ToString().Trim();
+        }
     }
 }
