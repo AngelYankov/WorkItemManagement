@@ -7,9 +7,9 @@ using WorkItemManagementConsoleApp.Core;
 
 namespace WorkItemManagementConsoleApp.Commands
 {
-    public class ShowAllPeopleCommand : Command
+    public class ShowAllMembersCommand : Command
     {
-        public ShowAllPeopleCommand(IList<string> commandParameters)
+        public ShowAllMembersCommand(IList<string> commandParameters)
             :base(commandParameters)
         {
         }

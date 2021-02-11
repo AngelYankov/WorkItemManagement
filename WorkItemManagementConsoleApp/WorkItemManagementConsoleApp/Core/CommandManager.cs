@@ -23,7 +23,7 @@ namespace WorkItemManagementConsoleApp.Core
                 "createbug" => new CreateBugCommand(commandParameters), 
                 "createstory" => new CreateStoryCommand(commandParameters),
                 "createfeedback" => new CreateFeedbackCommand(commandParameters),
-                "showallpeople" => new ShowAllPeopleCommand(commandParameters),
+                "showallmembers" => new ShowAllMembersCommand(commandParameters),
                 "showallteams" => new ShowAllTeamsCommand(commandParameters),
                 "showallboards" => new ShowAllBoardsCommand(commandParameters),
                 "showpersonactivity" => new ShowPersonActivityCommand(commandParameters),
@@ -31,7 +31,7 @@ namespace WorkItemManagementConsoleApp.Core
                 "showteamactivity" => new ShowTeamActivityCommand(commandParameters),
                 "showboardactivity" => new ShowBoardActivityCommand(commandParameters),
                 "listworkitems" => new ListWorkItemsCommand(commandParameters), // todo
-                "addperson" => new AddPersonCommand(commandParameters), 
+                "addmember" => new AddMemberCommand(commandParameters), 
                 "addcomment" => new AddCommentCommand(commandParameters), 
                 "assign" => new AssignCommand(commandParameters), 
                 "unassign" => new UnassignCommand(commandParameters), 
