@@ -117,5 +117,10 @@ namespace WorkItemManagementConsoleApp.Core
             }
             return workItem;
         }
+
+        public static IList<IWorkItem> GetAllWorkItems()
+        {
+            return Database.Instance.AllWorkItems;
+        }
     }
 }
