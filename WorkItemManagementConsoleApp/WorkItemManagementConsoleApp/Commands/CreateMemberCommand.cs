@@ -21,7 +21,7 @@ namespace WorkItemManagementConsoleApp.Commands
             Validator.MemberExists(name);
 
             IMember member = this.Factory.CreateMember(name);
-            this.Database.AllMembers.Add(member);
+            Validator.GetAllMembers().Add(member);
             return $"Created member: '{name}'";
         }
     }

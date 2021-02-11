@@ -21,7 +21,7 @@ namespace WorkItemManagementConsoleApp.Commands
             Validator.TeamExists(name);
 
             ITeam team = this.Factory.CreateTeam(name);
-            this.Database.AllTeams.Add(team);
+            Validator.GetAllTeams().Add(team);
             return $"Created team: '{name}'.";
         }
     }

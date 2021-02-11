@@ -26,7 +26,7 @@ namespace WorkItemManagementConsoleApp.Commands
             string property = this.CommandParameters[1];
             string type = this.CommandParameters[2];
 
-            var bug = this.Database.AllWorkItems.OfType<Bug>().ToList().FirstOrDefault(b => b.Id.Equals(id, StringComparison.OrdinalIgnoreCase));
+            var bug = Validator.GetAllWorkItems().OfType<Bug>().ToList().FirstOrDefault(b => b.Id.Equals(id, StringComparison.OrdinalIgnoreCase));
            
             if (bug == null)
             {

@@ -16,7 +16,9 @@ namespace WorkItemManagementConsoleApp.Commands
         public override string Execute()
         {
             Validator.ValidateParameters(this.CommandParameters, 0);
-            return string.Join(", ", this.Database.AllTeams.Select(t => t.Name));
+            return Validator.GetAllTeams().Count != 0
+                ? string.Join(", ", Validator.GetAllTeams().Select(t => t.Name))
+                : "There are no teams.";
         }
     }
 }

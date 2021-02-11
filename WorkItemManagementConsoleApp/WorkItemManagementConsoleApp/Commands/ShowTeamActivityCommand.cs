@@ -19,6 +19,7 @@ namespace WorkItemManagementConsoleApp.Commands
             string teamName = this.CommandParameters[0];
             var team = Validator.GetTeam(teamName);
             StringBuilder sb = new StringBuilder();
+
             sb.AppendLine($"Team: '{teamName}' - Boards activity: ");
             team.Boards.Select(b => sb.AppendLine(string.Join("; ", b.ActivityHistory)));
             sb.AppendLine($"Team: '{teamName}' - Members activity: ");

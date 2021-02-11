@@ -39,7 +39,7 @@ namespace WorkItemManagementConsoleApp.Commands
             
             var bug = this.Factory.CreateBug(id, title, priority, severity, status, steps, description);
             existingBoard.AddWorkItem(bug);
-            this.Database.AllWorkItems.Add(bug);
+            Validator.GetAllWorkItems().Add(bug);
 
             return $"Created bug: '{title}' with id: '{id}'. Added to board: '{boardName}' in team: '{teamName}'";
         }

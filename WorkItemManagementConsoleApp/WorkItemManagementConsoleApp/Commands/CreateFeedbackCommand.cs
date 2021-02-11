@@ -41,7 +41,7 @@ namespace WorkItemManagementConsoleApp.Commands
             var existingBoard = Validator.GetBoard(boardName, existingTeam);
             
             var feedback = this.Factory.CreateFeedback(id, title, rating, status, description);
-            this.Database.AllWorkItems.Add(feedback);
+            Validator.GetAllWorkItems().Add(feedback);
             existingBoard.AddWorkItem(feedback);
             return $"Created feedback: '{title}' with id: '{id}'. Added to board: '{boardName}' in team: '{teamName}'";
         }

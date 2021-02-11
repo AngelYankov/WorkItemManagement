@@ -13,12 +13,15 @@ namespace WorkItemManagementConsoleApp.Commands
             :base(commandParameters)
         {
         }
-        public override string Execute()
+        public override string Execute() //showteammembers team1
         {
-            Validator.ValidateParameters(this.CommandParameters, 0);
-            return string.Join(", ", this.Database.AllTeams
-                                    .SelectMany(t => t.Members)
-                                    .Select(m => m.Name));
+            Validator.ValidateParameters(this.CommandParameters, 1);
+            string teamName = this.CommandParameters[0];
+            var team = Validator.GetTeam(teamName);
+
+            return  team.Members.Count != 0
+                ? string.Join(", ", team.Members.Select(m => m.Name))
+                : $"There are no members in team: '{teamName}'.";
         }
     }
 }

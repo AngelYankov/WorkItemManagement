@@ -12,7 +12,7 @@ namespace WorkItemManagementConsoleApp.Commands
     public class ChangeStoryCommand : Command
     {
         public ChangeStoryCommand(IList<string> commandParameters)
-            :base(commandParameters)
+            : base(commandParameters)
         {
         }
         public override string Execute() // changestory id Property type // priority/status/size
@@ -22,11 +22,16 @@ namespace WorkItemManagementConsoleApp.Commands
             string id = this.CommandParameters[0];
             string property = this.CommandParameters[1];
             string type = this.CommandParameters[2];
-            var story = this.Database.AllWorkItems.OfType<Story>().ToList().FirstOrDefault(s => s.Id.Equals(id, StringComparison.OrdinalIgnoreCase));
+
+            var story = Validator.GetAllWorkItems().OfType<Story>().ToList().FirstOrDefault(s => s.Id.Equals(id, StringComparison.OrdinalIgnoreCase));
+            if (story == null)
+            {
+                throw new ArgumentException($"Story: '{id}' does not exist.");
+            }
             switch (property)
             {
                 case "priority":
-                    if (!Enum.TryParse(type,true, out PriorityType priority))
+                    if (!Enum.TryParse(type, true, out PriorityType priority))
                     {
                         throw new ArgumentException($"'{type}' is not a valid priority type");
                     }

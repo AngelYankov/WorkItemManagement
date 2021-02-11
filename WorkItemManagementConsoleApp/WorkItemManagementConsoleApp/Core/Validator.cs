@@ -122,5 +122,13 @@ namespace WorkItemManagementConsoleApp.Core
         {
             return Database.Instance.AllWorkItems;
         }
+        public static IList<ITeam> GetAllTeams()
+        {
+            return Database.Instance.AllTeams;
+        }
+        public static IList<IMember> GetAllMembers()
+        {
+            return Database.Instance.AllMembers;
+        }
     }
 }

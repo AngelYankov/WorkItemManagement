@@ -10,15 +10,18 @@ namespace WorkItemManagementConsoleApp.Commands
     public class ShowAllBoardsCommand : Command
     {
         public ShowAllBoardsCommand(IList<string> commandParameters)
-            :base(commandParameters)
+            : base(commandParameters)
         {
         }
-        public override string Execute()
+        public override string Execute() //showallboards team1
         {
-            Validator.ValidateParameters(this.CommandParameters, 0);
-            return string.Join(", ", this.Database.AllTeams
-                                    .SelectMany(t => t.Boards)
-                                    .Select(b => b.Name)); 
+            Validator.ValidateParameters(this.CommandParameters, 1);
+            string teamName = this.CommandParameters[0];
+            var team = Validator.GetTeam(teamName);
+
+            return team.Boards.Count != 0 
+                ? string.Join(", ", team.Boards.Select(b => b.Name))
+                : $"There are no boards in team: '{teamName}'.";
         }
     }
 }

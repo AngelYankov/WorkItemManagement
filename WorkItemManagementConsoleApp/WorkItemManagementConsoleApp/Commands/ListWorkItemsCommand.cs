@@ -72,12 +72,12 @@ namespace WorkItemManagementConsoleApp.Commands
                         case "active":
                         case "fixed":
                             bugList = Validator.GetAllWorkItems().OfType<IBug>()
-                                               .Where(b => b.Status.ToString().Equals(this.CommandParameters[1],StringComparison.OrdinalIgnoreCase)).ToList();
+                                               .Where(b => b.Status.ToString().Equals(this.CommandParameters[1], StringComparison.OrdinalIgnoreCase)).ToList();
                             break;
                         default: throw new ArgumentException("Not a valid status for a bug.");
                     }
                 }
-                else if(this.CommandParameters[0] == "story")
+                else if (this.CommandParameters[0] == "story")
                 {
                     switch (this.CommandParameters[1])
                     {
@@ -99,7 +99,7 @@ namespace WorkItemManagementConsoleApp.Commands
                         case "scheduled":
                         case "done":
                             feedbackList = Validator.GetAllWorkItems().OfType<IFeedback>()
-                                                    .Where(f=>f.FeedbackStatus.ToString().Equals(this.CommandParameters[1], StringComparison.OrdinalIgnoreCase)).ToList();
+                                                    .Where(f => f.FeedbackStatus.ToString().Equals(this.CommandParameters[1], StringComparison.OrdinalIgnoreCase)).ToList();
                             break;
                         default: throw new ArgumentException("Not a valid status for a feedback.");
                     }
@@ -113,7 +113,7 @@ namespace WorkItemManagementConsoleApp.Commands
                                        .Where(b => b.Status.ToString() == this.CommandParameters[1])
                                        .Where(b => b.Assignee.Equals(this.CommandParameters[2])).ToList();
                     return string.Join(" ", bugList);
-                } 
+                }
                 else if (this.CommandParameters[0] == "story" && (this.CommandParameters[1] == "notdone" || this.CommandParameters[1] == "inprogress" || this.CommandParameters[1] == "done"))
                 {
                     storyList = Validator.GetAllWorkItems().OfType<IStory>()
@@ -124,23 +124,35 @@ namespace WorkItemManagementConsoleApp.Commands
             }
 
             return "1";
-            // filteredList = Validator.GetAllWorkItems().Where(GetItem(this.CommandParameters[0])).Where(GetByStatus(this.CommandParameters[1])).ToList();
+            if (this.CommandParameters.Count == 1)
+            {
+                filteredList = Validator.GetAllWorkItems().Where(GetItemList(this.CommandParameters[0])).ToList();
+            }
+            else if (this.CommandParameters.Count == 2) // bug new
+            {
+                switch (this.CommandParameters[0])
+                {
+                    case "bug":
+                        var bugs = Validator.GetAllWorkItems().Where(GetItemList("bug")).ToList();
+                        
+                }
+            }
 
-            /*  static Func<IWorkItem, bool> GetItem(string item)
-                     => item switch
-                     {
-                         "bug" => i => i is Bug,
-                         "feedback" => i => i is Feedback,
-                         "story" => i => i is Story,
-                         _ => throw new ArgumentException("Not a valid filter.")
-                     };
-              static Func<IWorkItem, bool> GetByStatus(string status)
-                   => status switch
+            static Func<IWorkItem, bool> GetItemList(string item)
+                   => item switch
                    {
-                       "active" => i => i.StatusComparer == status,
-                       "fixed" => Validator.GetAllWorkItems().Where(GetItem("bug")).Where(i => i),
-                       _ => throw new ArgumentException()
-                   };*/
+                       "bug" => i => i is Bug,
+                       "feedback" => i => i is Feedback,
+                       "story" => i => i is Story,
+                       _ => throw new ArgumentException("Not a valid filter.")
+                   };
+            /*static Func<IWorkItem, bool> GetByStatus(string status)
+                 => status switch
+                 {
+                     "active" => 
+                     "new" => 
+                     _ => throw new ArgumentException()
+                 };*/
         }
     }
 }
