@@ -9,6 +9,7 @@ namespace WorkItemManagementConsoleApp.Commands.Abstract
 {
     public abstract class Command : ICommand
     {
+        protected Command() { }
         protected Command(IList<string> commandParameters)
         {
             this.CommandParameters = new List<string>(commandParameters);

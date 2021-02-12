@@ -38,6 +38,7 @@ namespace WorkItemManagementConsoleApp.Core
                 "changebug" => new ChangeBugCommand(commandParameters),          
                 "changestory" => new ChangeStoryCommand(commandParameters),      
                 "changefeedback" => new ChangeFeedbackCommand(commandParameters),
+                "help" => new HelpCommand(),
                 _ => throw new InvalidOperationException("Command does not exist.")
             };
         }
