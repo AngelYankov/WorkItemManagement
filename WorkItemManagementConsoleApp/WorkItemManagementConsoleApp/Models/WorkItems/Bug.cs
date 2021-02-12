@@ -60,6 +60,7 @@ namespace WorkItemManagementConsoleApp.Models.WorkItems
             get => this.assignee;
             private set
             {
+                
                 if (this.assignee == null)
                 {
                     this.AddHistory($"Bug assigned to '{value.Name}'.");

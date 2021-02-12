@@ -22,27 +22,23 @@ namespace WorkItemManagementConsoleApp.Commands
         {
             Validator.ValidateParamsIfLessThan(this.CommandParameters, 1);
 
-            IList<IWorkItem> filteredList = new List<IWorkItem>();
-
             switch (this.CommandParameters[0])
             {
                 case "all":
-                    filteredList = Validator.GetAllWorkItems();
-                    break;
+                    var all = Validator.GetAllWorkItems();
+                    return string.Join("\n", all);
                 case "feedback":
-                    filteredList = (IList<IWorkItem>)FilterFeedback(this.CommandParameters.Skip(1).ToList());
-                    break;
+                    var feedbacks = (IList<IWorkItem>)FilterFeedback(this.CommandParameters.Skip(1).ToList());
+                    return string.Join("\n", feedbacks);
                 case "bug":
-                    filteredList = (IList<IWorkItem>)FilterBug(this.CommandParameters.Skip(1).ToList());
-                    break;
+                    var bugs = FilterBug(this.CommandParameters.Skip(1).ToList());
+                    return string.Join("\n", bugs);
                 case "story":
-                    filteredList = (IList<IWorkItem>)FilterStory(this.CommandParameters.Skip(1).ToList());
-                    break;
+                    var story = (IList<IWorkItem>)FilterStory(this.CommandParameters.Skip(1).ToList());
+                    return string.Join("\n", story);
                 default:
                     throw new ArgumentException("Not a valid filtering command");
-
             }
-            return string.Join(", ", filteredList);
         }
         private IList<IFeedback> FilterFeedback(IList<string> commands) //new unscheduled scheduled done  //title/rating
         {
@@ -130,11 +126,12 @@ namespace WorkItemManagementConsoleApp.Commands
 
         private List<IBug> FilterBugAssignee(string filter, List<IBug> bugs)
         {
-            if (!bugs.Any(b => b.Assignee.Name.Equals(filter, StringComparison.OrdinalIgnoreCase)))
+            if (!bugs.Any(b => b.Assignee != null && b.Assignee.Name.Equals(filter, StringComparison.OrdinalIgnoreCase)))
             {
                 throw new ArgumentException($"There is no filter: '{filter}' for bug.");
             }
-            return bugs.Where(b => b.Assignee.Name.Equals(filter, StringComparison.OrdinalIgnoreCase)).ToList();
+            return bugs.Where(b => b.Assignee != null && b.Assignee.Name.Equals(filter, StringComparison.OrdinalIgnoreCase)).ToList();
+
         }
 
         private List<IBug> SortBug(string filter, List<IBug> bugs)
@@ -195,11 +192,11 @@ namespace WorkItemManagementConsoleApp.Commands
 
         private List<IStory> FilterStoryAssignee(string filter, List<IStory> stories)
         {
-            if (!stories.Any(s => s.Assignee.Name.Equals(filter, StringComparison.OrdinalIgnoreCase)))
+            if (!stories.Any(s => s.Assignee != null && s.Assignee.Name.Equals(filter, StringComparison.OrdinalIgnoreCase)))
             {
                 throw new ArgumentException($"There is no filter: '{filter}' for story.");
             }
-            return stories.Where(s => s.Assignee.Name.Equals(filter, StringComparison.OrdinalIgnoreCase)).ToList();
+            return stories.Where(s => s.Assignee != null && s.Assignee.Name.Equals(filter, StringComparison.OrdinalIgnoreCase)).ToList();
         }
 
         private List<IStory> SortStory(string filter, List<IStory> stories)

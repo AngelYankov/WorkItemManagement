@@ -24,7 +24,7 @@ namespace WorkItemManagementConsoleApp.Commands
             workItem.GetAssignee().RemoveWorkItems((IWorkItem)workItem);
             workItem.RemoveAssignee();
            
-            return $"'{idWorkItem}' unassigned";
+            return $"Work item: '{idWorkItem}' unassigned";
         }
     }
 }
