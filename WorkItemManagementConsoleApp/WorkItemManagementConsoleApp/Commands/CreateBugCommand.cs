@@ -27,12 +27,7 @@ namespace WorkItemManagementConsoleApp.Commands
             string severity = this.CommandParameters[5];
             string status = this.CommandParameters[6];
             List<string> steps = this.CommandParameters[7].Split("-").ToList(); //mycomputer-controlpanel-dates-setup
-            StringBuilder sb = new StringBuilder();
-            for (int i = 8; i < this.CommandParameters.Count; i++)
-            {
-                sb.Append(this.CommandParameters[i]+" ");
-            }
-            string description = sb.ToString().Trim();
+            string description = string.Join(" ", this.CommandParameters.Skip(8));
 
             var existingTeam = Validator.GetTeam(teamName);
             var existingBoard = Validator.GetBoard(boardName, existingTeam);

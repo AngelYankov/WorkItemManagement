@@ -86,6 +86,11 @@ namespace WorkItemManagementConsoleApp.Models.WorkItems
         {
             return this.Assignee;
         }
+        /// <summary>
+        /// Changing the priority type of a story
+        /// </summary>
+        /// <param name="priority">The priority type we want the story to be changed to</param>
+        /// <returns>Returns a string saying what the story priority type has been changed to or returns a message that it is already at the desired priority type</returns>
         public string ChangePriority(PriorityType priority)
         {
             if (this.Priority == priority)
@@ -95,6 +100,11 @@ namespace WorkItemManagementConsoleApp.Models.WorkItems
             this.Priority = priority;
             return $"Story priority changed to '{priority}'.";
         }
+        /// <summary>
+        /// Changing the size type of a story
+        /// </summary>
+        /// <param name="size">The size type we want the story to be changed to</param>
+        /// <returns>Returns a string saying what the story size type has been changed to or returns a message that it is already at the desired size type</returns>
         public string ChangeSize(SizeType size)
         {
             if (this.Size == size)
@@ -104,6 +114,11 @@ namespace WorkItemManagementConsoleApp.Models.WorkItems
             this.Size = size;
             return $"Story size changed to '{size}'.";
         }
+        /// <summary>
+        /// Changing the status of a story
+        /// </summary>
+        /// <param name="status">The status we want the story to be changed to</param>
+        /// <returns>Returns a string saying what the story status has been changed to or returns a message that it is already at the desired status</returns>
         public string ChangeStatus(StoryStatusType status)
         {
             if (this.StoryStatus == status)

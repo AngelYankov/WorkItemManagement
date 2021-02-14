@@ -28,21 +28,15 @@ namespace WorkItemManagementConsoleApp.Commands
             }
 
             string status = this.CommandParameters[5];
-
-            StringBuilder sb = new StringBuilder();
-            for (int i = 6; i < this.CommandParameters.Count; i++)
-            {
-                sb.Append(this.CommandParameters[i]+" ");
-            }
-            string description = sb.ToString().Trim();
+            string description = string.Join(" ", this.CommandParameters.Skip(6));
 
             var existingTeam = Validator.GetTeam(teamName);
-
             var existingBoard = Validator.GetBoard(boardName, existingTeam);
             
             var feedback = this.Factory.CreateFeedback(id, title, rating, status, description);
             Validator.GetAllWorkItems().Add(feedback);
             existingBoard.AddWorkItem(feedback);
+
             return $"Created feedback: '{title}' with id: '{id}'. Added to board: '{boardName}' in team: '{teamName}'";
         }
     }

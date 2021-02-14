@@ -28,6 +28,10 @@ namespace WorkItemManagementConsoleApp.Models.WorkItems
                 throw new ArgumentException("Board name should be between 5 and 10 characters.");
             }
         }
+        /// <summary>
+        /// Adding a work item to the work item database
+        /// </summary>
+        /// <param name="item">The work item that is added to the database</param>
         public void AddWorkItem(IWorkItem item)
         {
             this.WorkItems.Add(item);

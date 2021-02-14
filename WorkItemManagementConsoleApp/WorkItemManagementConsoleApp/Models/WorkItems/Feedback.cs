@@ -37,6 +37,11 @@ namespace WorkItemManagementConsoleApp.Models.WorkItems
                 this.feedbackStatus = value;
             }
         }
+        /// <summary>
+        /// Changing the status of a feeback
+        /// </summary>
+        /// <param name="status">The status we want the feedback to be changed to</param>
+        /// <returns>Returns a string saying what the feedback status has been changed to or returns a message that it is already at the desired status</returns>
         public string ChangeStatus(FeedbackStatusType status)
         {
             if (this.FeedbackStatus== status)
@@ -46,6 +51,11 @@ namespace WorkItemManagementConsoleApp.Models.WorkItems
             this.FeedbackStatus = status;
             return $"Status changed to {status}.";
         }
+        /// <summary>
+        /// Changing the rating of a feedback
+        /// </summary>
+        /// <param name="rating">The rating we want the feedback to be changed to</param>
+        /// <returns>Returns a string saying what the feedback rating has been changed to or returns a message that it is already at the desired rating</returns>
         public string ChangeRating(int rating)
         {
             if (this.Rating == rating)

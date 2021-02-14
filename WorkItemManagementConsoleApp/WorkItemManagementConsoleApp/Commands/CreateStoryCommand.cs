@@ -24,12 +24,7 @@ namespace WorkItemManagementConsoleApp.Commands
             string priority = this.CommandParameters[4];
             string status = this.CommandParameters[5];
             string size = this.CommandParameters[6];
-            StringBuilder sb = new StringBuilder();
-            for (int i = 7; i < this.CommandParameters.Count; i++)
-            {
-                sb.Append(this.CommandParameters[i] + " ");
-            }
-            string description = sb.ToString().Trim();
+            string description = string.Join(" ", this.CommandParameters.Skip(7));
 
             var existingTeam = Validator.GetTeam(teamName);
 

@@ -100,7 +100,11 @@ namespace WorkItemManagementConsoleApp.Models.WorkItems
         {
             return this.Assignee;
         }
-
+        /// <summary>
+        /// Changing the priority type of a bug
+        /// </summary>
+        /// <param name="priorityType">The priority type we want the bug to be changed to</param>
+        /// <returns>Returns a string saying what the bug priority has been changed to or returns a message that it is already at the desired priority type</returns>
         public string ChangePriority(PriorityType priorityType)
         {
             if (this.Priority == priorityType)
@@ -111,6 +115,11 @@ namespace WorkItemManagementConsoleApp.Models.WorkItems
             this.Priority = priorityType;
             return $"Bug priority changed to '{priorityType}'";
         }
+        /// <summary>
+        /// Changing the severity type of a bug
+        /// </summary>
+        /// <param name="severityType">The severity type we want the bug to be changed to</param>
+        /// <returns>Returns a string saying what the bug severity has been changed to or returns a message that it is already at the desired severity type</returns>
         public string ChangeSeverity(SeverityType severityType)
         {
             if (this.Severity == severityType)
@@ -120,6 +129,11 @@ namespace WorkItemManagementConsoleApp.Models.WorkItems
             this.Severity = severityType;
             return $"Bug severity changed to '{severityType}'";
         }
+        /// <summary>
+        /// Changing the status of a bug
+        /// </summary>
+        /// <param name="bugStatus">The status we want the bug to be changed to</param>
+        /// <returns>Returns a string saying what the bug status has been changed to or returns a message that it is already at the desired status</returns>
         public string ChangeStatus(BugStatus bugStatus)
         {
             if (this.Status == bugStatus)
