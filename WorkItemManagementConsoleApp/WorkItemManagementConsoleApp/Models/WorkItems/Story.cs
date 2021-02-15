@@ -65,6 +65,10 @@ namespace WorkItemManagementConsoleApp.Models.WorkItems
                 this.assignee = value;
             }
         }
+        /// <summary>
+        /// Add assignee if it doesn't have one
+        /// </summary>
+        /// <param name="member">Assignee to be added</param>
         public void AddAssignee(IMember member)
         {
             if (this.Assignee == member)
@@ -73,7 +77,9 @@ namespace WorkItemManagementConsoleApp.Models.WorkItems
             }
             this.Assignee = member;
         }
-
+        /// <summary>
+        /// Remove assignee if it already has one
+        /// </summary>
         public void RemoveAssignee()
         {
             if (this.Assignee == null)

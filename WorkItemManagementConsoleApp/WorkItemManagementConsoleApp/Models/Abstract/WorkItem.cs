@@ -40,6 +40,10 @@ namespace WorkItemManagementConsoleApp.Models.Abstract
         public IDictionary<IMember, IList<string>> Comments { get; }
         private void ValidateTitle(string title)
         {
+            if (string.IsNullOrEmpty(title))
+            {
+                throw new ArgumentNullException();
+            }
             if (title.Length < 10 || title.Length > 50)
             {
                 throw new ArgumentException("Title should be between 10 and 50 characters");
@@ -47,6 +51,10 @@ namespace WorkItemManagementConsoleApp.Models.Abstract
         }
         private void ValidateDescription(string description)
         {
+            if (string.IsNullOrEmpty(description))
+            {
+                throw new ArgumentNullException();
+            }
             if (description.Length < 10 || description.Length > 500)
             {
                 throw new ArgumentException("Description should be between 10 and 500 characters");
@@ -55,6 +63,10 @@ namespace WorkItemManagementConsoleApp.Models.Abstract
 
         private void EnsureIdIsValid(string id)
         {
+            if (string.IsNullOrEmpty(id))
+            {
+                throw new ArgumentNullException();
+            }
             if (allIds.Contains(id))
             {
                 throw new ArgumentException("ID already exists.");

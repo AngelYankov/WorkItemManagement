@@ -103,7 +103,7 @@ namespace WorkItemManagementConsoleApp.Core
         /// Looking for a team with a given name 
         /// </summary>
         /// <param name="name">The name of the team we are searching for</param>
-        /// <returns>Returns the team if a team with such name exists or returns null if there is no such team</returns>
+        /// <returns>Returns the team if a team with such name exists or throw an exception if it doesn't exist</returns>
         public static ITeam GetTeam(string name)
         {
             var team = Database.Instance.AllTeams.FirstOrDefault(t => t.Name.Equals(name, StringComparison.OrdinalIgnoreCase));
@@ -118,7 +118,7 @@ namespace WorkItemManagementConsoleApp.Core
         /// </summary>
         /// <param name="name">The name of the board we are searching for</param>
         /// <param name="team">the name of the team in which we are searching for the board</param>
-        /// <returns>Returns the board if a board with a given name exists in a team with a given name or returns null if there is no such board in the team with a given name</returns>
+        /// <returns>Returns the board if a board with a given name exists in a team with a given name or throw an exception that it doesn't exist in the that team.</returns>
         public static IBoard GetBoard(string name,ITeam team)
         {
             var existingBoard = team.Boards.FirstOrDefault(b => b.Name.Equals(name, StringComparison.OrdinalIgnoreCase));
@@ -132,7 +132,7 @@ namespace WorkItemManagementConsoleApp.Core
         /// Looking for a member with a given name
         /// </summary>
         /// <param name="name">The name of the member we are searching for</param>
-        /// <returns>Returns the member if a member with a given name exists or returns null if there is no such member with a given name</returns>
+        /// <returns>Returns the member if a member with a given name exists or throw an exception that it doesn't exist</returns>
         public static IMember GetMember(string name)
         {
             var member = Database.Instance.AllMembers.FirstOrDefault(m => m.Name.Equals(name, StringComparison.OrdinalIgnoreCase));
@@ -146,7 +146,7 @@ namespace WorkItemManagementConsoleApp.Core
         /// Looking for a workitem with a given ID
         /// </summary>
         /// <param name="id">The ID of the work item we are searching for</param>
-        /// <returns>Returns the the work item with a given ID if it exists or returns null if there is no such work item with a given ID</returns>
+        /// <returns>Returns the the work item with a given ID if it exists or throw an exception that it doesn't exist</returns>
         public static IWorkItemsAssignee GetWorkItemToAssign(string id)
         {
             var workItem = (IWorkItemsAssignee)Database.Instance.AllWorkItems.FirstOrDefault(item => item.Id.Equals(id, StringComparison.OrdinalIgnoreCase));
@@ -161,7 +161,7 @@ namespace WorkItemManagementConsoleApp.Core
         /// Looking for a work item with a given ID
         /// </summary>
         /// <param name="id">The ID of the work item we are searching for</param>
-        /// <returns>Returns the the work item with a given ID if it exists or returns null if there is no such work item with a given ID</returns>
+        /// <returns>Returns the the work item with a given ID if it exists or throw an exception if doesn't exist</returns>
         public static IWorkItem GetWorkItem(string id)
         {
             var workItem = Database.Instance.AllWorkItems.FirstOrDefault(item => item.Id.Equals(id, StringComparison.OrdinalIgnoreCase));

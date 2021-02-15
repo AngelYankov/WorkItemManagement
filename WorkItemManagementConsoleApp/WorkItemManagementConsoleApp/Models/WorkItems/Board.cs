@@ -23,15 +23,19 @@ namespace WorkItemManagementConsoleApp.Models.WorkItems
         public IList<string> ActivityHistory { get => this.activityHistory;}
         private void EnsureNameIsValid(string name)
         {
+            if (string.IsNullOrEmpty(name))
+            {
+                throw new ArgumentNullException();
+            }
             if (name.Length < 5 || name.Length > 10)
             {
                 throw new ArgumentException("Board name should be between 5 and 10 characters.");
             }
         }
         /// <summary>
-        /// Adding a work item to the work item database
+        /// Adding a work item to the Board's work items
         /// </summary>
-        /// <param name="item">The work item that is added to the database</param>
+        /// <param name="item">The work item that is added</param>
         public void AddWorkItem(IWorkItem item)
         {
             this.WorkItems.Add(item);

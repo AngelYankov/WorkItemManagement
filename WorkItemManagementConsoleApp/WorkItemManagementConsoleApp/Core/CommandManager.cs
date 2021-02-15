@@ -30,7 +30,7 @@ namespace WorkItemManagementConsoleApp.Core
                 "showallteammembers" => new ShowAllTeamMembers(commandParameters),
                 "showteamactivity" => new ShowTeamActivityCommand(commandParameters),
                 "showboardactivity" => new ShowBoardActivityCommand(commandParameters),
-                "listworkitems" => new ListWorkItemsCommand(commandParameters), // todo
+                "listworkitems" => new ListWorkItemsCommand(commandParameters), 
                 "addmember" => new AddMemberCommand(commandParameters), 
                 "addcomment" => new AddCommentCommand(commandParameters), 
                 "assign" => new AssignCommand(commandParameters), 
