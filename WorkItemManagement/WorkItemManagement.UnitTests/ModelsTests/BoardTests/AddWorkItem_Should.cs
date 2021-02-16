@@ -17,7 +17,7 @@ namespace WorkItemManagement.UnitTests.ModelsTests.BoardTests
             var feedback = new Feedback("1023", "Feedbacktitle", 3, FeedbackStatusType.Done, "This is a description for feedback");
             board.AddWorkItem(feedback);
 
-            Assert.AreEqual("1023", board.WorkItems[0].Id);
+            Assert.IsTrue(board.WorkItems.Contains(feedback));
         }
     }
 }
