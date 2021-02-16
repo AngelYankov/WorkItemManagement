@@ -56,7 +56,7 @@ namespace WorkItemManagement.Models.Abstract
             }
             if (description.Length < 10 || description.Length > 500)
             {
-                throw new ArgumentException("Description should be between 10 and 500 characters");
+                throw new ArgumentException("Description should be between 10 and 500 characters.");
             }
         }
 
@@ -65,6 +65,10 @@ namespace WorkItemManagement.Models.Abstract
             if (string.IsNullOrEmpty(id))
             {
                 throw new ArgumentNullException();
+            }
+            if (id.Length > 10)
+            {
+                throw new ArgumentException("ID should be less than 10 characters.");
             }
             if (allIds.Contains(id))
             {
