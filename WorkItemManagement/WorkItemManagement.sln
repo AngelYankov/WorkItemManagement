@@ -3,7 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.30907.101
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WorkItemManagement", "WorkItemManagement\WorkItemManagement.csproj", "{990FB2C2-EE00-4013-ACA6-8C129AD28069}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WorkItemManagement", "WorkItemManagement\WorkItemManagement.csproj", "{990FB2C2-EE00-4013-ACA6-8C129AD28069}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WorkItemManagement.UnitTests", "WorkItemManagement.UnitTests\WorkItemManagement.UnitTests.csproj", "{B3DE232B-B0F1-470F-B429-1E4AE6B8255F}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +17,10 @@ Global
 		{990FB2C2-EE00-4013-ACA6-8C129AD28069}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{990FB2C2-EE00-4013-ACA6-8C129AD28069}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{990FB2C2-EE00-4013-ACA6-8C129AD28069}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B3DE232B-B0F1-470F-B429-1E4AE6B8255F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B3DE232B-B0F1-470F-B429-1E4AE6B8255F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B3DE232B-B0F1-470F-B429-1E4AE6B8255F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B3DE232B-B0F1-470F-B429-1E4AE6B8255F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
