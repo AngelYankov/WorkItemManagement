@@ -15,7 +15,7 @@ namespace WorkItemManagement.UnitTests.ModelsTests.StoryTests
         [TestMethod]
         public void SizeChange_NewStatus()
         {
-            var story = new Story("1", "This is the story 12 title", PriorityType.High, StoryStatusType.Done, SizeType.Small, "this is the story 12 description");
+            var story = new Story("1", "This is the story 12 title", PriorityType.High, SizeType.Small, "this is the story 12 description");
             story.ChangeSize(SizeType.Large);
             Assert.AreEqual(SizeType.Large, story.Size);
         }
@@ -24,7 +24,7 @@ namespace WorkItemManagement.UnitTests.ModelsTests.StoryTests
         [ExpectedException(typeof(ArgumentException))]
         public void PrioritysNotChanged_SamePriority()
         {
-            var story = new Story("1", "This is the story 12 title", PriorityType.High, StoryStatusType.Done, SizeType.Large, "this is the story 12 description");
+            var story = new Story("1", "This is the story 12 title", PriorityType.High, SizeType.Large, "this is the story 12 description");
             story.ChangeSize(SizeType.Large);
         }
        

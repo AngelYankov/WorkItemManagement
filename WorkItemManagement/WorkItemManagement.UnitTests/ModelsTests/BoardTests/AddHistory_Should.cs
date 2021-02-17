@@ -13,7 +13,7 @@ namespace WorkItemManagement.UnitTests.ModelsTests.BoardTests
         public void History_Added()
         {
             var board = new Board("Board1");
-            var feedback = new Feedback("1", "Feedbacktitle", 3, FeedbackStatusType.Done, "This is a description for feedback");
+            var feedback = new Feedback("1", "Feedbacktitle", 3, "This is a description for feedback");
             board.AddWorkItem(feedback);
 
             Assert.AreEqual("'Feedbacktitle' added.", string.Join("",board.ActivityHistory));

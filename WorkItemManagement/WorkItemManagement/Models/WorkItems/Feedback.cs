@@ -10,12 +10,12 @@ namespace WorkItemManagement.Models.WorkItems
     {
         private int rating;
         private FeedbackStatusType feedbackStatus;
-        public Feedback(string id, string title, int rating, FeedbackStatusType status, string description)
+        public Feedback(string id, string title, int rating, string description)
             : base(id, title, description)
         {
             EnsureRatingIsValid(rating);
             this.rating = rating;
-            this.feedbackStatus = status;
+            this.feedbackStatus = FeedbackStatusType.New;
         }
         public int Rating
         {

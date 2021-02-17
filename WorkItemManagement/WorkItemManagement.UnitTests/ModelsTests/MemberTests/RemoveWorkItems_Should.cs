@@ -15,7 +15,7 @@ namespace WorkItemManagement.UnitTests.ModelsTests.MemberTests
         [TestMethod]
         public void RemoveWorkItemsShould_RemovedItem()
         {
-            var feedback = new Feedback("1", "TheFirstFeedback", 3, FeedbackStatusType.Done, "This is a feedback created");
+            var feedback = new Feedback("1", "TheFirstFeedback", 3, "This is a feedback created");
             var member = new Member("Bruce");
             member.AddWorkItems(feedback);
             member.RemoveWorkItems(feedback);

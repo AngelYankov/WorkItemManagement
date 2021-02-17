@@ -13,7 +13,7 @@ namespace WorkItemManagement.Commands
         }
         public override string Execute() // createbug board1 team1 id, title, priority, severity, status, steps, description
         {
-            Validator.ValidateParamsIfLessThan(this.CommandParameters, 9);
+            Validator.ValidateParamsIfLessThan(this.CommandParameters, 8);
 
             string teamName = this.CommandParameters[0];
             string boardName = this.CommandParameters[1];
@@ -21,14 +21,13 @@ namespace WorkItemManagement.Commands
             string title = this.CommandParameters[3];
             string priority = this.CommandParameters[4];
             string severity = this.CommandParameters[5];
-            string status = this.CommandParameters[6];
-            List<string> steps = this.CommandParameters[7].Split("-").ToList(); //mycomputer-controlpanel-dates-setup
-            string description = string.Join(" ", this.CommandParameters.Skip(8));
+            List<string> steps = this.CommandParameters[6].Split("-").ToList(); //mycomputer-controlpanel-dates-setup
+            string description = string.Join(" ", this.CommandParameters.Skip(7));
 
             var existingTeam = Validator.GetTeam(teamName);
             var existingBoard = Validator.GetBoard(boardName, existingTeam);
             
-            var bug = this.Factory.CreateBug(id, title, priority, severity, status, steps, description);
+            var bug = this.Factory.CreateBug(id, title, priority, severity, steps, description);
             existingBoard.AddWorkItem(bug);
             Validator.GetAllWorkItems().Add(bug);
 

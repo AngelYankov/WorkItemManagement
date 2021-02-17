@@ -15,7 +15,7 @@ namespace WorkItemManagement.UnitTests.ModelsTests.StoryTests
         [TestMethod]
         public void AddAssigneeShould_AssigneeAdded()
         {
-            var story = new Story("1", "This is the story 12 title", PriorityType.High, StoryStatusType.Done, SizeType.Large, "this is the story 12 description");
+            var story = new Story("1", "This is the story 12 title", PriorityType.High, SizeType.Large, "this is the story 12 description");
             var member = new Member("Member1");
 
             story.AddAssignee(member);
@@ -26,7 +26,7 @@ namespace WorkItemManagement.UnitTests.ModelsTests.StoryTests
         [ExpectedException(typeof(ArgumentException))]
         public void AddAssigneeShould_ThrowWhen_AssigneeExists()
         {
-            var story = new Story("1", "This is the story 12 title", PriorityType.High, StoryStatusType.Done, SizeType.Large, "this is the story 12 description");
+            var story = new Story("1", "This is the story 12 title", PriorityType.High, SizeType.Large, "this is the story 12 description");
             var member = new Member("Member1");
             story.AddAssignee(member);
             story.AddAssignee(member);

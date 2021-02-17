@@ -15,7 +15,7 @@ namespace WorkItemManagement.UnitTests.ModelsTests.FeedbackTests
         [TestMethod]
         public void StatusChanged_NewStatus()
         {
-            var feedback = new Feedback("1", "TheFirstFeedback", 3, FeedbackStatusType.Done, "This is a feedback created");
+            var feedback = new Feedback("1", "TheFirstFeedback", 3, "This is a feedback created");
             feedback.ChangeStatus(FeedbackStatusType.Scheduled);
             Assert.AreEqual(FeedbackStatusType.Scheduled, feedback.FeedbackStatus);
         }
@@ -24,8 +24,8 @@ namespace WorkItemManagement.UnitTests.ModelsTests.FeedbackTests
         [ExpectedException(typeof(ArgumentException))]
         public void StatusNotChanged_SameStatus()
         {
-            var feedback = new Feedback("1", "TheFirstFeedback", 3, FeedbackStatusType.Done, "This is a feedback created");
-            feedback.ChangeStatus(FeedbackStatusType.Done);
+            var feedback = new Feedback("1", "TheFirstFeedback", 3, "This is a feedback created");
+            feedback.ChangeStatus(FeedbackStatusType.New);
         }
         
     }

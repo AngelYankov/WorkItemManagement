@@ -15,7 +15,7 @@ namespace WorkItemManagement.UnitTests.ModelsTests.FeedbackTests
         [TestMethod]
         public void RatingChanged_NewRating()
         {
-            var feedback = new Feedback("1", "TheFirstFeedback", 3, FeedbackStatusType.Done, "This is a feedback created");
+            var feedback = new Feedback("1", "TheFirstFeedback", 3, "This is a feedback created");
             feedback.ChangeRating(5);
             Assert.AreEqual(5, feedback.Rating);
         }
@@ -24,7 +24,7 @@ namespace WorkItemManagement.UnitTests.ModelsTests.FeedbackTests
         [ExpectedException(typeof(ArgumentException))]
         public void RatingNotChanged_SameRating()
         {
-            var feedback = new Feedback("1", "TheFirstFeedback", 3, FeedbackStatusType.Done, "This is a feedback created");
+            var feedback = new Feedback("1", "TheFirstFeedback", 3, "This is a feedback created");
             feedback.ChangeRating(3);
         }
         

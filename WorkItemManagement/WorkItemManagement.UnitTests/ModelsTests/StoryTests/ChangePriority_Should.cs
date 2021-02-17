@@ -15,7 +15,7 @@ namespace WorkItemManagement.UnitTests.ModelsTests.StoryTests
         [TestMethod]
         public void PriorityChanged_NewPriority()
         {
-            var story = new Story("1", "This is the story 12 title", PriorityType.High, StoryStatusType.Done, SizeType.Large, "this is the story 12 description");
+            var story = new Story("1", "This is the story 12 title", PriorityType.High, SizeType.Large, "this is the story 12 description");
 
             story.ChangePriority(PriorityType.Low);
             Assert.AreEqual(PriorityType.Low, story.Priority);
@@ -25,7 +25,7 @@ namespace WorkItemManagement.UnitTests.ModelsTests.StoryTests
         [ExpectedException(typeof(ArgumentException))]
         public void PrioritysNotChanged_SamePriority()
         {
-            var story = new Story("1", "This is the story 12 title", PriorityType.High, StoryStatusType.Done, SizeType.Large, "this is the story 12 description");
+            var story = new Story("1", "This is the story 12 title", PriorityType.High, SizeType.Large, "this is the story 12 description");
 
             story.ChangePriority(PriorityType.High);
         }

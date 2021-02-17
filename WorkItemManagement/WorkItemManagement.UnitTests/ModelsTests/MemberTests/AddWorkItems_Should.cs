@@ -15,7 +15,7 @@ namespace WorkItemManagement.UnitTests.ModelsTests.MemberTests
         [TestMethod]
         public void AddWorkItems_Should_AddSuccessfully()
         {
-            var feedback = new Feedback("1", "TheFirstFeedback", 3, FeedbackStatusType.Done, "This is a feedback created");
+            var feedback = new Feedback("1", "TheFirstFeedback", 3, "This is a feedback created");
             var member = new Member("Bruce");
             member.AddWorkItems(feedback);
             Assert.IsTrue(member.WorkItems.Contains(feedback));

@@ -15,23 +15,23 @@ namespace WorkItemManagement.UnitTests.ModelsTests.FeedbackTests
         [TestMethod]
         public void SetProperties()
         {
-            var feedback = new Feedback("1", "TheFirstFeedback", 3, FeedbackStatusType.Done, "This is a feedback created");
+            var feedback = new Feedback("1", "TheFirstFeedback", 3, "This is a feedback created");
             Assert.AreEqual(3, feedback.Rating);
-            Assert.AreEqual(FeedbackStatusType.Done, feedback.FeedbackStatus);
+            Assert.AreEqual(FeedbackStatusType.New, feedback.FeedbackStatus);
         }
         
         [TestMethod]
         [ExpectedException(typeof(ArgumentException))]
         public void Min_Rating()
         {
-            new Feedback("1", "TheFirstFeedback", -1, FeedbackStatusType.Done, "This is a feedback created");
+            new Feedback("1", "TheFirstFeedback", -1, "This is a feedback created");
         }
         
         [TestMethod]
         [ExpectedException(typeof(ArgumentException))]
         public void Max_Rating()
         {
-            new Feedback("1", "TheFirstFeedback", 11, FeedbackStatusType.Done, "This is a feedback created");
+            new Feedback("1", "TheFirstFeedback", 11, "This is a feedback created");
         }
         
         

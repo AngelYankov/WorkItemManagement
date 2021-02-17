@@ -16,7 +16,7 @@ namespace WorkItemManagement.UnitTests.ModelsTests.BugTests
         public void StatusChanged_NewStatus()
         {
             var steps = new List<string>() { "first-second-third" };
-            var bug = new Bug("1", "TheFirstBug", PriorityType.High, SeverityType.Critical, BugStatus.Active, steps, "This is a description for a bug");
+            var bug = new Bug("1", "TheFirstBug", PriorityType.High, SeverityType.Critical, steps, "This is a description for a bug");
             bug.ChangeStatus(BugStatus.Fixed);
             Assert.AreEqual(BugStatus.Fixed, bug.Status);
         }
@@ -26,7 +26,7 @@ namespace WorkItemManagement.UnitTests.ModelsTests.BugTests
         public void StatusNotChanged_SameStatus()
         {
             var steps = new List<string>() { "first-second-third" };
-            var bug = new Bug("1", "TheFirstBug", PriorityType.High, SeverityType.Critical, BugStatus.Active, steps, "This is a description for a bug");
+            var bug = new Bug("1", "TheFirstBug", PriorityType.High, SeverityType.Critical, steps, "This is a description for a bug");
             bug.ChangeStatus(BugStatus.Active);
         }
         

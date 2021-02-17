@@ -16,7 +16,7 @@ namespace WorkItemManagement.UnitTests.ModelsTests.BoardTests
         public void WorkItem_Added()
         {
             var board = new Board("Board1");
-            var feedback = new Feedback("1", "Feedbacktitle", 3, FeedbackStatusType.Done, "This is a description for feedback");
+            var feedback = new Feedback("1", "Feedbacktitle", 3, "This is a description for feedback");
             board.AddWorkItem(feedback);
             Assert.IsTrue(board.WorkItems.Contains(feedback));
         }

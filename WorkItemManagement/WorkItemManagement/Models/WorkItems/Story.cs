@@ -12,11 +12,11 @@ namespace WorkItemManagement.Models.WorkItems
         private PriorityType priorityType;
         private StoryStatusType storyStatus;
         private SizeType sizeType;
-        public Story(string id,string title, PriorityType priority, StoryStatusType storyStatus, SizeType size, string description)
+        public Story(string id,string title, PriorityType priority, SizeType size, string description)
             : base(id, title, description)
         {
             this.priorityType = priority;
-            this.storyStatus = storyStatus;
+            this.storyStatus = StoryStatusType.NotDone;
             this.sizeType = size;
         }
 

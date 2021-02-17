@@ -1,21 +1,21 @@
 **COMMAND**             **ARGUMENTS**
 -----------------------------------------------------------------------------------------------------------------
-[addcomment]           	<work_iteam_id> <member_name> <comment>
+[addcomment]           	<work_item_id> <member_name> <comment>
 [addmember]		<member_name> <team_name>			
 -----------------------------------------------------------------------------------------------------------------
 [assign]		<member_name> <work_item_id>
 [unassign]		<work_item_id>
 -----------------------------------------------------------------------------------------------------------------
-[changebug]		<work_item_id> <property> <type>
-[changefeedback]	<work_item_id> <property> <type>
-[changestory]		<work_item_id> <property> <type>	
+[changebug]		<work_item_id> <priority/severity/status> <low,medium,high/minor,major,critical/active,fixed>
+[changefeedback]	<work_item_id> <status/rating> <new,unscheduled,scheduled,done/1-10>
+[changestory]		<work_item_id> <priority/size/status> <low,medium,high/small,medium,large/notdone,inprogress,done>	
 -----------------------------------------------------------------------------------------------------------------
 [createteam]		<team_name>
 [createboard]		<board_name> <team_name>
 [createmember]		<member_name>
-[createbug]		<team_name> <board_name> <work_item_id> <title> <priority> <severity> <status> <step-step> <description>
-[createfeedback]	<team_name> <board_name><work_item_id> <title> <rating> <status> <description>
-[createstory]		<team_name> <board_name> <work_item_id> <title> <priority> <status> <size> <description>
+[createbug]		<team_name> <board_name> <work_item_id> <title> <low/medium/high> <minor/major/critical> <step-step> <description>
+[createfeedback]	<team_name> <board_name><work_item_id> <title> <1-10> <description>
+[createstory]		<team_name> <board_name> <work_item_id> <title> <low/medium/high> <small/medium/large> <description>
 -----------------------------------------------------------------------------------------------------------------
 [showallteams]
 [showallboards]		<team_name>
@@ -25,7 +25,7 @@
 [showboardactivity]	<board_name> <team_name>
 [showpersonactivity]	<member_name>
 -----------------------------------------------------------------------------------------------------------------
-		                Filter_1		 Filter_2      Filter 3		        Sort_by
+		                 Filter_1		Filter_2       Filter 3		         Sort_by
 [listworkitems]	  	<all/bug/story/feedback>   <status/assignee>  <assignee>   <title/priority/severity/size/rating>
 
 -----------------------------------------------------------------------------------------------------------------

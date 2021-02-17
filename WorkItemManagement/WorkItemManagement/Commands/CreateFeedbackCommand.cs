@@ -14,7 +14,7 @@ namespace WorkItemManagement.Commands
         }
         public override string Execute() //createfeedback team board id title rating status description
         {
-            Validator.ValidateParamsIfLessThan(this.CommandParameters, 7);
+            Validator.ValidateParamsIfLessThan(this.CommandParameters, 6);
 
             string teamName = this.CommandParameters[0];
             string boardName = this.CommandParameters[1];
@@ -26,13 +26,12 @@ namespace WorkItemManagement.Commands
                 throw new ArgumentException("Rating should be a valid number.");
             }
 
-            string status = this.CommandParameters[5];
-            string description = string.Join(" ", this.CommandParameters.Skip(6));
+            string description = string.Join(" ", this.CommandParameters.Skip(5));
 
             var existingTeam = Validator.GetTeam(teamName);
             var existingBoard = Validator.GetBoard(boardName, existingTeam);
             
-            var feedback = this.Factory.CreateFeedback(id, title, rating, status, description);
+            var feedback = this.Factory.CreateFeedback(id, title, rating, description);
             Validator.GetAllWorkItems().Add(feedback);
             existingBoard.AddWorkItem(feedback);
 

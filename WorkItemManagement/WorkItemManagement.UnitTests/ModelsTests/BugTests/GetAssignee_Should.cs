@@ -16,7 +16,7 @@ namespace WorkItemManagement.UnitTests.ModelsTests.BugTests
         public void GetAssigneeShould_ReturnAssignee()
         {
             var steps = new List<string>() { "first-second-third" };
-            var bug = new Bug("1", "TheFirstBug", PriorityType.High, SeverityType.Critical, BugStatus.Active, steps, "This is a description for a bug");
+            var bug = new Bug("1", "TheFirstBug", PriorityType.High, SeverityType.Critical, steps, "This is a description for a bug");
             var member = new Member("Member1");
 
             bug.AddAssignee(member);
@@ -27,7 +27,7 @@ namespace WorkItemManagement.UnitTests.ModelsTests.BugTests
         public void GetAssigneeShould_ThrowWhen_IsNull()
         {
             var steps = new List<string>() { "first-second-third" };
-            var bug = new Bug("1", "TheFirstBug", PriorityType.High, SeverityType.Critical, BugStatus.Active, steps, "This is a description for a bug");
+            var bug = new Bug("1", "TheFirstBug", PriorityType.High, SeverityType.Critical, steps, "This is a description for a bug");
             bug.GetAssignee();
         }
 

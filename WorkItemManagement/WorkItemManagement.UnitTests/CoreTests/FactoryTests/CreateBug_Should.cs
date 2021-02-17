@@ -18,7 +18,7 @@ namespace WorkItemManagement.UnitTests.CoreTests.FactoryTests
         public void CreateBug_Should_CreateBugSuccessfully()
         {
             var steps = new List<string>() { "first-second-third" };
-            var bug = Factory.Instance.CreateBug("1", "TheFirstBug", "high", "critical", "active", steps, "This is a description for a bug");
+            var bug = Factory.Instance.CreateBug("1", "TheFirstBug", "high", "critical", steps, "This is a description for a bug");
             Assert.IsInstanceOfType(bug, typeof(IBug));
         }
 
@@ -27,7 +27,7 @@ namespace WorkItemManagement.UnitTests.CoreTests.FactoryTests
         public void CreateBug_Should_ThrowWrongPriority()
         {
             var steps = new List<string>() { "first-second-third" };
-            Factory.Instance.CreateBug("1", "TheFirstBug", "wrong", "critical", "active", steps, "This is a description for a bug");
+            Factory.Instance.CreateBug("1", "TheFirstBug", "wrong", "critical", steps, "This is a description for a bug");
         }
         
         [TestMethod]
@@ -35,16 +35,7 @@ namespace WorkItemManagement.UnitTests.CoreTests.FactoryTests
         public void CreateBug_Should_ThrowWrongSeverity()
         {
             var steps = new List<string>() { "first-second-third" };
-            Factory.Instance.CreateBug("1", "TheFirstBug", "high", "wrong", "active", steps, "This is a description for a bug");
+            Factory.Instance.CreateBug("1", "TheFirstBug", "high", "wrong", steps, "This is a description for a bug");
         }
-        
-        [TestMethod]
-        [ExpectedException(typeof(ArgumentException))]
-        public void CreateBug_Should_ThrowWrongStatus()
-        {
-            var steps = new List<string>() { "first-second-third" };
-            Factory.Instance.CreateBug("1", "TheFirstBug", "high", "critical", "wrong", steps, "This is a description for a bug");
-        }
-
     }
 }

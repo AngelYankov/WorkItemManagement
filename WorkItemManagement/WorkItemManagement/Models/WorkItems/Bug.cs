@@ -14,13 +14,12 @@ namespace WorkItemManagement.Models.WorkItems
         private SeverityType severityType;
         private BugStatus bugStatus;
         private IMember assignee;
-        public Bug(string id, string title, PriorityType priority,
-            SeverityType severity, BugStatus status, IList<string> steps, string description)
+        public Bug(string id, string title, PriorityType priority, SeverityType severity, IList<string> steps, string description)
             : base(id, title, description)
         {
             this.priorityType = priority;
             this.severityType = severity;
-            this.bugStatus = status;
+            this.bugStatus = BugStatus.Active;
             this.steps = steps;
         }
 
