@@ -20,7 +20,7 @@ namespace WorkItemManagement.Commands
             var member = Validator.GetMember(memberName);
             Validator.MemberExistsInAnyTeam(memberName);
 
-            var workItem = Validator.GetWorkItemToAssign(idWorkItem);
+            var workItem = Validator.GetWorkItemToAssign(idWorkItem); 
             workItem.AddAssignee(member);
             member.AddWorkItems((IWorkItem)workItem);
 

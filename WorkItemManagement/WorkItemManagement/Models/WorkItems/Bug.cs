@@ -7,7 +7,7 @@ using WorkItemManagement.Models.Enums;
 
 namespace WorkItemManagement.Models.WorkItems
 {
-    public class Bug : WorkItem, IBug, IWorkItemsAssignee
+    public class Bug : WorkItem, IBug
     {
         private readonly IList<string> steps;
         private PriorityType priorityType;
@@ -60,7 +60,7 @@ namespace WorkItemManagement.Models.WorkItems
             get => this.assignee;
             private set
             {
-                
+
                 if (this.assignee == null)
                 {
                     this.AddHistory($"Bug assigned to '{value.Name}'.");
@@ -104,6 +104,10 @@ namespace WorkItemManagement.Models.WorkItems
         }
         public IMember GetAssignee()
         {
+            if (this.Assignee == null)
+            {
+                throw new ArgumentException("There is no assignee.");
+            }
             return this.Assignee;
         }
         /// <summary>

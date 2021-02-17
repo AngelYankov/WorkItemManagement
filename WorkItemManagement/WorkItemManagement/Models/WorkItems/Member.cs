@@ -7,12 +7,14 @@ namespace WorkItemManagement.Models.WorkItems
     public class Member : IMember
     {
         private readonly string name;
-        private readonly IList<IWorkItem> workItems = new List<IWorkItem>();
-        private readonly IList<string> activityHistory = new List<string>();
+        private readonly IList<IWorkItem> workItems;
+        private readonly IList<string> activityHistory;
         public Member(string name)
         {
             EnsureNameIsValid(name);
             this.name = name;
+            this.activityHistory = new List<string>();
+            this.workItems = new List<IWorkItem>();
         }
         public string Name { get => this.name; }
         public IList<IWorkItem> WorkItems { get => this.workItems; }

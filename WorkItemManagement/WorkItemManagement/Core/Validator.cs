@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using WorkItemManagement.Models.Contracts;
+using WorkItemManagement.Models.WorkItems;
 
 namespace WorkItemManagement.Core
 {
@@ -148,6 +149,10 @@ namespace WorkItemManagement.Core
         /// <returns>Returns the the work item with a given ID if it exists or throw an exception that it doesn't exist</returns>
         public static IWorkItemsAssignee GetWorkItemToAssign(string id)
         {
+            if (Database.Instance.AllWorkItems.FirstOrDefault(item => item.Id.Equals(id, StringComparison.OrdinalIgnoreCase)) is Feedback)
+            {
+                throw new ArgumentException("Feedback don't have an assignee.");
+            }
             var workItem = (IWorkItemsAssignee)Database.Instance.AllWorkItems.FirstOrDefault(item => item.Id.Equals(id, StringComparison.OrdinalIgnoreCase));
 
             if (workItem == null)

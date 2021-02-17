@@ -36,5 +36,18 @@ namespace WorkItemManagement.UnitTests.ModelsTests.TeamTests
         {
             var member = new Team(new string('a', 11));
         }
+        [TestMethod]
+        public void Members_Initialized()
+        {
+            var member = new Team("Team1");
+            Assert.AreEqual(member.Members.Count, 0);
+        }
+
+        [TestMethod]
+        public void Boards_Initialized()
+        {
+            var member = new Team("Team1");
+            Assert.AreEqual(member.Boards.Count, 0);
+        }
     }
 }

@@ -37,5 +37,18 @@ namespace WorkItemManagement.UnitTests.ModelsTests.BoardTests
             var board = new Board(new string('a', 11));
 
         }
+        [TestMethod]
+        public void ActivityHistory_Initialized()
+        {
+            var board = new Board("Board1");
+            Assert.AreEqual(0, board.ActivityHistory.Count);
+        }
+
+        [TestMethod]
+        public void WorkItems_Initialized()
+        {
+            var board = new Board("Board1");
+            Assert.AreEqual(0, board.WorkItems.Count);
+        }
     }
 }

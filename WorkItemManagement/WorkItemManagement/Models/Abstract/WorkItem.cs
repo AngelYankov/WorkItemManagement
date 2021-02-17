@@ -7,7 +7,7 @@ namespace WorkItemManagement.Models.Abstract
 {
     public abstract class WorkItem : IWorkItem
     {
-        private static readonly List<string> allIds = new List<string>();
+        public static readonly List<string> allIds = new List<string>();
         private readonly string id;
         private readonly string title;
         private readonly string description;

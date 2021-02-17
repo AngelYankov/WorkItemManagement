@@ -6,7 +6,7 @@ using WorkItemManagement.Models.Abstract;
 
 namespace WorkItemManagement.Models.WorkItems
 {
-    public class Story : WorkItem, IStory, IWorkItemsAssignee
+    public class Story : WorkItem, IStory
     {
         private IMember assignee;
         private PriorityType priorityType;
@@ -59,7 +59,14 @@ namespace WorkItemManagement.Models.WorkItems
                 }
                 else
                 {
-                    this.AddHistory($"Story assignee changed from '{this.assignee.Name}' to '{value.Name}'.");
+                    if (value == null)
+                    {
+                        this.AddHistory($"Story assignee removed.");
+                    }
+                    else
+                    {
+                        this.AddHistory($"Story assignee changed from '{this.assignee.Name}' to '{value.Name}'.");
+                    }
                 }
                 this.assignee = value;
             }
@@ -89,6 +96,10 @@ namespace WorkItemManagement.Models.WorkItems
         }
         public IMember GetAssignee()
         {
+            if (this.Assignee==null)
+            {
+                throw new ArgumentException("There is no assignee.");
+            }
             return this.Assignee;
         }
         /// <summary>

@@ -7,12 +7,14 @@ namespace WorkItemManagement.Models.WorkItems
     public class Team : ITeam
     {
         private readonly string name;
-        private readonly IList<IMember> members = new List<IMember>();
-        private readonly IList<IBoard> boards = new List<IBoard>();
+        private readonly IList<IMember> members;
+        private readonly IList<IBoard> boards;
         public Team(string name)
         {
             EnsureNameIsValid(name);
             this.name = name;
+            this.members = new List<IMember>();
+            this.boards = new List<IBoard>();
         }
         public string Name { get => this.name; }
         public IList<IMember> Members { get => this.members; }
