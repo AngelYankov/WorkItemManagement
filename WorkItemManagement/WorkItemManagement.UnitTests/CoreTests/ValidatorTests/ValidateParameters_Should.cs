@@ -12,10 +12,11 @@ namespace WorkItemManagement.UnitTests.CoreTests.ValidatorTests
     public class ValidateParameters_Should
     {
         [TestMethod]
-        [ExpectedException(typeof(ArgumentException))]
         public void ThrowWhen_WrongCountParameters()
         {
-            Validator.ValidateParameters(new List<string>(), 1);
+            var result = Assert.ThrowsException<ArgumentException>(() => Validator.ValidateParameters(new List<string>(), 1));
+            Assert.AreEqual("Parameters count is not valid", result.Message);
+
         }
     }
 }

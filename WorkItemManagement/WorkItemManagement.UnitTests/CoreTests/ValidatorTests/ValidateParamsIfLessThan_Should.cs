@@ -10,10 +10,11 @@ namespace WorkItemManagement.UnitTests.CoreTests.ValidatorTests
     public class ValidateParamsIfLessThan_Should
     {
         [TestMethod]
-        [ExpectedException(typeof(ArgumentException))]
+        
         public void ThrowWhen_DiffCountParams()
         {
-            Validator.ValidateParameters(new List<string>(), 1);
+            var result = Assert.ThrowsException<ArgumentException>(()=>Validator.ValidateParameters(new List<string>(), 1));
+            Assert.AreEqual("Parameters count is not valid", result.Message);
         }
     }
 }
