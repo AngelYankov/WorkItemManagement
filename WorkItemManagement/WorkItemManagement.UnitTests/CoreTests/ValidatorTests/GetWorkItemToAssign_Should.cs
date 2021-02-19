@@ -6,11 +6,12 @@ using WorkItemManagement.Core;
 using WorkItemManagement.Models.Contracts;
 using WorkItemManagement.Models.Enums;
 using WorkItemManagement.Models.WorkItems;
+using WorkItemManagement.UnitTests.Cleaner_Should;
 
 namespace WorkItemManagement.UnitTests.CoreTests.ValidatorTests
 {
     [TestClass]
-    public class GetWorkItemToAssign_Should
+    public class GetWorkItemToAssign_Should : Cleaner
     {
         [TestMethod]
         //public static IWorkItemsAssignee GetWorkItemToAssign(string id, IDatabase database)
