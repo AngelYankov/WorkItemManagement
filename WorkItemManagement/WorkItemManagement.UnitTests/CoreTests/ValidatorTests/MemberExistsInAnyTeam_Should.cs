@@ -11,10 +11,10 @@ namespace WorkItemManagement.UnitTests.CoreTests.ValidatorTests
     public class MemberExistsInAnyTeam_Should
     {
         [TestMethod]
-        [ExpectedException(typeof(ArgumentException))]
         public void ThrowWhen_MemberDoesNotExistInTeam()
         {
-            Validator.MemberExistsInAnyTeam("Member1");
+            var result = Assert.ThrowsException<ArgumentException>(() => Validator.MemberExistsInAnyTeam("Member1"));
+            Assert.AreEqual("Member: 'Member1' is not in any team.", result.Message);
         }
     }
 }

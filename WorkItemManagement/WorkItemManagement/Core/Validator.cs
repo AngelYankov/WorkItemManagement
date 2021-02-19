@@ -54,7 +54,7 @@ namespace WorkItemManagement.Core
         /// </summary>
         /// <param name="name">The name of the board we are searching for</param>
         /// <param name="team">The name of the team in which we are searching for the given board</param>
-        public static void BoardExistsInTeam(string name,ITeam team) // emo
+        public static void BoardExistsInTeam(string name,ITeam team) 
         {
             var boardExists = team.Boards.Any(b => b.Name.Equals(name, StringComparison.OrdinalIgnoreCase));
             if (boardExists)

@@ -16,6 +16,8 @@ namespace WorkItemManagement.UnitTests.FakeClasses
         public FakeTeam(string name)
         {
             this.Name = name;
+            this.Boards = new List<IBoard>();
+            this.Members = new List<IMember>();
         }
         public string Name { get; set; }
 
