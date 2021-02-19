@@ -2,18 +2,21 @@
 using System.Linq;
 using WorkItemManagement.Commands.Abstract;
 using WorkItemManagement.Core;
+using WorkItemManagement.Core.Contracts;
 
 namespace WorkItemManagement.Commands
 {
     public class CreateBugCommand : Command
     {
-        public CreateBugCommand(IList<string> commandParameters)
-            :base(commandParameters)
+        public CreateBugCommand(IList<string> commandParameters, IDatabase database, IFactory factory)
+            : base(commandParameters, database, factory)
         {
         }
         public override string Execute() // createbug board1 team1 id, title, priority, severity, status, steps, description
         {
-            Validator.ValidateParamsIfLessThan(this.CommandParameters, 8);
+            var validator = new Validator(Database);
+
+            validator.ValidateParamsIfLessThan(this.CommandParameters, 8);
 
             string teamName = this.CommandParameters[0];
             string boardName = this.CommandParameters[1];

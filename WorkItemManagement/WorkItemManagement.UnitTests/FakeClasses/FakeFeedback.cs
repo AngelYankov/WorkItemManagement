@@ -8,6 +8,12 @@ namespace WorkItemManagement.UnitTests.FakeClasses
 {
     public class FakeFeedback : IFeedback
     {
+        public FakeFeedback() { }
+        public FakeFeedback(string id)
+        {
+            this.Id = id;
+            this.Comments = new Dictionary<IMember, IList<string>>();
+        }
         public int Rating => throw new NotImplementedException();
 
         public FeedbackStatusType FeedbackStatus => throw new NotImplementedException();
@@ -18,16 +24,21 @@ namespace WorkItemManagement.UnitTests.FakeClasses
 
         public string Description => throw new NotImplementedException();
 
-        public IDictionary<IMember, IList<string>> Comments => throw new NotImplementedException();
+        public IDictionary<IMember, IList<string>> Comments { get; }
 
         public IList<string> History => throw new NotImplementedException();
 
         public void AddComment(IMember member, IList<string> comments)
         {
-            throw new NotImplementedException();
+            this.Comments.Add(member, comments);
         }
 
         public void AddHistory(string info)
+        {
+            throw new NotImplementedException();
+        }
+
+        public string ChangeRating(int rating)
         {
             throw new NotImplementedException();
         }

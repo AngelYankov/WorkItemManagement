@@ -15,8 +15,7 @@ namespace WorkItemManagement.UnitTests.CoreTests.DatabaseTests
         public void ReturnsWorkItem()
         {
             var db = Database.Instance;
-            var story = new FakeStory();
-            story.Id = "1";
+            var story = new FakeStory("1");
             db.AddWorkItemToDB(story);
             var expected = db.GetWorkItemToAssign("1");
             Assert.AreEqual(expected, story);

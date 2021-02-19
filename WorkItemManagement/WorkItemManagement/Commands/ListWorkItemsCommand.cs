@@ -3,21 +3,24 @@ using System.Collections.Generic;
 using System.Linq;
 using WorkItemManagement.Commands.Abstract;
 using WorkItemManagement.Core;
+using WorkItemManagement.Core.Contracts;
 using WorkItemManagement.Models.Contracts;
 
 namespace WorkItemManagement.Commands
 {
     public class ListWorkItemsCommand : Command
     {
-        public ListWorkItemsCommand(IList<string> commandParameters)
-            : base(commandParameters)
+        public ListWorkItemsCommand(IList<string> commandParameters, IDatabase database, IFactory factory)
+            : base(commandParameters, database, factory)
         {
         }
-        public override string Execute() // listworkitems all/bug/story/feedback 
+        public override string Execute() // listworkitems all/bug/story/feedback  //bug status priority
                                          //listworkitems status or/and assignee
                                          //listworkitems title/priority/severity/size/rating
         {
-            Validator.ValidateParamsIfLessThan(this.CommandParameters, 1);
+            var validator = new Validator(Database);
+
+            validator.ValidateParamsIfLessThan(this.CommandParameters, 1);
 
             switch (this.CommandParameters[0])
             {

@@ -7,7 +7,11 @@ namespace WorkItemManagement.UnitTests.FakeClasses
 {
     public class FakeMember : IMember
     {
-        public FakeMember() { }
+        public FakeMember()
+        {
+            this.WorkItems = new List<IWorkItem>();
+            this.ActivityHistory = new List<string>();
+        }
         public FakeMember(string name)
         {
             this.Name = name;

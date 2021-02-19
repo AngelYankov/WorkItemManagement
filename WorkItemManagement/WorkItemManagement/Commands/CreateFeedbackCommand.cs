@@ -3,18 +3,21 @@ using System.Collections.Generic;
 using System.Linq;
 using WorkItemManagement.Commands.Abstract;
 using WorkItemManagement.Core;
+using WorkItemManagement.Core.Contracts;
 
 namespace WorkItemManagement.Commands
 {
     public class CreateFeedbackCommand : Command
     {
-        public CreateFeedbackCommand(IList<string> commandParameters)
-            : base(commandParameters)
+        public CreateFeedbackCommand(IList<string> commandParameters, IDatabase database, IFactory factory)
+            : base(commandParameters, database, factory)
         {
         }
         public override string Execute() //createfeedback team board id title rating status description
         {
-            Validator.ValidateParamsIfLessThan(this.CommandParameters, 6);
+            var validator = new Validator(Database);
+
+            validator.ValidateParamsIfLessThan(this.CommandParameters, 6);
 
             string teamName = this.CommandParameters[0];
             string boardName = this.CommandParameters[1];

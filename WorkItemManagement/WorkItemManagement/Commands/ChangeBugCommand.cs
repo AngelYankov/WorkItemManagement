@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using WorkItemManagement.Commands.Abstract;
 using WorkItemManagement.Core;
+using WorkItemManagement.Core.Contracts;
+using WorkItemManagement.Models.Contracts;
 using WorkItemManagement.Models.Enums;
 using WorkItemManagement.Models.WorkItems;
 
@@ -10,21 +12,22 @@ namespace WorkItemManagement.Commands
 {
     public class ChangeBugCommand : Command
     {
-        public ChangeBugCommand(IList<string> commandParameters)
-            : base(commandParameters)
+        public ChangeBugCommand(IList<string> commandParameters, IDatabase database, IFactory factory)
+            : base(commandParameters, database, factory)
         {
 
         }
 
         public override string Execute() // changebug id severity major
         {
-            Validator.ValidateParameters(this.CommandParameters, 3);
+            var validator = new Validator(Database);
+            validator.ValidateParameters(this.CommandParameters, 3);
 
             string id = this.CommandParameters[0];
             string property = this.CommandParameters[1];
             string type = this.CommandParameters[2];
 
-            var bug = Database.GetAllWorkItems().OfType<Bug>().ToList().FirstOrDefault(b => b.Id.Equals(id, StringComparison.OrdinalIgnoreCase));
+            var bug = Database.GetAllWorkItems().OfType<IBug>().ToList().FirstOrDefault(b => b.Id.Equals(id, StringComparison.OrdinalIgnoreCase));
            
             if (bug == null)
             {

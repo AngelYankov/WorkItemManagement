@@ -2,18 +2,21 @@
 using System.Linq;
 using WorkItemManagement.Commands.Abstract;
 using WorkItemManagement.Core;
+using WorkItemManagement.Core.Contracts;
 
 namespace WorkItemManagement.Commands
 {
     public class ShowAllTeamMembers : Command
     {
-        public ShowAllTeamMembers(IList<string> commandParameters)
-            :base(commandParameters)
+        public ShowAllTeamMembers(IList<string> commandParameters, IDatabase database, IFactory factory)
+            : base(commandParameters, database, factory)
         {
         }
         public override string Execute() //showteammembers team1
         {
-            Validator.ValidateParameters(this.CommandParameters, 1);
+            var validator = new Validator(Database);
+
+            validator.ValidateParameters(this.CommandParameters, 1);
             string teamName = this.CommandParameters[0];
             var team = Database.GetTeam(teamName);
 

@@ -7,5 +7,6 @@ namespace WorkItemManagement.Models.Contracts
         int Rating { get; }
         FeedbackStatusType FeedbackStatus { get; }
         string ChangeStatus(FeedbackStatusType status);
+        string ChangeRating(int rating);
     }
 }

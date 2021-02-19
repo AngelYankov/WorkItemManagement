@@ -5,16 +5,18 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 using WorkItemManagement.Core;
+using WorkItemManagement.UnitTests.Cleaner_Should;
 
 namespace WorkItemManagement.UnitTests.CoreTests.ValidatorTests
 {
     [TestClass]
-    public class ValidateParameters_Should
+    public class ValidateParameters_Should : TestBaseClass
     {
         [TestMethod]
         public void ThrowWhen_WrongCountParameters()
         {
-            var result = Assert.ThrowsException<ArgumentException>(() => Validator.ValidateParameters(new List<string>(), 1));
+            var validator = new Validator(database);
+            var result = Assert.ThrowsException<ArgumentException>(() => validator.ValidateParameters(new List<string>(), 1));
             Assert.AreEqual("Parameters count is not valid", result.Message);
 
         }

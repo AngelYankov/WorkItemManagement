@@ -3,18 +3,20 @@ using System.Linq;
 using System.Text;
 using WorkItemManagement.Commands.Abstract;
 using WorkItemManagement.Core;
+using WorkItemManagement.Core.Contracts;
 
 namespace WorkItemManagement.Commands
 {
     public class ShowTeamActivityCommand : Command
     {
-        public ShowTeamActivityCommand(IList<string> commandParameters)
-            :base(commandParameters)
+        public ShowTeamActivityCommand(IList<string> commandParameters, IDatabase database, IFactory factory)
+            : base(commandParameters, database, factory)
         {
         }
         public override string Execute() //showteamactivity team1
         {
-            Validator.ValidateParameters(this.CommandParameters, 1);
+            var validator = new Validator(Database);
+            validator.ValidateParameters(this.CommandParameters, 1);
             string teamName = this.CommandParameters[0];
             var team = Database.GetTeam(teamName);
             StringBuilder sb = new StringBuilder();

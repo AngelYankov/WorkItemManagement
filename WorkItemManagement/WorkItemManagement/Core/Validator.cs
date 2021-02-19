@@ -7,14 +7,20 @@ using WorkItemManagement.Models.WorkItems;
 
 namespace WorkItemManagement.Core
 {
-    public static class Validator
+    public class Validator : IValidator
     {
+        public IDatabase Database { get;}
+        
+        public Validator(IDatabase database) 
+        {
+            this.Database = database;
+        }
         /// <summary>
         /// Validating the number of parameters added as command by user
         /// </summary>
         /// <param name="parameters">List of parameters added as command by user</param>
         /// <param name="n">Number of parameters</param>
-        public static void ValidateParameters(IList<string> parameters,int n)
+        public void ValidateParameters(IList<string> parameters,int n)
         {
             if (parameters.Count != n)
             {
@@ -26,7 +32,7 @@ namespace WorkItemManagement.Core
         /// </summary>
         /// <param name="parameters">List of parameters added as command by user</param>
         /// <param name="n">Number of parameters</param>
-        public static void ValidateParamsIfLessThan(IList<string> parameters, int n)
+        public void ValidateParamsIfLessThan(IList<string> parameters, int n)
         {
             if (parameters.Count < n)
             {
@@ -39,7 +45,7 @@ namespace WorkItemManagement.Core
         /// </summary>
         /// <param name="name">The name of the member we are searching for</param>
         /// <param name="team">The name of the team in which we are searching for the given member</param>
-        public static void MemberExistsInTeam(string name,ITeam team)
+        public void MemberExistsInTeam(string name,ITeam team)
         {
             bool memberExistsInTeam = team.Members.Any(m => m.Name.Equals(name, StringComparison.OrdinalIgnoreCase));
 
@@ -54,7 +60,7 @@ namespace WorkItemManagement.Core
         /// </summary>
         /// <param name="name">The name of the board we are searching for</param>
         /// <param name="team">The name of the team in which we are searching for the given board</param>
-        public static void BoardExistsInTeam(string name,ITeam team) 
+        public void BoardExistsInTeam(string name,ITeam team) 
         {
             var boardExists = team.Boards.Any(b => b.Name.Equals(name, StringComparison.OrdinalIgnoreCase));
             if (boardExists)
@@ -67,9 +73,9 @@ namespace WorkItemManagement.Core
         /// Validating if a team with a given name exists
         /// </summary>
         /// <param name="name">The name of the team we are searching for</param>
-        public static void TeamExists(string name)
+        public void TeamExists(string name)
         {
-            bool teamExists = Database.Instance.AllTeams.Any(x => x.Name.Equals(name, StringComparison.OrdinalIgnoreCase));
+            bool teamExists = Database.AllTeams.Any(x => x.Name.Equals(name, StringComparison.OrdinalIgnoreCase));
 
             if (teamExists)
             {
@@ -81,9 +87,9 @@ namespace WorkItemManagement.Core
         /// Validating if a member with a given name exists
         /// </summary>
         /// <param name="name">The name of the member we are searching for</param>
-        public static void MemberExists(string name)
+        public void MemberExists(string name)
         {
-            bool nameExists = Database.Instance.AllMembers.Any(x => x.Name.Equals(name, StringComparison.OrdinalIgnoreCase));
+            bool nameExists = Database.AllMembers.Any(x => x.Name.Equals(name, StringComparison.OrdinalIgnoreCase));
 
             if (nameExists)
             {
@@ -95,9 +101,9 @@ namespace WorkItemManagement.Core
         /// Validating if a member with a given name is part of any team
         /// </summary>
         /// <param name="name">The name of the member we are searching for</param>
-        public static void MemberExistsInAnyTeam(string name)
+        public void MemberExistsInAnyTeam(string name)
         {
-            var isInAnyTeam = Database.Instance.AllTeams
+            var isInAnyTeam = Database.AllTeams
                                .SelectMany(t => t.Members)
                                .Any(m => m.Name.Equals(name, StringComparison.OrdinalIgnoreCase));
             if (!isInAnyTeam)
@@ -111,7 +117,7 @@ namespace WorkItemManagement.Core
         /// </summary>
         /// <param name="workItem">Work item to check for</param>
         /// <param name="member">Member to have the work item</param>
-        public static void MemberHasWorkItem(IWorkItem workItem,IMember member)
+        public void MemberHasWorkItem(IWorkItem workItem,IMember member)
         {
             if (!member.WorkItems.Contains(workItem))
             {

@@ -10,14 +10,13 @@ using WorkItemManagement.UnitTests.FakeClasses;
 namespace WorkItemManagement.UnitTests.CoreTests.ValidatorTests
 {
     [TestClass]
-    public class MemberExists_Should : CleanerDatabase
+    public class MemberExists_Should : TestBaseClass
     {
         [TestMethod]
         public void ThrowWhen_MemberExists()
         {
-            var fakeMember = new FakeMember("Member1");
-            Database.Instance.AddMemberToDB(fakeMember);
-            var result = Assert.ThrowsException<ArgumentException>(() => Validator.MemberExists("Member1"));
+            var validator = new Validator(database);
+            var result = Assert.ThrowsException<ArgumentException>(() => validator.MemberExists("Member1"));
                 Assert.AreEqual("Member: 'Member1' already exists.", result.Message);
         }
 

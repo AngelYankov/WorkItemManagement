@@ -11,6 +11,9 @@ namespace WorkItemManagement.Models.Contracts
         StoryStatusType StoryStatus { get; }
 
         SizeType Size { get; }
+        string ChangePriority(PriorityType priority);
+        string ChangeSize(SizeType size);
+        string ChangeStatus(StoryStatusType status);
 
     }
 }

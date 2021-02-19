@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using WorkItemManagement.Commands.Abstract;
 using WorkItemManagement.Core;
+using WorkItemManagement.Core.Contracts;
+using WorkItemManagement.Models.Contracts;
 using WorkItemManagement.Models.Enums;
 using WorkItemManagement.Models.WorkItems;
 
@@ -10,19 +12,20 @@ namespace WorkItemManagement.Commands
 {
     public class ChangeStoryCommand : Command
     {
-        public ChangeStoryCommand(IList<string> commandParameters)
-            : base(commandParameters)
+        public ChangeStoryCommand(IList<string> commandParameters, IDatabase database, IFactory factory)
+            : base(commandParameters, database, factory)
         {
         }
         public override string Execute() // changestory id Property type // priority/status/size
         {
-            Validator.ValidateParameters(this.CommandParameters, 3);
+            var validator = new Validator(Database);
+            validator.ValidateParameters(this.CommandParameters, 3);
 
             string id = this.CommandParameters[0];
             string property = this.CommandParameters[1];
             string type = this.CommandParameters[2];
 
-            var story = Database.GetAllWorkItems().OfType<Story>().ToList().FirstOrDefault(s => s.Id.Equals(id, StringComparison.OrdinalIgnoreCase));
+            var story = Database.GetAllWorkItems().OfType<IStory>().ToList().FirstOrDefault(s => s.Id.Equals(id, StringComparison.OrdinalIgnoreCase));
             if (story == null)
             {
                 throw new ArgumentException($"Story: '{id}' does not exist.");
@@ -32,19 +35,19 @@ namespace WorkItemManagement.Commands
                 case "priority":
                     if (!Enum.TryParse(type, true, out PriorityType priority))
                     {
-                        throw new ArgumentException($"'{type}' is not a valid priority type");
+                        throw new ArgumentException($"'{type}' is not a valid priority type.");
                     }
                     return story.ChangePriority(priority);
                 case "size":
                     if (!Enum.TryParse(type, true, out SizeType size))
                     {
-                        throw new ArgumentException($"'{type}' is not a valid size type");
+                        throw new ArgumentException($"'{type}' is not a valid size type.");
                     }
                     return story.ChangeSize(size);
                 case "status":
                     if (!Enum.TryParse(type, true, out StoryStatusType status))
                     {
-                        throw new ArgumentException($"'{type}' is not a valid status type");
+                        throw new ArgumentException($"'{type}' is not a valid status type.");
                     }
                     return story.ChangeStatus(status);
                 default:

@@ -2,18 +2,21 @@
 using System.Linq;
 using WorkItemManagement.Commands.Abstract;
 using WorkItemManagement.Core;
+using WorkItemManagement.Core.Contracts;
 
 namespace WorkItemManagement.Commands
 {
     public class CreateStoryCommand : Command
     {
-        public CreateStoryCommand(IList<string> commandParameters)
-            : base(commandParameters)
+        public CreateStoryCommand(IList<string> commandParameters, IDatabase database, IFactory factory)
+            : base(commandParameters, database, factory)
         {
         }
-        public override string Execute() // createstory team board id title priority status size description
+        public override string Execute() // createstory team board id title priority size description
         {
-            Validator.ValidateParamsIfLessThan(this.CommandParameters, 7);
+            var validator = new Validator(Database);
+
+            validator.ValidateParamsIfLessThan(this.CommandParameters, 7);
 
             string teamName = this.CommandParameters[0];
             string boardName = this.CommandParameters[1];
