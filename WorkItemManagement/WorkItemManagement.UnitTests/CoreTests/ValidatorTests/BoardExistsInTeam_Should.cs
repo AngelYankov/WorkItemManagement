@@ -12,12 +12,12 @@ namespace WorkItemManagement.UnitTests.CoreTests.ValidatorTests
     public class BoardExistsInTeam_Should
     {
         [TestMethod]
-        [ExpectedException(typeof(ArgumentException))]
         public void ThrowWhen_BoardExists()
         {
-            var team = new FakeTeam();
+            var team = new FakeTeam("Team1");
             team.AddBoard(new FakeBoard("Board1"));
-            Validator.BoardExistsInTeam("Board1", team);
+            var result = Assert.ThrowsException<ArgumentException>(() => Validator.BoardExistsInTeam("Board1", team));
+            Assert.AreEqual("Board: 'Board1' already exists in team: 'Team1'", result.Message);
         }
     }
 }

@@ -7,20 +7,21 @@ using WorkItemManagement.Core;
 using WorkItemManagement.Core.Contracts;
 using WorkItemManagement.Models.Contracts;
 using WorkItemManagement.Models.WorkItems;
+using WorkItemManagement.UnitTests.Cleaner_Should;
 using WorkItemManagement.UnitTests.FakeClasses;
 
 namespace WorkItemManagement.UnitTests.CoreTests.ValidatorTests
 {
     [TestClass]
-    public class TeamExists_Should
+    public class TeamExists_Should 
     {
         [TestMethod]
-        [ExpectedException(typeof(ArgumentException))]
         public void ThrowWhen_TeamExists()
         {
             var team = new FakeTeam("Team1");
             Database.Instance.AddTeamToDB(team);
-            Validator.TeamExists("Team1");
+            var result = Assert.ThrowsException<ArgumentException>(() => Validator.TeamExists("Team1"));
+            Assert.AreEqual("Team: 'Team1' already exists", result.Message);
             
         }
         

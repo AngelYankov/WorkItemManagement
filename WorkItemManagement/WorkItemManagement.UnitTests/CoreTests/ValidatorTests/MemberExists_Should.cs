@@ -4,20 +4,21 @@ using System.Collections.Generic;
 using System.Text;
 using WorkItemManagement.Core;
 using WorkItemManagement.Models.WorkItems;
+using WorkItemManagement.UnitTests.Cleaner_Should;
 using WorkItemManagement.UnitTests.FakeClasses;
 
 namespace WorkItemManagement.UnitTests.CoreTests.ValidatorTests
 {
     [TestClass]
-    public class MemberExists_Should
+    public class MemberExists_Should : CleanerDatabase
     {
         [TestMethod]
-        [ExpectedException(typeof(ArgumentException))]
         public void ThrowWhen_MemberExists()
         {
             var fakeMember = new FakeMember("Member1");
             Database.Instance.AddMemberToDB(fakeMember);
-            Validator.MemberExists("Member1");
+            var result = Assert.ThrowsException<ArgumentException>(() => Validator.MemberExists("Member1"));
+                Assert.AreEqual("Member: 'Member1' already exists.", result.Message);
         }
 
     }
