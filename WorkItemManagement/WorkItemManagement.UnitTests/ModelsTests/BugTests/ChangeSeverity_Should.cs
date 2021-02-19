@@ -15,8 +15,7 @@ namespace WorkItemManagement.UnitTests.ModelsTests.BugTests
         [TestMethod]
         public void SeverityChanged_NewSeverity()
         {
-            var steps = new List<string>() { "first-second-third" };
-            var bug = new Bug("1", "TheFirstBug", PriorityType.High, SeverityType.Critical, steps, "This is a description for a bug");
+            var bug = new Bug("1", "TheFirstBug", PriorityType.High, SeverityType.Critical, new List<string>(), "This is a description for a bug");
             bug.ChangeSeverity(SeverityType.Major);
             Assert.AreEqual(SeverityType.Major, bug.Severity);
         }
@@ -25,8 +24,7 @@ namespace WorkItemManagement.UnitTests.ModelsTests.BugTests
         [ExpectedException(typeof(ArgumentException))]
         public void SeveritysNotChanged_SameSeverity()
         {
-            var steps = new List<string>() { "first-second-third" };
-            var bug = new Bug("1", "TheFirstBug", PriorityType.High, SeverityType.Critical, steps, "This is a description for a bug");
+            var bug = new Bug("1", "TheFirstBug", PriorityType.High, SeverityType.Critical, new List<string>(), "This is a description for a bug");
             bug.ChangeSeverity(SeverityType.Critical);
         }
         

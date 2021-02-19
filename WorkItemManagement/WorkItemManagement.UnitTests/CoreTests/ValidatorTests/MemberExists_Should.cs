@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Text;
 using WorkItemManagement.Core;
 using WorkItemManagement.Models.WorkItems;
+using WorkItemManagement.UnitTests.FakeClasses;
 
 namespace WorkItemManagement.UnitTests.CoreTests.ValidatorTests
 {
@@ -14,9 +15,9 @@ namespace WorkItemManagement.UnitTests.CoreTests.ValidatorTests
         [ExpectedException(typeof(ArgumentException))]
         public void ThrowWhen_MemberExists()
         {
-            var fakeData = new FakeDatabase();
-            fakeData.AddMember(new Member("Member1"));
-            Validator.MemberExists("Member1", fakeData);
+            var fakeMember = new FakeMember("Member1");
+            Database.Instance.AddMemberToDB(fakeMember);
+            Validator.MemberExists("Member1");
         }
 
     }

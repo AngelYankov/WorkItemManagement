@@ -23,13 +23,14 @@ namespace WorkItemManagement.Commands
             string size = this.CommandParameters[5];
             string description = string.Join(" ", this.CommandParameters.Skip(6));
 
-            var existingTeam = Validator.GetTeam(teamName, Database);
-
-            var existingBoard = Validator.GetBoard(boardName, existingTeam);
+            var existingTeam = Database.GetTeam(teamName);
+            var existingBoard = Database.GetBoard(boardName, existingTeam);
             
             var story = this.Factory.CreateStory(id, title, priority, size, description);
+
             existingBoard.AddWorkItem(story);
-            Validator.GetAllWorkItems(Database).Add(story);
+            Database.AddWorkItemToDB(story);
+
             return $"Created story: '{title}' with id: '{id}'. Added to board: '{boardName}' in team: '{teamName}'";
 
         }

@@ -6,6 +6,7 @@ using WorkItemManagement.Models.Abstract;
 using WorkItemManagement.Models.Enums;
 using WorkItemManagement.Models.WorkItems;
 using WorkItemManagement.UnitTests.Cleaner_Should;
+using WorkItemManagement.UnitTests.FakeClasses;
 
 namespace WorkItemManagement.UnitTests.ModelsTests.BugTests
 {
@@ -15,9 +16,8 @@ namespace WorkItemManagement.UnitTests.ModelsTests.BugTests
         [TestMethod]
         public void RemoveAssigneeShould_AssigneeRemoved()
         {
-            var steps = new List<string>() { "first-second-third" };
-            var bug = new Bug("1", "TheFirstBug", PriorityType.High, SeverityType.Critical, steps, "This is a description for a bug");
-            var member = new Member("Member1");
+            var bug = new Bug("1", "TheFirstBug", PriorityType.High, SeverityType.Critical, new List<string>(), "This is a description for a bug");
+            var member = new FakeMember();
 
             bug.AddAssignee(member);
             bug.RemoveAssignee();
@@ -27,8 +27,7 @@ namespace WorkItemManagement.UnitTests.ModelsTests.BugTests
         [ExpectedException(typeof(ArgumentException))]
         public void RemoveAsssigneeShould_ThrowWhen_AssigneeIsNull()
         {
-            var steps = new List<string>() { "first-second-third" };
-            var bug = new Bug("1", "TheFirstBug", PriorityType.High, SeverityType.Critical, steps, "This is a description for a bug");
+            var bug = new Bug("1", "TheFirstBug", PriorityType.High, SeverityType.Critical, new List<string>(), "This is a description for a bug");
             bug.RemoveAssignee();
         }
        

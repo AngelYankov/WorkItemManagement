@@ -19,7 +19,7 @@ namespace WorkItemManagement.Commands
             Validator.ValidateParameters(this.CommandParameters, 1);
 
             string idWorkItem = this.CommandParameters[0];
-            var workItem = Validator.GetWorkItemToAssign(idWorkItem, Database);
+            var workItem = Database.GetWorkItemToAssign(idWorkItem);
             workItem.GetAssignee().RemoveWorkItems((IWorkItem)workItem);
             workItem.RemoveAssignee();
            

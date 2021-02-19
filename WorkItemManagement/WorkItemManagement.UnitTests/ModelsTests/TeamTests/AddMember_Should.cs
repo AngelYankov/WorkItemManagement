@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 using WorkItemManagement.Models.WorkItems;
+using WorkItemManagement.UnitTests.FakeClasses;
 
 namespace WorkItemManagement.UnitTests.ModelsTests.TeamTests
 {
@@ -12,7 +13,7 @@ namespace WorkItemManagement.UnitTests.ModelsTests.TeamTests
         [TestMethod]
         public void AddMemberShould_MemberAdded()
         {
-            var member = new Member("Bruce");
+            var member = new FakeMember();
             var team = new Team("Team1");
             team.AddMember(member);
             Assert.AreEqual(team.Members.Count, 1);

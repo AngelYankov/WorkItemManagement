@@ -15,8 +15,7 @@ namespace WorkItemManagement.UnitTests.ModelsTests.BugTests
         [TestMethod]
         public void SetProperties()
         {
-            var steps = new List<string>() { "first-second-third" };
-            var bug = new Bug("1", "TheFirstBug", PriorityType.High, SeverityType.Critical, steps, "This is a description for a bug");
+            var bug = new Bug("1", "TheFirstBug", PriorityType.High, SeverityType.Critical, new List<string>(), "This is a description for a bug");
             Assert.AreEqual(PriorityType.High, bug.Priority);
             Assert.AreEqual(SeverityType.Critical, bug.Severity);
             Assert.AreEqual(BugStatus.Active, bug.Status);

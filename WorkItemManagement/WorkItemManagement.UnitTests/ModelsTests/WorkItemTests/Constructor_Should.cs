@@ -8,6 +8,7 @@ using WorkItemManagement.Models.Contracts;
 using WorkItemManagement.Models.Enums;
 using WorkItemManagement.Models.WorkItems;
 using WorkItemManagement.UnitTests.Cleaner_Should;
+using WorkItemManagement.UnitTests.FakeClasses;
 
 namespace WorkItemManagement.UnitTests.ModelsTests.WorkItemTests
 {
@@ -117,29 +118,7 @@ namespace WorkItemManagement.UnitTests.ModelsTests.WorkItemTests
             feedback.AddComment(member,list);
             CollectionAssert.AreEquivalent((ICollection)feedback.Comments, (ICollection)comments);
         }
-        private class FakeMember : IMember
-        {
-            public string Name => throw new NotImplementedException();
-
-            public IList<IWorkItem> WorkItems => throw new NotImplementedException();
-
-            public IList<string> ActivityHistory => throw new NotImplementedException();
-
-            public void AddActivityHistory(string info)
-            {
-                throw new NotImplementedException();
-            }
-
-            public void AddWorkItems(IWorkItem item)
-            {
-                throw new NotImplementedException();
-            }
-
-            public void RemoveWorkItems(IWorkItem item)
-            {
-                throw new NotImplementedException();
-            }
-        }
+       
         
     }
 }

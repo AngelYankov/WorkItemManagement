@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 using WorkItemManagement.Core;
+using WorkItemManagement.UnitTests.FakeClasses;
 
 namespace WorkItemManagement.UnitTests.CoreTests.ValidatorTests
 {
@@ -13,8 +14,7 @@ namespace WorkItemManagement.UnitTests.CoreTests.ValidatorTests
         [ExpectedException(typeof(ArgumentException))]
         public void ThrowWhen_MemberDoesNotExistInTeam()
         {
-            var fakeData = new FakeDatabase();
-            Validator.MemberExistsInAnyTeam("Member1", fakeData);
+            Validator.MemberExistsInAnyTeam("Member1");
         }
     }
 }

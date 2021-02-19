@@ -22,7 +22,7 @@ namespace WorkItemManagement.Commands
             string property = this.CommandParameters[1];
             string type = this.CommandParameters[2];
 
-            var feedback = Validator.GetAllWorkItems(Database).OfType<Feedback>().ToList().FirstOrDefault(f => f.Id.Equals(id, StringComparison.OrdinalIgnoreCase));
+            var feedback = Database.GetAllWorkItems().OfType<Feedback>().ToList().FirstOrDefault(f => f.Id.Equals(id, StringComparison.OrdinalIgnoreCase));
             if (feedback == null)
             {
                 throw new ArgumentException($"Feedback: '{id}' does not exist.");

@@ -17,20 +17,12 @@ namespace WorkItemManagement.Commands
             Validator.ValidateParamsIfLessThan(CommandParameters, 3);
             string idWorkItem = this.CommandParameters[0];
             string memberName = this.CommandParameters[1];
-            /*IList<string> comments = new List<string>();
-            for (int i = 2; i < this.CommandParameters.Count; i++)
-            {
-                comments.Add(this.CommandParameters[i]);
-            }*/
             IList<string> comments = this.CommandParameters.Skip(2).ToList();
 
+            var workItem = Database.GetWorkItem(idWorkItem);
+            var member = Database.GetMember(memberName);
 
-            var workItem = Validator.GetWorkItem(idWorkItem,Database);
-            var member = Validator.GetMember(memberName, Database);
-            if (!member.WorkItems.Contains(workItem))
-            {
-                throw new ArgumentException($"Member: '{memberName}' does not have access to work item: '{idWorkItem}'.");
-            }
+            Validator.MemberHasWorkItem(workItem, member);
             workItem.AddComment(member, comments);
             member.AddActivityHistory($"'{memberName}' added comment to work item: '{idWorkItem}'.");
 

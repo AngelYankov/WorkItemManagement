@@ -14,7 +14,7 @@ namespace WorkItemManagement.Commands
         {
             Validator.ValidateParameters(this.CommandParameters, 1);
             string memberName = this.CommandParameters[0];
-            var member = Validator.GetMember(memberName, Database);
+            var member = Database.GetMember(memberName);
             return string.Join("; ", member.ActivityHistory);
         }
     }

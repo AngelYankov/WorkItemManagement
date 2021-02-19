@@ -6,6 +6,7 @@ using WorkItemManagement.Models.Abstract;
 using WorkItemManagement.Models.Enums;
 using WorkItemManagement.Models.WorkItems;
 using WorkItemManagement.UnitTests.Cleaner_Should;
+using WorkItemManagement.UnitTests.FakeClasses;
 
 namespace WorkItemManagement.UnitTests.ModelsTests.MemberTests
 {
@@ -15,7 +16,7 @@ namespace WorkItemManagement.UnitTests.ModelsTests.MemberTests
         [TestMethod]
         public void AddWorkItems_Should_AddSuccessfully()
         {
-            var feedback = new Feedback("1", "TheFirstFeedback", 3, "This is a feedback created");
+            var feedback = new FakeFeedback();
             var member = new Member("Bruce");
             member.AddWorkItems(feedback);
             Assert.IsTrue(member.WorkItems.Contains(feedback));

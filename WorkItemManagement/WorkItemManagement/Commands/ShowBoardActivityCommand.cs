@@ -17,8 +17,8 @@ namespace WorkItemManagement.Commands
             string boardName = this.CommandParameters[0];
             string teamName = this.CommandParameters[1];
 
-            var team = Validator.GetTeam(teamName, Database);
-            var board = Validator.GetBoard(boardName, team);
+            var team = Database.GetTeam(teamName);
+            var board = Database.GetBoard(boardName, team);
 
             return string.Join("; ", board.ActivityHistory);
         }

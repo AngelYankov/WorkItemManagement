@@ -15,10 +15,10 @@ namespace WorkItemManagement.Commands
         {
             Validator.ValidateParameters(this.CommandParameters, 1);
             string name = this.CommandParameters[0];
-            Validator.MemberExists(name, Database);
+            Validator.MemberExists(name);
 
             IMember member = this.Factory.CreateMember(name);
-            Validator.GetAllMembers(Database).Add(member);
+            Database.AddMemberToDB(member);
             return $"Created member: '{name}'";
         }
     }

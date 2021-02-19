@@ -27,13 +27,13 @@ namespace WorkItemManagement.Commands
             }
 
             string description = string.Join(" ", this.CommandParameters.Skip(5));
-
-            var existingTeam = Validator.GetTeam(teamName, Database);
-            var existingBoard = Validator.GetBoard(boardName, existingTeam);
+            var existingTeam = Database.GetTeam(teamName);
+            var existingBoard = Database.GetBoard(boardName, existingTeam);
             
             var feedback = this.Factory.CreateFeedback(id, title, rating, description);
-            Validator.GetAllWorkItems(Database).Add(feedback);
+
             existingBoard.AddWorkItem(feedback);
+            Database.AddWorkItemToDB(feedback);
 
             return $"Created feedback: '{title}' with id: '{id}'. Added to board: '{boardName}' in team: '{teamName}'";
         }

@@ -6,6 +6,7 @@ using WorkItemManagement.Models.Abstract;
 using WorkItemManagement.Models.Enums;
 using WorkItemManagement.Models.WorkItems;
 using WorkItemManagement.UnitTests.Cleaner_Should;
+using WorkItemManagement.UnitTests.FakeClasses;
 
 namespace WorkItemManagement.UnitTests.ModelsTests.StoryTests
 {
@@ -16,7 +17,7 @@ namespace WorkItemManagement.UnitTests.ModelsTests.StoryTests
         public void RemoveAssigneeShould_AssigneeRemoved()
         {
             var story = new Story("1", "This is the story 12 title", PriorityType.High, SizeType.Large, "this is the story 12 description");
-            var member = new Member("Member1");
+            var member = new FakeMember();
 
             story.AddAssignee(member);
             story.RemoveAssignee();

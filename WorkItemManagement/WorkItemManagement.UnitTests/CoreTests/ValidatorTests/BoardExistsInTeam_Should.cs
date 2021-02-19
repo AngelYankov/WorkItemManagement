@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Text;
 using WorkItemManagement.Core;
 using WorkItemManagement.Models.WorkItems;
+using WorkItemManagement.UnitTests.FakeClasses;
 
 namespace WorkItemManagement.UnitTests.CoreTests.ValidatorTests
 {
@@ -14,9 +15,8 @@ namespace WorkItemManagement.UnitTests.CoreTests.ValidatorTests
         [ExpectedException(typeof(ArgumentException))]
         public void ThrowWhen_BoardExists()
         {
-            //public static void BoardExistsInTeam(string name,ITeam team) // emo
-            var team = new Team("Team1");
-            team.AddBoard(new Board("Board1"));
+            var team = new FakeTeam();
+            team.AddBoard(new FakeBoard("Board1"));
             Validator.BoardExistsInTeam("Board1", team);
         }
     }

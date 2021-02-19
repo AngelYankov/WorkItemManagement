@@ -15,10 +15,11 @@ namespace WorkItemManagement.Commands
         {
             Validator.ValidateParameters(this.CommandParameters, 1);
             string name = this.CommandParameters[0];
-            Validator.TeamExists(name, Database);
+            Validator.TeamExists(name);
 
             ITeam team = this.Factory.CreateTeam(name);
-            Validator.GetAllTeams(Database).Add(team);
+            Database.AddTeamToDB(team);
+
             return $"Created team: '{name}'.";
         }
     }

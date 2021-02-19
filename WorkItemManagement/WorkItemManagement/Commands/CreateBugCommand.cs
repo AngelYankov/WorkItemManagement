@@ -24,12 +24,13 @@ namespace WorkItemManagement.Commands
             List<string> steps = this.CommandParameters[6].Split("-").ToList(); //mycomputer-controlpanel-dates-setup
             string description = string.Join(" ", this.CommandParameters.Skip(7));
 
-            var existingTeam = Validator.GetTeam(teamName, Database);
-            var existingBoard = Validator.GetBoard(boardName, existingTeam);
+            var existingTeam = Database.GetTeam(teamName);
+            var existingBoard = Database.GetBoard(boardName, existingTeam);
             
             var bug = this.Factory.CreateBug(id, title, priority, severity, steps, description);
+
             existingBoard.AddWorkItem(bug);
-            Validator.GetAllWorkItems(Database).Add(bug);
+            Database.AddWorkItemToDB(bug);
 
             return $"Created bug: '{title}' with id: '{id}'. Added to board: '{boardName}' in team: '{teamName}'";
         }

@@ -15,7 +15,7 @@ namespace WorkItemManagement.Commands
         {
             Validator.ValidateParameters(this.CommandParameters, 1);
             string teamName = this.CommandParameters[0];
-            var team = Validator.GetTeam(teamName, Database);
+            var team = Database.GetTeam(teamName);
 
             return  team.Members.Count != 0
                 ? string.Join(", ", team.Members.Select(m => m.Name))
