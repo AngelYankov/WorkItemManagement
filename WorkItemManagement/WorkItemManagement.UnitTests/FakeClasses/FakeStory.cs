@@ -6,21 +6,31 @@ using WorkItemManagement.Models.Enums;
 
 namespace WorkItemManagement.UnitTests.FakeClasses
 {
-    public class FakeFeedback : IFeedback
+    public class FakeStory : IStory
     {
-        public int Rating => throw new NotImplementedException();
 
-        public FeedbackStatusType FeedbackStatus => throw new NotImplementedException();
+        public IMember Assignee => throw new NotImplementedException();
+
+        public PriorityType Priority => throw new NotImplementedException();
+
+        public StoryStatusType StoryStatus => throw new NotImplementedException();
+
+        public SizeType Size => throw new NotImplementedException();
 
         public string Id { get; set; }
 
-        public string Title { get; }
+        public string Title => throw new NotImplementedException();
 
         public string Description => throw new NotImplementedException();
 
         public IDictionary<IMember, IList<string>> Comments => throw new NotImplementedException();
 
         public IList<string> History => throw new NotImplementedException();
+
+        public void AddAssignee(IMember member)
+        {
+            throw new NotImplementedException();
+        }
 
         public void AddComment(IMember member, IList<string> comments)
         {
@@ -32,7 +42,12 @@ namespace WorkItemManagement.UnitTests.FakeClasses
             throw new NotImplementedException();
         }
 
-        public string ChangeStatus(FeedbackStatusType status)
+        public IMember GetAssignee()
+        {
+            throw new NotImplementedException();
+        }
+
+        public void RemoveAssignee()
         {
             throw new NotImplementedException();
         }
