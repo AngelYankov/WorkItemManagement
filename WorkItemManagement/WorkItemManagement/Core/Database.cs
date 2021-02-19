@@ -127,9 +127,10 @@ namespace WorkItemManagement.Core
         /// <returns>Returns the the work item with a given ID if it exists or throw an exception that it doesn't exist</returns>
         public IWorkItemsAssignee GetWorkItemToAssign(string id) 
         {
-            if (this.AllWorkItems.FirstOrDefault(item => item.Id.Equals(id, StringComparison.OrdinalIgnoreCase)) is Feedback)
+            var item = this.AllWorkItems.FirstOrDefault(item => item.Id.Equals(id, StringComparison.OrdinalIgnoreCase));
+            if (item is IFeedback)
             {
-                throw new ArgumentException("Feedback don't have an assignee.");
+                throw new ArgumentException("Feedback doesn't have an assignee.");
             }
             var workItem = (IWorkItemsAssignee)this.AllWorkItems.FirstOrDefault(item => item.Id.Equals(id, StringComparison.OrdinalIgnoreCase));
 
