@@ -22,7 +22,7 @@ namespace WorkItemManagement.Commands
             switch (this.CommandParameters[0])
             {
                 case "all":
-                    var all = Validator.GetAllWorkItems();
+                    var all = Validator.GetAllWorkItems(Database);
                     return string.Join("\n", all);
                 case "feedback":
                     var feedbacks = FilterFeedback(this.CommandParameters.Skip(1).ToList());
@@ -39,7 +39,7 @@ namespace WorkItemManagement.Commands
         }
         private IList<IFeedback> FilterFeedback(IList<string> commands) //new unscheduled scheduled done  //title/rating
         {
-            var feedbacks = Validator.GetAllWorkItems().OfType<IFeedback>().ToList();
+            var feedbacks = Validator.GetAllWorkItems(Database).OfType<IFeedback>().ToList();
             if (commands.Count == 0)
             {
                 return feedbacks;
@@ -83,7 +83,7 @@ namespace WorkItemManagement.Commands
 
         private List<IBug> FilterBug(IList<string> commands) //active/fixed/assignee
         {
-            var bugs = Validator.GetAllWorkItems().OfType<IBug>().ToList();
+            var bugs = Validator.GetAllWorkItems(Database).OfType<IBug>().ToList();
             if (commands.Count == 0)
             {
                 return bugs;
@@ -148,7 +148,7 @@ namespace WorkItemManagement.Commands
 
         private List<IStory> FilterStory(List<string> commands)
         {
-            var stories = Validator.GetAllWorkItems().OfType<IStory>().ToList();
+            var stories = Validator.GetAllWorkItems(Database).OfType<IStory>().ToList();
             if (commands.Count == 0)
             {
                 return stories;

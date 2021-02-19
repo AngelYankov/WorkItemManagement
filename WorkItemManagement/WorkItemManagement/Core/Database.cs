@@ -27,6 +27,5 @@ namespace WorkItemManagement.Core
 
         private readonly IList<IWorkItem> allWorkItems = new List<IWorkItem>();
         public IList<IWorkItem> AllWorkItems { get => this.allWorkItems; }
-
     }
 }

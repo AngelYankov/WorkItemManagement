@@ -22,7 +22,7 @@ namespace WorkItemManagement.Commands
             string property = this.CommandParameters[1];
             string type = this.CommandParameters[2];
 
-            var story = Validator.GetAllWorkItems().OfType<Story>().ToList().FirstOrDefault(s => s.Id.Equals(id, StringComparison.OrdinalIgnoreCase));
+            var story = Validator.GetAllWorkItems(Database).OfType<Story>().ToList().FirstOrDefault(s => s.Id.Equals(id, StringComparison.OrdinalIgnoreCase));
             if (story == null)
             {
                 throw new ArgumentException($"Story: '{id}' does not exist.");

@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using WorkItemManagement.Core.Contracts;
 using WorkItemManagement.Models.Contracts;
 using WorkItemManagement.Models.WorkItems;
 
@@ -36,9 +37,9 @@ namespace WorkItemManagement.Core
         /// Validating if a team with a given name exists
         /// </summary>
         /// <param name="name">The name of the team we are searching for</param>
-        public static void TeamExists(string name)
+        public static void TeamExists(string name, IDatabase database)
         {
-            bool teamExists = Database.Instance.AllTeams.Any(x => x.Name.Equals(name, StringComparison.OrdinalIgnoreCase));
+            bool teamExists = database.AllTeams.Any(x => x.Name.Equals(name, StringComparison.OrdinalIgnoreCase));
 
             if (teamExists)
             {
@@ -49,9 +50,9 @@ namespace WorkItemManagement.Core
         /// Validating if a member with a given name exists
         /// </summary>
         /// <param name="name">The name of the member we are searching for</param>
-        public static void MemberExists(string name)
+        public static void MemberExists(string name, IDatabase database)
         {
-            bool nameExists = Database.Instance.AllMembers.Any(x => x.Name.Equals(name, StringComparison.OrdinalIgnoreCase));
+            bool nameExists = database.AllMembers.Any(x => x.Name.Equals(name, StringComparison.OrdinalIgnoreCase));
 
             if (nameExists)
             {
@@ -76,9 +77,9 @@ namespace WorkItemManagement.Core
         /// Validating if a member with a given name is part of any team
         /// </summary>
         /// <param name="name">The name of the member we are searching for</param>
-        public static void MemberExistsInAnyTeam(string name)
+        public static void MemberExistsInAnyTeam(string name, IDatabase database) // angel
         {
-            var isInAnyTeam = Database.Instance.AllTeams
+            var isInAnyTeam = database.AllTeams
                                .SelectMany(t => t.Members)
                                .Any(m => m.Name.Equals(name, StringComparison.OrdinalIgnoreCase));
             if (!isInAnyTeam)
@@ -91,7 +92,7 @@ namespace WorkItemManagement.Core
         /// </summary>
         /// <param name="name">The name of the board we are searching for</param>
         /// <param name="team">The name of the team in which we are searching for the given board</param>
-        public static void BoardExistsInTeam(string name,ITeam team)
+        public static void BoardExistsInTeam(string name,ITeam team) // emo
         {
             var boardExists = team.Boards.Any(b => b.Name.Equals(name, StringComparison.OrdinalIgnoreCase));
             if (boardExists)
@@ -104,9 +105,9 @@ namespace WorkItemManagement.Core
         /// </summary>
         /// <param name="name">The name of the team we are searching for</param>
         /// <returns>Returns the team if a team with such name exists or throw an exception if it doesn't exist</returns>
-        public static ITeam GetTeam(string name)
+        public static ITeam GetTeam(string name, IDatabase database) //angel
         {
-            var team = Database.Instance.AllTeams.FirstOrDefault(t => t.Name.Equals(name, StringComparison.OrdinalIgnoreCase));
+            var team = database.AllTeams.FirstOrDefault(t => t.Name.Equals(name, StringComparison.OrdinalIgnoreCase));
             if (team == null)
             {
                 throw new ArgumentException($"Team: '{name}' does not exist.");
@@ -119,7 +120,7 @@ namespace WorkItemManagement.Core
         /// <param name="name">The name of the board we are searching for</param>
         /// <param name="team">the name of the team in which we are searching for the board</param>
         /// <returns>Returns the board if a board with a given name exists in a team with a given name or throw an exception that it doesn't exist in the that team.</returns>
-        public static IBoard GetBoard(string name,ITeam team)
+        public static IBoard GetBoard(string name,ITeam team) // emo
         {
             var existingBoard = team.Boards.FirstOrDefault(b => b.Name.Equals(name, StringComparison.OrdinalIgnoreCase));
             if (existingBoard == null)
@@ -133,9 +134,9 @@ namespace WorkItemManagement.Core
         /// </summary>
         /// <param name="name">The name of the member we are searching for</param>
         /// <returns>Returns the member if a member with a given name exists or throw an exception that it doesn't exist</returns>
-        public static IMember GetMember(string name)
+        public static IMember GetMember(string name, IDatabase database) // angel
         {
-            var member = Database.Instance.AllMembers.FirstOrDefault(m => m.Name.Equals(name, StringComparison.OrdinalIgnoreCase));
+            var member = database.AllMembers.FirstOrDefault(m => m.Name.Equals(name, StringComparison.OrdinalIgnoreCase));
             if (member == null)
             {
                 throw new ArgumentException($"Member: '{name}' does not exist.");
@@ -147,13 +148,13 @@ namespace WorkItemManagement.Core
         /// </summary>
         /// <param name="id">The ID of the work item we are searching for</param>
         /// <returns>Returns the the work item with a given ID if it exists or throw an exception that it doesn't exist</returns>
-        public static IWorkItemsAssignee GetWorkItemToAssign(string id)
+        public static IWorkItemsAssignee GetWorkItemToAssign(string id, IDatabase database) // emo
         {
-            if (Database.Instance.AllWorkItems.FirstOrDefault(item => item.Id.Equals(id, StringComparison.OrdinalIgnoreCase)) is Feedback)
+            if (database.AllWorkItems.FirstOrDefault(item => item.Id.Equals(id, StringComparison.OrdinalIgnoreCase)) is Feedback)
             {
                 throw new ArgumentException("Feedback don't have an assignee.");
             }
-            var workItem = (IWorkItemsAssignee)Database.Instance.AllWorkItems.FirstOrDefault(item => item.Id.Equals(id, StringComparison.OrdinalIgnoreCase));
+            var workItem = (IWorkItemsAssignee)database.AllWorkItems.FirstOrDefault(item => item.Id.Equals(id, StringComparison.OrdinalIgnoreCase));
 
             if (workItem == null)
             {
@@ -166,9 +167,9 @@ namespace WorkItemManagement.Core
         /// </summary>
         /// <param name="id">The ID of the work item we are searching for</param>
         /// <returns>Returns the the work item with a given ID if it exists or throw an exception if doesn't exist</returns>
-        public static IWorkItem GetWorkItem(string id)
+        public static IWorkItem GetWorkItem(string id, IDatabase database)//angel
         {
-            var workItem = Database.Instance.AllWorkItems.FirstOrDefault(item => item.Id.Equals(id, StringComparison.OrdinalIgnoreCase));
+            var workItem = database.AllWorkItems.FirstOrDefault(item => item.Id.Equals(id, StringComparison.OrdinalIgnoreCase));
 
             if (workItem == null)
             {
@@ -180,25 +181,25 @@ namespace WorkItemManagement.Core
         /// Looking for all of the work items
         /// </summary>
         /// <returns>Returns a list with all work items</returns>
-        public static IList<IWorkItem> GetAllWorkItems()
+        public static IList<IWorkItem> GetAllWorkItems(IDatabase database) // emo
         {
-            return Database.Instance.AllWorkItems;
+            return database.AllWorkItems;
         }
         /// <summary>
         /// Looking for all teams
         /// </summary>
         /// <returns>Returns a list with all teams</returns>
-        public static IList<ITeam> GetAllTeams()
+        public static IList<ITeam> GetAllTeams(IDatabase database)//angel
         {
-            return Database.Instance.AllTeams;
+            return database.AllTeams;
         }
         /// <summary>
         /// Looking for all members
         /// </summary>
         /// <returns>Returns a list with all members</returns>
-        public static IList<IMember> GetAllMembers()
+        public static IList<IMember> GetAllMembers(IDatabase database)//angel
         {
-            return Database.Instance.AllMembers;
+            return database.AllMembers;
         }
     }
 }

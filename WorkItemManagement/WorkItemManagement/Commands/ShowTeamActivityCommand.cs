@@ -16,7 +16,7 @@ namespace WorkItemManagement.Commands
         {
             Validator.ValidateParameters(this.CommandParameters, 1);
             string teamName = this.CommandParameters[0];
-            var team = Validator.GetTeam(teamName);
+            var team = Validator.GetTeam(teamName, Database);
             StringBuilder sb = new StringBuilder();
 
             sb.AppendLine($"Team: '{teamName}' - Boards activity: ");

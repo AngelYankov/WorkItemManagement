@@ -17,10 +17,10 @@ namespace WorkItemManagement.Commands
 
             string memberName = this.CommandParameters[0];
             string idWorkItem = this.CommandParameters[1];
-            var member = Validator.GetMember(memberName);
-            Validator.MemberExistsInAnyTeam(memberName);
+            var member = Validator.GetMember(memberName, Database);
+            Validator.MemberExistsInAnyTeam(memberName, Database);
 
-            var workItem = Validator.GetWorkItemToAssign(idWorkItem); 
+            var workItem = Validator.GetWorkItemToAssign(idWorkItem, Database); 
             workItem.AddAssignee(member);
             member.AddWorkItems((IWorkItem)workItem);
 

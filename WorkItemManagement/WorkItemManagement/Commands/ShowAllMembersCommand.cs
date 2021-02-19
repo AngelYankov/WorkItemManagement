@@ -14,8 +14,8 @@ namespace WorkItemManagement.Commands
         public override string Execute()
         {
             Validator.ValidateParameters(this.CommandParameters, 0);
-            return Validator.GetAllMembers().Count != 0 
-                ? string.Join(", ", Validator.GetAllMembers().Select(m => m.Name)) 
+            return Validator.GetAllMembers(Database).Count != 0 
+                ? string.Join(", ", Validator.GetAllMembers(Database).Select(m => m.Name)) 
                 : "There are no members.";
         }
     }

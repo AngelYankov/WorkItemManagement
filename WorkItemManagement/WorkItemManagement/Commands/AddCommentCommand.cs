@@ -25,8 +25,8 @@ namespace WorkItemManagement.Commands
             IList<string> comments = this.CommandParameters.Skip(2).ToList();
 
 
-            var workItem = Validator.GetWorkItem(idWorkItem);
-            var member = Validator.GetMember(memberName);
+            var workItem = Validator.GetWorkItem(idWorkItem,Database);
+            var member = Validator.GetMember(memberName, Database);
             if (!member.WorkItems.Contains(workItem))
             {
                 throw new ArgumentException($"Member: '{memberName}' does not have access to work item: '{idWorkItem}'.");

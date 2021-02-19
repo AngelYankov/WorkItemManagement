@@ -16,8 +16,8 @@ namespace WorkItemManagement.Commands
             string memberName = this.CommandParameters[0];
             string teamName = this.CommandParameters[1];
 
-            var member = Validator.GetMember(memberName);
-            var team = Validator.GetTeam(teamName);
+            var member = Validator.GetMember(memberName, Database);
+            var team = Validator.GetTeam(teamName, Database);
             Validator.MemberExistsInTeam(memberName, team);
 
             team.AddMember(member);
