@@ -165,7 +165,6 @@ Application supports the following operations:
 
 ### Help
     Shows all available commands and how to write them correctly
-<br><br>
 
 ## Command Helper
 
