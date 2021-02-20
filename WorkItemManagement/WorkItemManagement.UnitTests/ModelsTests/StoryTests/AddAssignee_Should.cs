@@ -8,7 +8,7 @@ using WorkItemManagement.UnitTests.FakeClasses;
 namespace WorkItemManagement.UnitTests.ModelsTests.StoryTests
 {
     [TestClass]
-    public class AddAssignee_Should : Cleaner
+    public class AddAssignee_Should : CleanerID
     {
         [TestMethod]
         public void AddAssigneeShould_AssigneeAdded()

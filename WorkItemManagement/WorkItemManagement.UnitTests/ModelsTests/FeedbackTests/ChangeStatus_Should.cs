@@ -7,7 +7,7 @@ using WorkItemManagement.UnitTests.Cleaner_Should;
 namespace WorkItemManagement.UnitTests.ModelsTests.FeedbackTests
 {
     [TestClass]
-    public class ChangeStatus_Should : Cleaner
+    public class ChangeStatus_Should : CleanerID
     {
         [TestMethod]
         public void StatusChanged_NewStatus()

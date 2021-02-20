@@ -7,7 +7,7 @@ using WorkItemManagement.Models.Abstract;
 namespace WorkItemManagement.UnitTests.Cleaner_Should
 {
     [TestClass]
-    public class Cleaner
+    public class CleanerID
     {
         [TestCleanup]
         public void CleanUp()

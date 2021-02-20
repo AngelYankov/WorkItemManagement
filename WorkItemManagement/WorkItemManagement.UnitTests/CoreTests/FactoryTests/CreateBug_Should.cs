@@ -8,7 +8,7 @@ using WorkItemManagement.UnitTests.Cleaner_Should;
 namespace WorkItemManagement.UnitTests.CoreTests.FactoryTests
 {
     [TestClass]
-    public class CreateBug_Should : Cleaner
+    public class CreateBug_Should : CleanerID
     {
         [TestMethod]
         public void CreateBug_Should_CreateBugSuccessfully()

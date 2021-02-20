@@ -5,7 +5,7 @@ using WorkItemManagement.UnitTests.Cleaner_Should;
 namespace WorkItemManagement.UnitTests.ModelsTests.BoardTests
 {
     [TestClass]
-    public class AddHistory_Should : Cleaner
+    public class AddHistory_Should : CleanerID
     {
         [TestMethod]
         public void History_Added()

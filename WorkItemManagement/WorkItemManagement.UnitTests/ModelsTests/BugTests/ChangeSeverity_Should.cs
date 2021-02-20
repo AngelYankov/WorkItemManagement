@@ -8,7 +8,7 @@ using WorkItemManagement.UnitTests.Cleaner_Should;
 namespace WorkItemManagement.UnitTests.ModelsTests.BugTests
 {
     [TestClass]
-    public class ChangeSeverity_Should : Cleaner
+    public class ChangeSeverity_Should : CleanerID
     {
         [TestMethod]
         public void SeverityChanged_NewSeverity()

@@ -76,16 +76,12 @@ namespace WorkItemManagement.UnitTests.FakeClasses
 
         public string Title {get; set;}
 
-        public string Description => throw new NotImplementedException();
+        public string Description { get; set; }
 
-        public IDictionary<IMember, IList<string>> Comments { get; }
+        public IDictionary<IMember, IList<string>> Comments { get; set; }
 
-        public IList<string> History { get; }
+        public IList<string> History { get; set; }
 
-        /// <summary>
-        /// Add assignee if it doesn't have one
-        /// </summary>
-        /// <param name="member">Assignee to be added</param>
         public void AddAssignee(IMember member)
         {
             if (this.Assignee == member)
@@ -94,9 +90,6 @@ namespace WorkItemManagement.UnitTests.FakeClasses
             }
             this.Assignee = member;
         }
-        /// <summary>
-        /// Remove assignee if it already has one
-        /// </summary>
         public void RemoveAssignee()
         {
             if (this.Assignee == null)
@@ -113,11 +106,6 @@ namespace WorkItemManagement.UnitTests.FakeClasses
             }
             return this.Assignee;
         }
-        /// <summary>
-        /// Changing the priority type of a story
-        /// </summary>
-        /// <param name="priority">The priority type we want the story to be changed to</param>
-        /// <returns>Returns a string saying what the story priority type has been changed to or returns a message that it is already at the desired priority type</returns>
         public string ChangePriority(PriorityType priority)
         {
             if (this.Priority == priority)
@@ -127,11 +115,6 @@ namespace WorkItemManagement.UnitTests.FakeClasses
             this.Priority = priority;
             return $"Story priority changed to '{priority}'.";
         }
-        /// <summary>
-        /// Changing the size type of a story
-        /// </summary>
-        /// <param name="size">The size type we want the story to be changed to</param>
-        /// <returns>Returns a string saying what the story size type has been changed to or returns a message that it is already at the desired size type</returns>
         public string ChangeSize(SizeType size)
         {
             if (this.Size == size)
@@ -141,11 +124,6 @@ namespace WorkItemManagement.UnitTests.FakeClasses
             this.Size = size;
             return $"Story size changed to '{size}'.";
         }
-        /// <summary>
-        /// Changing the status of a story
-        /// </summary>
-        /// <param name="status">The status we want the story to be changed to</param>
-        /// <returns>Returns a string saying what the story status has been changed to or returns a message that it is already at the desired status</returns>
         public string ChangeStatus(StoryStatusType status)
         {
             if (this.StoryStatus == status)
@@ -158,10 +136,16 @@ namespace WorkItemManagement.UnitTests.FakeClasses
 
         public override string ToString()
         {
+            string history = this.History.Count == 0 ? "No history" : string.Join(" ", this.History);
+            string comments = this.Comments.Count == 0 ? "No comments" : string.Join(" ", this.Comments);
             string assigneetext = this.Assignee == null ? "No assignee" : this.Assignee.Name;
             StringBuilder sb = new StringBuilder();
             sb.AppendLine("Story ----");
-            sb.AppendLine(base.ToString());
+            sb.AppendLine($"ID: {this.Id}");
+            sb.AppendLine($"Title: {this.Title}");
+            sb.AppendLine($"Description: {this.Description}");
+            sb.AppendLine($"Activity history: {history}");
+            sb.AppendLine($"Comments: {comments}");
             sb.AppendLine($"Priority: {this.priorityType}");
             sb.AppendLine($"Status: {this.storyStatus}");
             sb.AppendLine($"Size: {this.sizeType}");

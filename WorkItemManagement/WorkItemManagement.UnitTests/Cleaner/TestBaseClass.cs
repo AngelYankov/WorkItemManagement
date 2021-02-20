@@ -24,8 +24,6 @@ namespace WorkItemManagement.UnitTests.Cleaner_Should
             var board3 = new FakeBoard("Board3");
             var feedback = new FakeFeedback("1");
             var story = new FakeStory("2");
-            
-            
 
             database.AddTeamToDB(team1);
             database.AddTeamToDB(team2);
@@ -35,16 +33,12 @@ namespace WorkItemManagement.UnitTests.Cleaner_Should
             database.AddWorkItemToDB(feedback);
             database.AddWorkItemToDB(story);
 
-
             team2.AddMember(member1);
-
             team1.AddBoard(board1);
             team2.AddBoard(board2);
             team2.AddBoard(board3);
-
             board1.AddWorkItem(feedback);
             board2.AddWorkItem(story);
-
             member1.AddWorkItems(story);
             member1.AddWorkItems(feedback);
 

@@ -6,7 +6,7 @@ using WorkItemManagement.UnitTests.FakeClasses;
 namespace WorkItemManagement.UnitTests.ModelsTests.BoardTests
 {
     [TestClass]
-    public class AddWorkItem_Should : Cleaner
+    public class AddWorkItem_Should : CleanerID
     {
         [TestMethod]
         public void WorkItem_Added()

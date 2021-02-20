@@ -21,7 +21,7 @@ namespace WorkItemManagement.UnitTests.FakeClasses
             this.bugStatus = BugStatus.Active;
             this.comments = new Dictionary<IMember, IList<string>>();
             this.History = new List<string>();
-    }
+        }
 
         public FakeBug(string id, string title)
         {
@@ -87,7 +87,7 @@ namespace WorkItemManagement.UnitTests.FakeClasses
 
         public string Description { get; set; }
 
-        public IDictionary<IMember, IList<string>> Comments { get; set; }
+        public IDictionary<IMember, IList<string>> Comments { get => this.comments; }
 
         public IList<string> History { get; set; }
 
@@ -116,11 +116,6 @@ namespace WorkItemManagement.UnitTests.FakeClasses
             this.Priority = priorityType;
             return $"Bug priority changed to '{priorityType}'";
         }
-        /// <summary>
-        /// Changing the severity type of a bug
-        /// </summary>
-        /// <param name="severityType">The severity type we want the bug to be changed to</param>
-        /// <returns>Returns a string saying what the bug severity has been changed to or returns a message that it is already at the desired severity type</returns>
         public string ChangeSeverity(SeverityType severityType)
         {
             if (this.Severity == severityType)
@@ -130,11 +125,6 @@ namespace WorkItemManagement.UnitTests.FakeClasses
             this.Severity = severityType;
             return $"Bug severity changed to '{severityType}'";
         }
-        /// <summary>
-        /// Changing the status of a bug
-        /// </summary>
-        /// <param name="bugStatus">The status we want the bug to be changed to</param>
-        /// <returns>Returns a string saying what the bug status has been changed to or returns a message that it is already at the desired status</returns>
         public string ChangeStatus(BugStatus bugStatus)
         {
             if (this.Status == bugStatus)
@@ -163,10 +153,16 @@ namespace WorkItemManagement.UnitTests.FakeClasses
         }
         public override string ToString()
         {
+            string history = this.History.Count == 0 ? "No history" : string.Join(" ", this.History);
+            string comments = this.Comments.Count == 0 ? "No comments" : string.Join(" ", this.Comments);
             string assigneetext = this.Assignee == null ? "No assignee" : this.Assignee.Name;
             StringBuilder sb = new StringBuilder();
             sb.AppendLine("Bug ----");
-            sb.AppendLine(base.ToString());
+            sb.AppendLine($"ID: {this.Id}");
+            sb.AppendLine($"Title: {this.Title}");
+            sb.AppendLine($"Description: {this.Description}");
+            sb.AppendLine($"Activity history: {history}");
+            sb.AppendLine($"Comments: {comments}");
             sb.AppendLine($"Priority: {this.priorityType}");
             sb.AppendLine($"Severity: {this.severityType}");
             sb.AppendLine($"Status: {this.bugStatus}");

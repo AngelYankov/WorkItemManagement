@@ -7,7 +7,7 @@ using WorkItemManagement.UnitTests.FakeClasses;
 namespace WorkItemManagement.UnitTests.CoreTests.DatabaseTests
 {
     [TestClass]
-    public class GetWorkItemToAssign_Should : Cleaner
+    public class GetWorkItemToAssign_Should : CleanerID
     {
         [TestMethod]
         public void ReturnsWorkItem()

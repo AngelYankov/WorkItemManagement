@@ -9,7 +9,7 @@ using WorkItemManagement.UnitTests.FakeClasses;
 namespace WorkItemManagement.UnitTests.ModelsTests.BugTests
 {
     [TestClass]
-    public class RemoveAssignee_Should : Cleaner
+    public class RemoveAssignee_Should : CleanerID
     {
         [TestMethod]
         public void RemoveAssigneeShould_AssigneeRemoved()

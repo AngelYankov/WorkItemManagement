@@ -7,7 +7,7 @@ using WorkItemManagement.UnitTests.Cleaner_Should;
 namespace WorkItemManagement.UnitTests.ModelsTests.StoryTests
 {
     [TestClass]
-    public class ChangePriority_Should : Cleaner
+    public class ChangePriority_Should : CleanerID
     {
         [TestMethod]
         public void PriorityChanged_NewPriority()

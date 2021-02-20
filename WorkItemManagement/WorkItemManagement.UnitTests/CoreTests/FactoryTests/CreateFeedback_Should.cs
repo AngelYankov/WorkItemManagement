@@ -6,7 +6,7 @@ using WorkItemManagement.UnitTests.Cleaner_Should;
 namespace WorkItemManagement.UnitTests.CoreTests.FactoryTests
 {
     [TestClass]
-    public class CreateFeedback_Should : Cleaner
+    public class CreateFeedback_Should : CleanerID
     {
         [TestMethod]
         public void CreateFeedback_Should_CreateFeedbackSuccessfully()

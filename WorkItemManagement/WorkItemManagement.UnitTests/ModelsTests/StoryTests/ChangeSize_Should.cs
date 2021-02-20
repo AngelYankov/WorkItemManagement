@@ -7,7 +7,7 @@ using WorkItemManagement.UnitTests.Cleaner_Should;
 namespace WorkItemManagement.UnitTests.ModelsTests.StoryTests
 {
     [TestClass]
-    public class ChangeSize_Should : Cleaner
+    public class ChangeSize_Should : CleanerID
     {
         [TestMethod]
         public void SizeChange_NewStatus()

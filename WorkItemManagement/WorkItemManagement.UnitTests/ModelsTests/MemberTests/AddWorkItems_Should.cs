@@ -8,7 +8,7 @@ using WorkItemManagement.UnitTests.FakeClasses;
 namespace WorkItemManagement.UnitTests.ModelsTests.MemberTests
 {
     [TestClass]
-    public class AddWorkItems_Should : Cleaner
+    public class AddWorkItems_Should : CleanerID
     {
         [TestMethod]
         public void AddWorkItems_Should_AddSuccessfully()

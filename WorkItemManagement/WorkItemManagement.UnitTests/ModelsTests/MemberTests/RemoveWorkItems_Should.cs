@@ -6,7 +6,7 @@ using WorkItemManagement.UnitTests.FakeClasses;
 namespace WorkItemManagement.UnitTests.ModelsTests.MemberTests
 {
     [TestClass]
-    public class RemoveWorkItems_Should : Cleaner
+    public class RemoveWorkItems_Should : CleanerID
     {
         [TestMethod]
         public void RemoveWorkItemsShould_RemovedItem()

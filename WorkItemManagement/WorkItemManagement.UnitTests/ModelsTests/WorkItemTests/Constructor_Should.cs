@@ -10,7 +10,7 @@ using WorkItemManagement.UnitTests.FakeClasses;
 namespace WorkItemManagement.UnitTests.ModelsTests.WorkItemTests
 {
     [TestClass]
-    public class Constructor_Should : Cleaner
+    public class Constructor_Should : CleanerID
     {
         [TestMethod]
         public void SetProperties()

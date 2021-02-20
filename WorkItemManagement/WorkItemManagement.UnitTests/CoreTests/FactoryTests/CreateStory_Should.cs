@@ -7,7 +7,7 @@ using WorkItemManagement.UnitTests.Cleaner_Should;
 namespace WorkItemManagement.UnitTests.CoreTests.FactoryTests
 {
     [TestClass]
-    public class CreateStory_Should : Cleaner
+    public class CreateStory_Should : CleanerID
     {
         [TestMethod]
         public void CreateStoryShould_CreateSuccessfully()

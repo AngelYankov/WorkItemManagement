@@ -7,7 +7,7 @@ using WorkItemManagement.UnitTests.Cleaner_Should;
 namespace WorkItemManagement.UnitTests.ModelsTests.FeedbackTests
 {
     [TestClass]
-    public class Constructor_Should : Cleaner
+    public class Constructor_Should : CleanerID
     {
         [TestMethod]
         public void SetProperties()

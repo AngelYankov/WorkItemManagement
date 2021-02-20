@@ -6,7 +6,7 @@ using WorkItemManagement.UnitTests.Cleaner_Should;
 namespace WorkItemManagement.UnitTests.ModelsTests.FeedbackTests
 {
     [TestClass]
-    public class ChangeRating_Should : Cleaner
+    public class ChangeRating_Should : CleanerID
     {
         [TestMethod]
         public void RatingChanged_NewRating()
