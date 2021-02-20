@@ -1,12 +1,10 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Moq;
-using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using WorkItemManagement.Commands;
 using WorkItemManagement.Core.Contracts;
-using WorkItemManagement.Models.Contracts;
 using WorkItemManagement.UnitTests.Cleaner_Should;
 using WorkItemManagement.UnitTests.FakeClasses;
 

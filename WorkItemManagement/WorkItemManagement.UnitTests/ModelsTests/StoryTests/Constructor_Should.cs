@@ -1,8 +1,4 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
-using System;
-using System.Collections.Generic;
-using System.Text;
-using WorkItemManagement.Models.Abstract;
 using WorkItemManagement.Models.Enums;
 using WorkItemManagement.Models.WorkItems;
 using WorkItemManagement.UnitTests.Cleaner_Should;
@@ -20,6 +16,5 @@ namespace WorkItemManagement.UnitTests.ModelsTests.StoryTests
             Assert.AreEqual(StoryStatusType.NotDone, story.StoryStatus);
             Assert.AreEqual(SizeType.Large, story.Size);
         }
-        
     }
 }

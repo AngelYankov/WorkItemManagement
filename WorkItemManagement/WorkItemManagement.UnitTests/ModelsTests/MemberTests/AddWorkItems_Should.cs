@@ -1,9 +1,6 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
 using System.Collections.Generic;
-using System.Text;
-using WorkItemManagement.Models.Abstract;
-using WorkItemManagement.Models.Enums;
 using WorkItemManagement.Models.WorkItems;
 using WorkItemManagement.UnitTests.Cleaner_Should;
 using WorkItemManagement.UnitTests.FakeClasses;
@@ -21,6 +18,5 @@ namespace WorkItemManagement.UnitTests.ModelsTests.MemberTests
             member.AddWorkItems(feedback);
             Assert.IsTrue(member.WorkItems.Contains(feedback));
         }
-        
     }
 }

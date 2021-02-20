@@ -1,10 +1,6 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
-using System;
-using System.Collections.Generic;
-using System.Text;
 using WorkItemManagement.Core;
 using WorkItemManagement.Models.Contracts;
-using WorkItemManagement.Models.WorkItems;
 
 namespace WorkItemManagement.UnitTests.CoreTests.FactoryTests
 {

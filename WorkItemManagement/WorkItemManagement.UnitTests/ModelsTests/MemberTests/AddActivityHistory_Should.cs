@@ -1,8 +1,4 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
-using System;
-using System.Collections.Generic;
-using System.Text;
-using WorkItemManagement.Models.Enums;
 using WorkItemManagement.Models.WorkItems;
 
 namespace WorkItemManagement.UnitTests.ModelsTests.MemberTests

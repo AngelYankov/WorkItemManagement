@@ -45,7 +45,7 @@ namespace WorkItemManagement.Models.Abstract
             }
             if (title.Length < 10 || title.Length > 50)
             {
-                throw new ArgumentException("Title should be between 10 and 50 characters");
+                throw new ArgumentException("Title should be between 10 and 50 characters.");
             }
         }
         private void ValidateDescription(string description)

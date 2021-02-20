@@ -2,7 +2,6 @@
 using Moq;
 using System;
 using System.Collections.Generic;
-using System.Text;
 using WorkItemManagement.Commands;
 using WorkItemManagement.Core.Contracts;
 using WorkItemManagement.Models.Contracts;
@@ -58,6 +57,7 @@ namespace WorkItemManagement.UnitTests.CommandsTests
                 => new ChangeFeedbackCommand(new List<string>() { "1", "status", "aaa" }, database, factory.Object).Execute());
             Assert.AreEqual("'aaa' is not a valid status type.", result.Message);
         }
+
         [TestMethod]
         public void ChangeFeedback_ThrowWhen_PropertyWrong()
         {

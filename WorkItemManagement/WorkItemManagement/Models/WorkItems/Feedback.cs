@@ -36,6 +36,7 @@ namespace WorkItemManagement.Models.WorkItems
                 this.feedbackStatus = value;
             }
         }
+
         /// <summary>
         /// Changing the status of a feeback
         /// </summary>
@@ -50,6 +51,7 @@ namespace WorkItemManagement.Models.WorkItems
             this.FeedbackStatus = status;
             return $"Status changed to {status}.";
         }
+        /// 
         /// <summary>
         /// Changing the rating of a feedback
         /// </summary>

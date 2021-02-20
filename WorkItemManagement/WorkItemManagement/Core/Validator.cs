@@ -15,6 +15,7 @@ namespace WorkItemManagement.Core
         {
             this.Database = database;
         }
+
         /// <summary>
         /// Validating the number of parameters added as command by user
         /// </summary>
@@ -27,6 +28,7 @@ namespace WorkItemManagement.Core
                 throw new ArgumentException("Parameters count is not valid");
             }
         }
+
         /// <summary>
         /// Validating the number of parameters added as command by user
         /// </summary>
@@ -124,6 +126,5 @@ namespace WorkItemManagement.Core
                 throw new ArgumentException($"Member: '{member.Name}' does not have access to work item: '{workItem.Id}'.");
             }
         }
-
     }
 }

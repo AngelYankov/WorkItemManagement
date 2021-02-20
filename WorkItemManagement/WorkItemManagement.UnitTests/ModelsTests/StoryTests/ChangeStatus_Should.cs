@@ -1,8 +1,5 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
-using System.Collections.Generic;
-using System.Text;
-using WorkItemManagement.Models.Abstract;
 using WorkItemManagement.Models.Enums;
 using WorkItemManagement.Models.WorkItems;
 using WorkItemManagement.UnitTests.Cleaner_Should;
@@ -21,12 +18,11 @@ namespace WorkItemManagement.UnitTests.ModelsTests.StoryTests
         }
 
         [TestMethod]
-        [ExpectedException(typeof(ArgumentException))]
         public void StatusNotChanged_SameStatus()
         {
             var story = new Story("1", "This is the story 12 title", PriorityType.High, SizeType.Large, "this is the story 12 description");
-            story.ChangeStatus(StoryStatusType.NotDone);
+            var result = Assert.ThrowsException<ArgumentException>(() => story.ChangeStatus(StoryStatusType.NotDone));
+            Assert.AreEqual("Status already at 'NotDone'.", result.Message);
         }
-       
     }
 }

@@ -30,6 +30,7 @@ namespace WorkItemManagement.Models.WorkItems
                 throw new ArgumentException("Team name should be between 3 and 10 characters.");
             }
         }
+
         /// <summary>
         /// Add board to the Team's boards
         /// </summary>
@@ -38,6 +39,7 @@ namespace WorkItemManagement.Models.WorkItems
         {
             this.boards.Add(board);
         }
+
         /// <summary>
         /// Add member to the Team's members
         /// </summary>

@@ -1,12 +1,6 @@
-﻿using Autofac.Extras.Moq;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
+﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
-using System.Collections.Generic;
-using System.Text;
 using WorkItemManagement.Core;
-using WorkItemManagement.Core.Contracts;
-using WorkItemManagement.Models.Contracts;
-using WorkItemManagement.Models.WorkItems;
 using WorkItemManagement.UnitTests.Cleaner_Should;
 using WorkItemManagement.UnitTests.FakeClasses;
 
@@ -23,8 +17,6 @@ namespace WorkItemManagement.UnitTests.CoreTests.ValidatorTests
             validator.Database.AddTeamToDB(team);
             var result = Assert.ThrowsException<ArgumentException>(() => validator.TeamExists("Team1"));
             Assert.AreEqual("Team: 'Team1' already exists", result.Message);
-            
         }
-        
     }
 }

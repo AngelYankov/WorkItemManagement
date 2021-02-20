@@ -98,6 +98,7 @@ namespace WorkItemManagement.UnitTests.CommandsTests
             var result = Assert.ThrowsException<ArgumentException>(()=>new ListWorkItemsCommand(new List<string>() { "bug", "status" }, database, factory.Object).Execute());
             Assert.AreEqual("There is no filter: 'status' for bug.", result.Message);
         }
+
         [TestMethod]
         public void ListItem_ListBugsAssignee()
         {
@@ -129,13 +130,5 @@ namespace WorkItemManagement.UnitTests.CommandsTests
 
             Assert.AreEqual(string.Join("\n", allBugs), result);
         }
-
-
-
-
-
-
-
-
     }
 }

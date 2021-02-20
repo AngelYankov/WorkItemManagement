@@ -30,6 +30,7 @@ namespace WorkItemManagement.Models.WorkItems
                 throw new ArgumentException("Member name should be between 5 and 15 characters.");
             }
         }
+
         /// <summary>
         /// Add work item to Member's list of work items and log history of it
         /// </summary>
@@ -39,6 +40,7 @@ namespace WorkItemManagement.Models.WorkItems
             this.workItems.Add(item);
             this.AddActivityHistory($"Item added.");
         }
+
         /// <summary>
         /// Removing work item from Member's list of work items and log history of it
         /// </summary>
@@ -48,6 +50,7 @@ namespace WorkItemManagement.Models.WorkItems
             this.workItems.Remove(item);
             this.AddActivityHistory($"Item removed.");
         }
+
         /// <summary>
         /// Add activity history
         /// </summary>

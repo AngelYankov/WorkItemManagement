@@ -1,8 +1,5 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
-using System.Collections.Generic;
-using System.Text;
-using WorkItemManagement.Models.Abstract;
 using WorkItemManagement.Models.Enums;
 using WorkItemManagement.Models.WorkItems;
 using WorkItemManagement.UnitTests.Cleaner_Should;
@@ -24,14 +21,13 @@ namespace WorkItemManagement.UnitTests.ModelsTests.StoryTests
         }
 
         [TestMethod]
-        [ExpectedException(typeof(ArgumentException))]
         public void AddAssigneeShould_ThrowWhen_AssigneeExists()
         {
             var story = new Story("1", "This is the story 12 title", PriorityType.High, SizeType.Large, "this is the story 12 description");
-            var member = new FakeMember();
+            var member = new FakeMember("Member1");
             story.AddAssignee(member);
-            story.AddAssignee(member);
+            var result =Assert.ThrowsException<ArgumentException>(() => story.AddAssignee(member));
+            Assert.AreEqual("Story already assigned to 'Member1'", result.Message);
         }
-
     }
 }

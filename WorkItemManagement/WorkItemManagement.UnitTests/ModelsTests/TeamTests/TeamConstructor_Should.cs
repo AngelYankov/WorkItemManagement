@@ -1,7 +1,5 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
-using System.Collections.Generic;
-using System.Text;
 using WorkItemManagement.Models.WorkItems;
 
 namespace WorkItemManagement.UnitTests.ModelsTests.TeamTests
@@ -17,25 +15,26 @@ namespace WorkItemManagement.UnitTests.ModelsTests.TeamTests
         }
 
         [TestMethod]
-        [ExpectedException(typeof(ArgumentNullException))]
         public void ThrowArgumentNullException_NullName()
         {
-            var member = new Team(null);
+            var result = Assert.ThrowsException<ArgumentNullException>(() => new Team(null));
+            Assert.AreEqual("Value cannot be null.", result.Message);
         }
 
         [TestMethod]
-        [ExpectedException(typeof(ArgumentException))]
         public void ThrowArgumentException_MinLengthName()
         {
-            var member = new Team(new string('a', 2));
+            var result = Assert.ThrowsException<ArgumentException>(() => new Team(new string('a', 2)));
+            Assert.AreEqual("Team name should be between 3 and 10 characters.", result.Message);
         }
 
         [TestMethod]
-        [ExpectedException(typeof(ArgumentException))]
         public void ThrowArgumentException_MaxLengthName()
         {
-            var member = new Team(new string('a', 11));
+            var result = Assert.ThrowsException<ArgumentException>(() => new Team(new string('a', 11)));
+            Assert.AreEqual("Team name should be between 3 and 10 characters.", result.Message);
         }
+
         [TestMethod]
         public void Members_Initialized()
         {

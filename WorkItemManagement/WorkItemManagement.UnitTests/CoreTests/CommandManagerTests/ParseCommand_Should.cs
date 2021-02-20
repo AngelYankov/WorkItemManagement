@@ -1,7 +1,5 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
-using System.Collections.Generic;
-using System.Text;
 using WorkItemManagement.Commands.Contracts;
 
 namespace WorkItemManagement.UnitTests.CoreTests.CommandManagerTests
@@ -40,11 +38,11 @@ namespace WorkItemManagement.UnitTests.CoreTests.CommandManagerTests
         }
         
         [TestMethod]
-        [ExpectedException(typeof(InvalidOperationException))]
         public void ParseCommand_Should_ThrowInvalidOperationException_WrongCommand()
         {
             var commandManager = new Core.CommandManager();
-            commandManager.ParseCommand("wrongCommand");
+            var result = Assert.ThrowsException<InvalidOperationException>(() => commandManager.ParseCommand("wrongCommand"));
+            Assert.AreEqual("Command does not exist.", result.Message);
         }
     }
 }

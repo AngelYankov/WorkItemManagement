@@ -1,8 +1,5 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
-using System.Collections.Generic;
-using System.Text;
-using WorkItemManagement.Models.Abstract;
 using WorkItemManagement.Models.WorkItems;
 
 namespace WorkItemManagement.UnitTests.ModelsTests.TeamTests
@@ -18,24 +15,24 @@ namespace WorkItemManagement.UnitTests.ModelsTests.TeamTests
         }
 
         [TestMethod]
-        [ExpectedException(typeof(ArgumentNullException))]
         public void ThrowArgumentNullException_NullName()
         {
-            new Member(null);
+            var result = Assert.ThrowsException<ArgumentNullException>(() => new Member(null));
+            Assert.AreEqual("Value cannot be null.", result.Message);
         }
 
         [TestMethod]
-        [ExpectedException(typeof(ArgumentException))]
         public void ThrowArgumentException_MinLengthName()
         {
-            new Member(new string('a', 4));
+            var result = Assert.ThrowsException<ArgumentException>(() => new Member(new string('a', 4)));
+            Assert.AreEqual("Member name should be between 5 and 15 characters.", result.Message);
         }
-        
+
         [TestMethod]
-        [ExpectedException(typeof(ArgumentException))]
         public void ThrowArgumentException_MaxLengthName()
         {
-            new Member(new string('a', 16));
+            var result = Assert.ThrowsException<ArgumentException>(() => new Member(new string('a', 16)));
+            Assert.AreEqual("Member name should be between 5 and 15 characters.", result.Message);
         }
 
         [TestMethod]
@@ -51,6 +48,5 @@ namespace WorkItemManagement.UnitTests.ModelsTests.TeamTests
             var member = new Member("Bruce");
             Assert.AreEqual(0, member.WorkItems.Count);
         }
-        
     }
 }

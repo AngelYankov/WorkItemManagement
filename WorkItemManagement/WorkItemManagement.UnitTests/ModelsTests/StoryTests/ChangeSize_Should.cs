@@ -1,8 +1,5 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
-using System.Collections.Generic;
-using System.Text;
-using WorkItemManagement.Models.Abstract;
 using WorkItemManagement.Models.Enums;
 using WorkItemManagement.Models.WorkItems;
 using WorkItemManagement.UnitTests.Cleaner_Should;
@@ -21,12 +18,11 @@ namespace WorkItemManagement.UnitTests.ModelsTests.StoryTests
         }
 
         [TestMethod]
-        [ExpectedException(typeof(ArgumentException))]
         public void PrioritysNotChanged_SamePriority()
         {
             var story = new Story("1", "This is the story 12 title", PriorityType.High, SizeType.Large, "this is the story 12 description");
-            story.ChangeSize(SizeType.Large);
+            var result = Assert.ThrowsException<ArgumentException>(() => story.ChangeSize(SizeType.Large));
+            Assert.AreEqual("Size already at 'Large'.", result.Message);
         }
-       
     }
 }

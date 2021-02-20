@@ -2,7 +2,6 @@
 using Moq;
 using System;
 using System.Collections.Generic;
-using System.Text;
 using WorkItemManagement.Commands;
 using WorkItemManagement.Core.Contracts;
 using WorkItemManagement.Models.Contracts;
@@ -22,6 +21,7 @@ namespace WorkItemManagement.UnitTests.CommandsTests
                 => new ChangeStoryCommand(new List<string>() { "5", "priority", "active" }, database, factory.Object).Execute());
             Assert.AreEqual("Story: '5' does not exist.", result.Message);
         }
+
         [TestMethod]
         public void Changestory_ThrowWhen_PriorityWrong()
         {
@@ -57,6 +57,7 @@ namespace WorkItemManagement.UnitTests.CommandsTests
                 => new ChangeStoryCommand(new List<string>() { "7", "status", "aaa" }, database, factory.Object).Execute());
             Assert.AreEqual("'aaa' is not a valid status type.", result.Message);
         }
+
         [TestMethod]
         public void Changestory_ThrowWhen_PropertyWrong()
         {

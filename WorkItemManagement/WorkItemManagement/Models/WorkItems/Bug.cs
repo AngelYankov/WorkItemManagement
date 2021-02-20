@@ -78,6 +78,7 @@ namespace WorkItemManagement.Models.WorkItems
                 this.assignee = value;
             }
         }
+
         /// <summary>
         /// Add assignee if it doesn't match the current one
         /// </summary>
@@ -90,6 +91,7 @@ namespace WorkItemManagement.Models.WorkItems
             }
             this.Assignee = member;
         }
+
         /// <summary>
         /// Remove assignee if it already has one
         /// </summary>
@@ -101,6 +103,11 @@ namespace WorkItemManagement.Models.WorkItems
             }
             this.Assignee = null;
         }
+
+        /// <summary>
+        /// Gets the assignee of a work item
+        /// </summary>
+        /// <returns>Returns a member OR throws exception if there is no assignee</returns>
         public IMember GetAssignee()
         {
             if (this.Assignee == null)
@@ -109,6 +116,7 @@ namespace WorkItemManagement.Models.WorkItems
             }
             return this.Assignee;
         }
+
         /// <summary>
         /// Changing the priority type of a bug
         /// </summary>
@@ -124,6 +132,7 @@ namespace WorkItemManagement.Models.WorkItems
             this.Priority = priorityType;
             return $"Bug priority changed to '{priorityType}'";
         }
+
         /// <summary>
         /// Changing the severity type of a bug
         /// </summary>
@@ -138,6 +147,7 @@ namespace WorkItemManagement.Models.WorkItems
             this.Severity = severityType;
             return $"Bug severity changed to '{severityType}'";
         }
+
         /// <summary>
         /// Changing the status of a bug
         /// </summary>

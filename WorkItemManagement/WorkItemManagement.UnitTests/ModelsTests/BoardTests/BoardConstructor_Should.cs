@@ -1,7 +1,5 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
-using System.Collections.Generic;
-using System.Text;
 using WorkItemManagement.Models.WorkItems;
 
 namespace WorkItemManagement.UnitTests.ModelsTests.BoardTests
@@ -17,26 +15,26 @@ namespace WorkItemManagement.UnitTests.ModelsTests.BoardTests
         }
 
         [TestMethod]
-        [ExpectedException(typeof(ArgumentNullException))]
         public void ThrowArgumentNullException_NullName()
         {
-            var board = new Board(null);
+            var result = Assert.ThrowsException<ArgumentNullException>(() => new Board(null));
+            Assert.AreEqual("Value cannot be null.", result.Message);
         }
 
         [TestMethod]
-        [ExpectedException(typeof(ArgumentException), "Board name should be between 5 and 10 characters.")]
         public void ThrowArgumentException_MinLengthName()
         {
-            var board = new Board(new string('a',4));
+            var result = Assert.ThrowsException<ArgumentException>(() => new Board(new string('a',4)));
+            Assert.AreEqual("Board name should be between 5 and 10 characters.", result.Message);
         }
 
         [TestMethod]
-        [ExpectedException(typeof(ArgumentException), "Board name should be between 5 and 10 characters.")]
         public void ThrowArgumentException_MaxLengthName()
         {
-            var board = new Board(new string('a', 11));
-
+            var result = Assert.ThrowsException<ArgumentException>(() => new Board(new string('a', 11)));
+            Assert.AreEqual("Board name should be between 5 and 10 characters.", result.Message);
         }
+
         [TestMethod]
         public void ActivityHistory_Initialized()
         {

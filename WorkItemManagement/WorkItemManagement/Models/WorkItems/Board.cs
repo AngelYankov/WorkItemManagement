@@ -33,6 +33,7 @@ namespace WorkItemManagement.Models.WorkItems
                 throw new ArgumentException("Board name should be between 5 and 10 characters.");
             }
         }
+
         /// <summary>
         /// Adding a work item to the Board's work items
         /// </summary>

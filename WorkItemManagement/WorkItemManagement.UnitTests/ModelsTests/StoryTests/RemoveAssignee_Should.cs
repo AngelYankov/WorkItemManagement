@@ -1,8 +1,5 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
-using System.Collections.Generic;
-using System.Text;
-using WorkItemManagement.Models.Abstract;
 using WorkItemManagement.Models.Enums;
 using WorkItemManagement.Models.WorkItems;
 using WorkItemManagement.UnitTests.Cleaner_Should;
@@ -24,12 +21,11 @@ namespace WorkItemManagement.UnitTests.ModelsTests.StoryTests
             Assert.IsTrue(story.Assignee == null);
         }
         [TestMethod]
-        [ExpectedException(typeof(ArgumentException))]
         public void RemoveAsssigneeShould_ThrowWhen_AssigneeIsNull()
         {
             var story = new Story("1", "This is the story 12 title", PriorityType.High, SizeType.Large, "this is the story 12 description");
-            story.RemoveAssignee();
+            var result = Assert.ThrowsException<ArgumentException>(() => story.RemoveAssignee());
+            Assert.AreEqual("Story has no assignee.", result.Message);
         }
-      
     }
 }

@@ -1,7 +1,4 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
-using System;
-using System.Collections.Generic;
-using System.Text;
 using WorkItemManagement.Models.WorkItems;
 using WorkItemManagement.UnitTests.FakeClasses;
 

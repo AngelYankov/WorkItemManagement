@@ -71,6 +71,7 @@ namespace WorkItemManagement.Models.WorkItems
                 this.assignee = value;
             }
         }
+
         /// <summary>
         /// Add assignee if it doesn't have one
         /// </summary>
@@ -83,6 +84,7 @@ namespace WorkItemManagement.Models.WorkItems
             }
             this.Assignee = member;
         }
+
         /// <summary>
         /// Remove assignee if it already has one
         /// </summary>
@@ -94,6 +96,11 @@ namespace WorkItemManagement.Models.WorkItems
             }
             this.Assignee = null;
         }
+
+        /// <summary>
+        /// Gets the assignee of a work item
+        /// </summary>
+        /// <returns>Returns a member OR throws exception if there is no assignee</returns>
         public IMember GetAssignee()
         {
             if (this.Assignee==null)
@@ -102,6 +109,7 @@ namespace WorkItemManagement.Models.WorkItems
             }
             return this.Assignee;
         }
+
         /// <summary>
         /// Changing the priority type of a story
         /// </summary>
@@ -116,6 +124,7 @@ namespace WorkItemManagement.Models.WorkItems
             this.Priority = priority;
             return $"Story priority changed to '{priority}'.";
         }
+
         /// <summary>
         /// Changing the size type of a story
         /// </summary>
@@ -130,6 +139,7 @@ namespace WorkItemManagement.Models.WorkItems
             this.Size = size;
             return $"Story size changed to '{size}'.";
         }
+
         /// <summary>
         /// Changing the status of a story
         /// </summary>

@@ -1,11 +1,7 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
-using System.Collections.Generic;
-using System.Text;
 using WorkItemManagement.Core;
 using WorkItemManagement.Models.Contracts;
-using WorkItemManagement.Models.Enums;
-using WorkItemManagement.Models.WorkItems;
 using WorkItemManagement.UnitTests.Cleaner_Should;
 
 namespace WorkItemManagement.UnitTests.CoreTests.FactoryTests
@@ -19,17 +15,21 @@ namespace WorkItemManagement.UnitTests.CoreTests.FactoryTests
             var story = Factory.Instance.CreateStory("1", "This is the story 12 title", "high", "large", "this is the story 12 description");
             Assert.IsInstanceOfType(story, typeof(IStory));
         }
+
         [TestMethod]
-        [ExpectedException(typeof(ArgumentException))]
         public void CreateStoryShould_ThrowWhen_WrongPriority()
         {
-           Factory.Instance.CreateStory("1", "This is the story 12 title", "wrong", "large", "this is the story 12 description");
+           var result = Assert.ThrowsException<ArgumentException>(()
+               => Factory.Instance.CreateStory("1", "This is the story 12 title", "wrong", "large", "this is the story 12 description"));
+            Assert.AreEqual("Story priority 'wrong' is not valid", result.Message);
         }
+
         [TestMethod]
-        [ExpectedException(typeof(ArgumentException))]
         public void CreateStoryShould_ThrowWhen_WrongSize()
         {
-            Factory.Instance.CreateStory("1", "This is the story 12 title", "high", "wrong", "this is the story 12 description");
+            var result = Assert.ThrowsException<ArgumentException>(()
+               => Factory.Instance.CreateStory("1", "This is the story 12 title", "high", "wrong", "this is the story 12 description"));
+            Assert.AreEqual("Story size 'wrong' is not valid", result.Message);
         }
     }
 }

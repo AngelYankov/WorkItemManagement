@@ -1,9 +1,6 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
-using WorkItemManagement.Models.Abstract;
-using WorkItemManagement.Models.Enums;
 using WorkItemManagement.Models.WorkItems;
 using WorkItemManagement.UnitTests.Cleaner_Should;
-using WorkItemManagement.UnitTests.FakeClasses;
 
 namespace WorkItemManagement.UnitTests.ModelsTests.BoardTests
 {
@@ -19,6 +16,5 @@ namespace WorkItemManagement.UnitTests.ModelsTests.BoardTests
 
             Assert.AreEqual("Item added.", string.Join("",board.ActivityHistory));
         }
-        
     }
 }

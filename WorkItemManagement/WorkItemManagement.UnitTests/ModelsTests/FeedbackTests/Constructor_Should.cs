@@ -1,8 +1,5 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
-using System.Collections.Generic;
-using System.Text;
-using WorkItemManagement.Models.Abstract;
 using WorkItemManagement.Models.Enums;
 using WorkItemManagement.Models.WorkItems;
 using WorkItemManagement.UnitTests.Cleaner_Should;
@@ -21,20 +18,17 @@ namespace WorkItemManagement.UnitTests.ModelsTests.FeedbackTests
         }
         
         [TestMethod]
-        [ExpectedException(typeof(ArgumentException))]
         public void Min_Rating()
         {
-            new Feedback("1", "TheFirstFeedback", -1, "This is a feedback created");
+            var result = Assert.ThrowsException<ArgumentException>(()=> new Feedback("1", "TheFirstFeedback", -1, "This is a feedback created"));
+            Assert.AreEqual("Rating should be between 1 and 10.", result.Message);
         }
         
         [TestMethod]
-        [ExpectedException(typeof(ArgumentException))]
         public void Max_Rating()
         {
-            new Feedback("1", "TheFirstFeedback", 11, "This is a feedback created");
+            var result = Assert.ThrowsException<ArgumentException>(() => new Feedback("1", "TheFirstFeedback", 11, "This is a feedback created"));
+            Assert.AreEqual("Rating should be between 1 and 10.", result.Message);
         }
-        
-        
     }
-   
 }
