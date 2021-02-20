@@ -1,0 +1,297 @@
+*CREATE TEAM*
+*************
+createteam team1
+createteam team1
+createteam team1 extraParameters
+exit
+*********************************************************
+*CREATE BOARD*
+**************
+createteam team1
+createboard board1 team1
+createboard board1 team1
+createboard boar team1
+createboard boardboardboardboard
+createboard board1 team1 extraParameters
+exit
+*********************************************************
+*CREATE MEMBER*
+***************
+createmember member1
+createmember member1
+createmember mem
+createmember membermembermember
+createmember member1 extraParameter
+exit
+*********************************************************
+*CREATE BUG*
+************
+createteam team1
+createteam team2
+createboard board1 team1
+createboard board2 team2
+createbug team1 board1 1 TitleForBug1 high minor open-work-fix This bug needs to be fixed within 15 hours.
+createbug team2 board2 2 TitleForBug2 low major open-work-fix This bug has more complex issues.
+createbug team1 board1 3 TitleForBug3 high minor open-work-fix This bug is bug number 3.
+createbug team2 board2 4 TitleForBug4 medium major open-work-fix This is bug description.
+createbug team1 board2 5 TitleForBug5 low major open-work-fix This is bug description.
+createbug team3 board2 6 TitleForBug6 low major open-work-fix This is bug description.
+createbug team1 board1 7 TitleForBug7 bugs major open-work-fix This is bug description.
+createbug team1 board1 8 TitleForBug8 low major open-work-fix Bug
+exit
+*********************************************************
+*CREATE STORY*
+**************
+createteam team1
+createteam team2
+createboard board1 team1
+createboard board2 team2
+createstory team1 board1 10 TitleforStory1 low small This story has to be fixed immediately.
+createstory team2 board2 11 thefirststory high large This is a story description.
+createstory team1 board1 12 thefirststory low small This has complex problem.
+createstory team5 board1 13 thefirststory low small This has complex problem.
+createstory team1 board5 14 thefirststory low small This has complex problem.
+createstory team1 board1 15 st low small This has complex problem.
+createstory team1 board1 16 thefirststory filter small This has complex problem.
+exit
+********************************************************
+*CREATE FEEDBACK*
+*****************
+createteam team1
+createteam team2
+createboard board1 team1
+createboard board2 team2
+createfeedback team1 board1 20 FeedbackTitle 6 This is a description for feedback. 
+createfeedback team1 board1 21 thefirstfeedback 3 The feedback number 21 is urgent.
+createfeedback team2 board2 22 thefirstfeedback -1 Feedback with invalid rating.
+createfeedback team1 board1 22 thefirstfeedback 15 Description for feeback.
+exit
+********************************************************
+*SHOW ALL MEMBERS*
+******************
+createmember member1
+createmember member2
+createmember member3
+showallmembers
+showallmembers extra
+exit
+********************************************************
+*SHOW ALL TEAMS*
+****************
+createteam team1
+createteam team2
+createteam team3
+showallteams
+showallteams extra
+exit
+********************************************************
+*SHOW ALL TEAM MEMBERS*
+***********************
+createmember member1
+createmember member2
+createmember member3
+createteam team1
+createteam team2
+addmember member1 team1
+addmember member2 team1
+showallteammembers
+showallteammembers extra
+exit
+********************************************************
+*SHOW ALL BOARDS*
+*****************
+createteam team1
+createboard board1 team1
+createboard board2 team1
+createteam team2
+createboard board3 team2
+createboard board4 team2
+showallboards
+showallboards extra
+exit
+********************************************************
+*SHOW ALL BOARD ACTIVITY*
+*************************
+createteam team1
+createboard board1 team1
+createteam team2
+createboard board2 team2
+createbug team1 board1 1 TitleForBug1 high minor open-work-fix This bug needs to be fixed within 15 hours.
+createbug team2 board2 2 TitleForBug2 low major open-work-fix This bug has more complex issues.
+createbug team1 board1 3 TitleForBug3 high minor open-work-fix This bug is bug number 3.
+showboardactivity board1 team1
+showboardactivity board2 team2
+showboardactivity board5 team1
+showboardactivity board1 team1 extra
+exit
+********************************************************
+*SHOW PERSON ACTIVITY*
+**********************
+createteam team1
+createteam team2
+createmember member1
+createmember member2
+createboard board1 team1
+createboard board2 team2
+addmember member1 team1
+addmember member2 team2
+createbug team1 board1 1 TitleForBug1 high minor open-work-fix This bug needs to be fixed within 15 hours.
+createbug team2 board2 2 TitleForBug2 low major open-work-fix This bug has more complex issues.
+createbug team2 board2 3 TitleForBug2 low major open-work-fix This bug has more complex issues.
+assign member1 1
+assign member2 2
+assign member2 3
+unassign 3
+showpersonactivity member1
+showpersonactivity member2
+exit
+********************************************************
+*SHOW TEAM ACTIVITY*
+********************
+createteam team1
+createteam team2
+createmember member1
+createmember member2
+addmember member1 team1
+addmember member2 team2
+createboard board1 team1
+createboard board2 team2
+createbug team1 board1 1 TitleForBug1 high minor open-work-fix This bug needs to be fixed within 15 hours.
+createbug team2 board2 2 TitleForBug2 low major open-work-fix This bug has more complex issues.
+createbug team2 board2 3 TitleForBug2 low major open-work-fix This bug has more complex issues.
+assign member1 1
+assign member2 2
+assign member2 3
+unassign 3
+showteamactivity team1
+showteamactivity team2
+exit
+********************************************************
+*ADD COMMENT*
+*************
+createteam team1
+createteam team2
+createmember member1
+createmember member2
+addmember member1 team1
+addmember member2 team2
+createboard board1 team1
+createboard board2 team2
+createbug team1 board1 1 TitleForBug1 high minor open-work-fix This bug needs to be fixed within 15 hours.
+createbug team2 board2 2 TitleForBug2 low major open-work-fix This bug has more complex issues.
+addcomment 1 member1 this is a comment for work item with id 1
+addcomment 15 member1 this is a comment for work item with id 1
+addcomment 1 member15 this is a comment for work item with id 1
+addcomment 1 
+exit
+********************************************************
+*ADD MEMBER*
+************
+createteam team1
+createteam team2
+createmember member1
+createmember member2
+addmember member1 team1
+addmember member2 team2
+addmember member3 team1
+addmember member1 team3
+exit
+********************************************************
+*ASSIGN/UNASSIGN*
+*****************
+createteam team1
+createteam team2
+createmember member1
+createmember member2
+addmember member1 team1
+addmember member2 team2
+createboard board1 team1
+createboard board2 team2
+createbug team1 board1 1 TitleForBug1 high minor open-work-fix This bug needs to be fixed within 15 hours.
+createbug team2 board2 2 TitleForBug2 low major open-work-fix This bug has more complex issues.
+createfeedback team1 board1 20 FeedbackTitle 6 This is a description for feedback. 
+assign member1 1
+assign member1 20
+assign member1 5
+unassign 1
+unassign 30
+exit
+********************************************************
+*CHANGE BUG*
+************
+createteam team1
+createmember member1
+addmember member1 team1
+createboard board1 team1
+createbug team1 board1 1 TitleForBug1 high minor open-work-fix This bug needs to be fixed within 15 hours.
+changebug 1 status fixed
+changebug 1 status fixed
+changebug 1 severity major
+changebug 1 priority low
+changebug 1 status
+exit
+********************************************************
+*CHANGE STORY*
+**************
+createteam team1
+createmember member1
+addmember member1 team1
+createboard board1 team1
+createstory team1 board1 10 TitleforStory1 low small This story has to be fixed immediately.
+changestory 10 priority high
+changestory 10 priority high
+changestory 10 size large
+changestory 10 size large
+changestory 10 status done
+exit
+********************************************************
+*CHANGE FEEDBACK*
+*****************
+createteam team1
+createmember member1
+addmember member1 team1
+createboard board1 team1
+createfeedback team1 board1 20 FeedbackTitle 6 This is a description for feedback. 
+changefeedback 20 status major
+changefeedback 20 rating 10
+changefeedback 20 status done
+exit
+********************************************************
+*LIST WORK ITEMS*
+*****************
+createteam team1
+createmember member1
+createboard board1 team1
+addmember member1 team1
+createteam team2
+createmember member2
+createboard board2 team2
+addmember member2 team2
+assign member1 1
+assign member1 2
+assign member2 10
+assign member2 11
+createteam team3
+createmember member3
+createboard board3 team3
+addmember member3 team3
+assign member3 20
+assign member3 21
+createbug team1 board1 1 TitleForBug1 high minor open-work-fix This bug needs to be fixed within 15 hours.
+createbug team1 board1 2 TitleForBug2 low major open-work-fix This bug has more complex issues.
+createbug team1 board1 3 TitleForBug3 high minor open-work-fix This bug is bug number 3.
+createstory team2 board2 10 TitleforStory1 low small This story has to be fixed immediately.
+createstory team2 board2 11 thefirststory high large This is a story description.
+createstory team2 board2 12 thefirststory low small This has complex problem.
+createfeedback team3 board3 20 FeedbackTitle 6 This is a description for feedback. 
+createfeedback team3 board3 21 thefirstfeedback 3 The feedback number 21 is urgent.
+listworkitems
+listworkitems all
+listworkitems bug active title
+listworkitems bug active member1 title
+listworkitems story done status
+listworkitems story done member2 title
+listworkitems feedback done member 1rating 
+listworkitems feedback done rating 
+exit
+********************************************************
