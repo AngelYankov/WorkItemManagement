@@ -13,6 +13,7 @@ namespace WorkItemManagement.UnitTests.FakeClasses
         {
             this.Id = id;
             this.Comments = new Dictionary<IMember, IList<string>>();
+            this.Title = "DefaultTitle";
         }
         public int Rating => throw new NotImplementedException();
 

@@ -17,6 +17,7 @@ namespace WorkItemManagement.UnitTests.FakeClasses
             this.Id = id;
             this.Comments = new Dictionary<IMember, IList<string>>();
             this.History = new List<string>();
+            this.Title = "DefaultTitle";
         }
 
         public PriorityType Priority
@@ -73,7 +74,7 @@ namespace WorkItemManagement.UnitTests.FakeClasses
 
         public string Id { get; set; }
 
-        public string Title => throw new NotImplementedException();
+        public string Title {get; set;}
 
         public string Description => throw new NotImplementedException();
 

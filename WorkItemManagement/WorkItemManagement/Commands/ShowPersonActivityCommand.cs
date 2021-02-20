@@ -17,7 +17,9 @@ namespace WorkItemManagement.Commands
             validator.ValidateParameters(this.CommandParameters, 1);
             string memberName = this.CommandParameters[0];
             var member = Database.GetMember(memberName);
-            return string.Join("; ", member.ActivityHistory);
+            return member.ActivityHistory.Count != 0
+                ? string.Join("; ", member.ActivityHistory)
+                : "No history added.";
         }
     }
 }

@@ -6,9 +6,9 @@ using WorkItemManagement.Core.Contracts;
 
 namespace WorkItemManagement.Commands
 {
-    public class ShowAllTeamMembers : Command
+    public class ShowAllTeamMembersCommand : Command
     {
-        public ShowAllTeamMembers(IList<string> commandParameters, IDatabase database, IFactory factory)
+        public ShowAllTeamMembersCommand(IList<string> commandParameters, IDatabase database, IFactory factory)
             : base(commandParameters, database, factory)
         {
         }

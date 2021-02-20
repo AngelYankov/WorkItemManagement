@@ -18,6 +18,12 @@ namespace WorkItemManagement.UnitTests.FakeClasses
             this.Id = id;
         }
 
+        public FakeBug(string id, string title)
+        {
+            this.Id = id;
+            this.Title = title;
+        }
+
         public IList<string> Steps
         {
             get => this.steps;
@@ -71,7 +77,7 @@ namespace WorkItemManagement.UnitTests.FakeClasses
 
         public string Id { get; set; }
 
-        public string Title => throw new NotImplementedException();
+        public string Title { get; set; }
 
         public string Description => throw new NotImplementedException();
 

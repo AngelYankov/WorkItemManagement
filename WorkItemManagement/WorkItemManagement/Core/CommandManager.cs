@@ -26,7 +26,7 @@ namespace WorkItemManagement.Core
                 "showallteams" => new ShowAllTeamsCommand(commandParameters, Database.Instance, Factory.Instance),
                 "showallboards" => new ShowAllBoardsCommand(commandParameters, Database.Instance, Factory.Instance),
                 "showpersonactivity" => new ShowPersonActivityCommand(commandParameters, Database.Instance, Factory.Instance),
-                "showallteammembers" => new ShowAllTeamMembers(commandParameters, Database.Instance, Factory.Instance),
+                "showallteammembers" => new ShowAllTeamMembersCommand(commandParameters, Database.Instance, Factory.Instance),
                 "showteamactivity" => new ShowTeamActivityCommand(commandParameters, Database.Instance, Factory.Instance),
                 "showboardactivity" => new ShowBoardActivityCommand(commandParameters, Database.Instance, Factory.Instance),
                 "listworkitems" => new ListWorkItemsCommand(commandParameters, Database.Instance, Factory.Instance), 

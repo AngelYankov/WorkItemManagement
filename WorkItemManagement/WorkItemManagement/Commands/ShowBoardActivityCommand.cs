@@ -5,7 +5,7 @@ using WorkItemManagement.Core.Contracts;
 
 namespace WorkItemManagement.Commands
 {
-    class ShowBoardActivityCommand : Command
+    public class ShowBoardActivityCommand : Command
     {
         public ShowBoardActivityCommand(IList<string> commandParameters, IDatabase database, IFactory factory)
             : base(commandParameters, database, factory)
@@ -22,7 +22,10 @@ namespace WorkItemManagement.Commands
             var team = Database.GetTeam(teamName);
             var board = Database.GetBoard(boardName, team);
 
-            return string.Join("; ", board.ActivityHistory);
+            return board.ActivityHistory.Count != 0
+                ? string.Join("; ", board.ActivityHistory)
+                : $"No activity history for board: '{boardName}'.";
+
         }
     }
 }

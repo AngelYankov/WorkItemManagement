@@ -16,10 +16,12 @@ namespace WorkItemManagement.UnitTests.Cleaner_Should
         {
             var member1 = new FakeMember("Member1");
             var member2 = new FakeMember("Member2");
+            var member3 = new FakeMember("Member3");
             var team1 = new FakeTeam("Team1");
             var team2 = new FakeTeam("Team2");
             var board1 = new FakeBoard("Board1");
             var board2 = new FakeBoard("Board2");
+            var board3 = new FakeBoard("Board3");
             var feedback = new FakeFeedback("1");
             var story = new FakeStory("2");
 
@@ -27,13 +29,16 @@ namespace WorkItemManagement.UnitTests.Cleaner_Should
             database.AddTeamToDB(team2);
             database.AddMemberToDB(member1);
             database.AddMemberToDB(member2);
+            database.AddMemberToDB(member3);
             database.AddWorkItemToDB(feedback);
             database.AddWorkItemToDB(story);
+
 
             team2.AddMember(member1);
 
             team1.AddBoard(board1);
             team2.AddBoard(board2);
+            team2.AddBoard(board3);
 
             board1.AddWorkItem(feedback);
             board2.AddWorkItem(story);

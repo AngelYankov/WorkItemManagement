@@ -23,6 +23,11 @@ namespace WorkItemManagement.UnitTests.FakeClasses
         public void AddWorkItem(IWorkItem item)
         {
             this.WorkItems.Add(item);
+            AddHistory($"Item added.");
+        }
+        private void AddHistory(string info)
+        {
+            this.ActivityHistory.Add(info);
         }
     }
 }

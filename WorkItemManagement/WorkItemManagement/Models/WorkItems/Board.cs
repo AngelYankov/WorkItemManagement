@@ -40,7 +40,7 @@ namespace WorkItemManagement.Models.WorkItems
         public void AddWorkItem(IWorkItem item)
         {
             this.WorkItems.Add(item);
-            AddHistory($"'{item.Title}' added.");
+            AddHistory($"Item added.");
         }
         private void AddHistory(string info)
         {

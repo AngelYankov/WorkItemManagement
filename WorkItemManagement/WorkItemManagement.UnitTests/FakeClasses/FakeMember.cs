@@ -32,6 +32,7 @@ namespace WorkItemManagement.UnitTests.FakeClasses
         public void AddWorkItems(IWorkItem item)
         {
             this.WorkItems.Add(item);
+            AddActivityHistory($"Item: '{item.Id}' added.");
         }
 
         public void RemoveWorkItems(IWorkItem item)
