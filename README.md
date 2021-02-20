@@ -93,10 +93,10 @@ Application supports the following operations:
     Changes a Property of a Bug to a desired Type.
 
     Change options: 
-    <properties>  <types>
-    <priority> => low/medium/high
-    <severity> => minor/major/critical
-    <status>   => active/fixed
+    <properties>   <types>
+    <priority>  => low/medium/high
+    <severity>  => minor/major/critical
+    <status>    => active/fixed
 
 ### ChangeFeedback <work_item_id> <property> <type>
     Changes a Property of a Feedback to a desired Type.
@@ -110,16 +110,16 @@ Application supports the following operations:
     Changes a Property of a Story to a desired Type.
 
     Change options:
-    <properties>  <types>
-    <priority> => low/medium/high
-    <size>     => small/medium/large
-    <status>   => notDone/inProgress/done
+    <properties>   <types>
+    <priority>  => low/medium/high
+    <size>      => small/medium/large
+    <status>    => notDone/inProgress/done
 
 ### AddMember <member_name> <team_name>
-    Add a Member to a Team.
+    Adds a Member to a Team.
 
 ### AddComment <work_item_id> <member_name> <comment>
-    Add a Comment to a WorkItem by a Member.
+    Adds a Comment to a WorkItem by a Member.
 
 ### Assign <member_name> <work_item_id>
     Assigns a Member to a WorkItem.
