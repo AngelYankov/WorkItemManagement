@@ -13,20 +13,26 @@ namespace WorkItemManagement.UnitTests.FakeClasses
         private SeverityType severityType;
         private BugStatus bugStatus;
         private IMember assignee;
+        private Dictionary<IMember, IList<string>> comments;
         public FakeBug(string id)
         {
             this.Id = id;
-        }
+            this.steps = new List<string>();
+            this.bugStatus = BugStatus.Active;
+            this.comments = new Dictionary<IMember, IList<string>>();
+            this.History = new List<string>();
+    }
 
         public FakeBug(string id, string title)
         {
             this.Id = id;
             this.Title = title;
+            this.steps = new List<string>();
         }
 
         public IList<string> Steps
         {
-            get => this.steps;
+            get;set;
         }
         public PriorityType Priority
         {
@@ -79,25 +85,25 @@ namespace WorkItemManagement.UnitTests.FakeClasses
 
         public string Title { get; set; }
 
-        public string Description => throw new NotImplementedException();
+        public string Description { get; set; }
 
-        public IDictionary<IMember, IList<string>> Comments => throw new NotImplementedException();
+        public IDictionary<IMember, IList<string>> Comments { get; set; }
 
-        public IList<string> History => throw new NotImplementedException();
+        public IList<string> History { get; set; }
 
         public void AddAssignee(IMember member)
         {
-            throw new NotImplementedException();
+            this.assignee = member;
         }
 
         public void AddComment(IMember member, IList<string> comments)
         {
-            throw new NotImplementedException();
+            this.Comments.Add(member, comments);
         }
 
         public void AddHistory(string info)
         {
-            throw new NotImplementedException();
+            this.History.Add(info);
         }
 
         public string ChangePriority(PriorityType priorityType)
@@ -154,6 +160,20 @@ namespace WorkItemManagement.UnitTests.FakeClasses
                 throw new ArgumentException("There is no assignee.");
             }
             return this.Assignee;
+        }
+        public override string ToString()
+        {
+            string assigneetext = this.Assignee == null ? "No assignee" : this.Assignee.Name;
+            StringBuilder sb = new StringBuilder();
+            sb.AppendLine("Bug ----");
+            sb.AppendLine(base.ToString());
+            sb.AppendLine($"Priority: {this.priorityType}");
+            sb.AppendLine($"Severity: {this.severityType}");
+            sb.AppendLine($"Status: {this.bugStatus}");
+            sb.AppendLine($"Assignee: {assigneetext}");
+            sb.AppendLine($"Steps: {string.Join(", ", this.steps)}");
+
+            return sb.ToString().Trim();
         }
     }
 }

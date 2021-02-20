@@ -15,19 +15,19 @@ namespace WorkItemManagement.UnitTests.FakeClasses
             this.Comments = new Dictionary<IMember, IList<string>>();
             this.Title = "DefaultTitle";
         }
-        public int Rating => throw new NotImplementedException();
+        public int Rating { get; set; }
 
-        public FeedbackStatusType FeedbackStatus => throw new NotImplementedException();
+        public FeedbackStatusType FeedbackStatus{ get; set; }
 
         public string Id { get; set; }
 
         public string Title { get; }
 
-        public string Description => throw new NotImplementedException();
+        public string Description { get; set; }
 
         public IDictionary<IMember, IList<string>> Comments { get; }
 
-        public IList<string> History => throw new NotImplementedException();
+        public IList<string> History { get; set; }
 
         public void AddComment(IMember member, IList<string> comments)
         {
@@ -47,6 +47,16 @@ namespace WorkItemManagement.UnitTests.FakeClasses
         public string ChangeStatus(FeedbackStatusType status)
         {
             throw new NotImplementedException();
+        }
+        public override string ToString()
+        {
+            StringBuilder sb = new StringBuilder();
+            sb.AppendLine("Feedback ----");
+            sb.AppendLine(base.ToString());
+            sb.AppendLine($"Rating: {this.Rating}");
+            sb.AppendLine($"Status: {this.FeedbackStatus}");
+
+            return sb.ToString().Trim();
         }
     }
 }

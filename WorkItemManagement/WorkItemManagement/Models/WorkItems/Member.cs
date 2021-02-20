@@ -37,7 +37,7 @@ namespace WorkItemManagement.Models.WorkItems
         public void AddWorkItems(IWorkItem item)
         {
             this.workItems.Add(item);
-            this.AddActivityHistory($"Item: '{item.Id}' added.");
+            this.AddActivityHistory($"Item added.");
         }
         /// <summary>
         /// Removing work item from Member's list of work items and log history of it
@@ -46,7 +46,7 @@ namespace WorkItemManagement.Models.WorkItems
         public void RemoveWorkItems(IWorkItem item)
         {
             this.workItems.Remove(item);
-            this.AddActivityHistory($"Item: '{item.Id}' removed.");
+            this.AddActivityHistory($"Item removed.");
         }
         /// <summary>
         /// Add activity history

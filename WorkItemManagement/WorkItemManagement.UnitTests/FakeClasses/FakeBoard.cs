@@ -7,7 +7,11 @@ namespace WorkItemManagement.UnitTests.FakeClasses
 {
     public class FakeBoard : IBoard
     {
-        public FakeBoard() { }
+        public FakeBoard() 
+        {
+            this.WorkItems = new List<IWorkItem>();
+            this.ActivityHistory = new List<string>();
+        }
         public FakeBoard(string name)
         {
             this.Name = name;

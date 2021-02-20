@@ -22,9 +22,12 @@ namespace WorkItemManagement.Commands
             StringBuilder sb = new StringBuilder();
 
             sb.AppendLine($"Team: '{teamName}' - Boards activity: ");
-            team.Boards.Select(b => sb.AppendLine(string.Join("; ", b.ActivityHistory)));
+            var activityTeam = team.Boards.SelectMany(b => b.ActivityHistory).ToList();
+            sb.AppendLine(string.Join("; ", activityTeam));
+
             sb.AppendLine($"Team: '{teamName}' - Members activity: ");
-            team.Members.Select(b => sb.AppendLine(string.Join("; ", b.ActivityHistory)));
+            var activityMembers = team.Members.SelectMany(m => m.ActivityHistory).ToList();
+            sb.AppendLine(string.Join("; ", activityMembers));
             return sb.ToString();
         }
     }
