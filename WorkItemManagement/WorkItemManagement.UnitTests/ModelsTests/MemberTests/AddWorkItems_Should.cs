@@ -2,13 +2,12 @@
 using System;
 using System.Collections.Generic;
 using WorkItemManagement.Models.WorkItems;
-using WorkItemManagement.UnitTests.Cleaner_Should;
 using WorkItemManagement.UnitTests.FakeClasses;
 
 namespace WorkItemManagement.UnitTests.ModelsTests.MemberTests
 {
     [TestClass]
-    public class AddWorkItems_Should : CleanerID
+    public class AddWorkItems_Should 
     {
         [TestMethod]
         public void AddWorkItems_Should_AddSuccessfully()

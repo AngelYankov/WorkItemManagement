@@ -9,7 +9,11 @@ namespace WorkItemManagement.UnitTests.FakeClasses
     public class FakeFeedback : IFeedback
     {
         private IList<string> history = new List<string>();
-        public FakeFeedback() { }
+        public FakeFeedback() 
+        {
+            this.Comments = new Dictionary<IMember, IList<string>>();
+            this.Title = "DefaultTitle";
+        }
         public FakeFeedback(string id)
         {
             this.Id = id;

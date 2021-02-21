@@ -1,12 +1,11 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 using WorkItemManagement.Models.WorkItems;
-using WorkItemManagement.UnitTests.Cleaner_Should;
 using WorkItemManagement.UnitTests.FakeClasses;
 
 namespace WorkItemManagement.UnitTests.ModelsTests.BoardTests
 {
     [TestClass]
-    public class AddWorkItem_Should : CleanerID
+    public class AddWorkItem_Should 
     {
         [TestMethod]
         public void WorkItem_Added()

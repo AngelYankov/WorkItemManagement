@@ -1,12 +1,11 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 using WorkItemManagement.Models.WorkItems;
-using WorkItemManagement.UnitTests.Cleaner_Should;
 using WorkItemManagement.UnitTests.FakeClasses;
 
 namespace WorkItemManagement.UnitTests.ModelsTests.MemberTests
 {
     [TestClass]
-    public class RemoveWorkItems_Should : CleanerID
+    public class RemoveWorkItems_Should 
     {
         [TestMethod]
         public void RemoveWorkItemsShould_RemovedItem()
