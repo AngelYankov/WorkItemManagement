@@ -94,8 +94,8 @@ createteam team1
 createteam team2
 addmember member1 team1
 addmember member2 team1
-showallteammembers
-showallteammembers extra
+showallteammembers team1
+showallteammembers team1 extra
 exit
 ********************************************************
 *SHOW ALL BOARDS*
@@ -106,8 +106,8 @@ createboard board2 team1
 createteam team2
 createboard board3 team2
 createboard board4 team2
-showallboards
-showallboards extra
+showallboards team1
+showallboards team1 extra
 exit
 ********************************************************
 *SHOW ALL BOARD ACTIVITY*
@@ -179,9 +179,11 @@ createboard board1 team1
 createboard board2 team2
 createbug team1 board1 1 TitleForBug1 high minor open-work-fix This bug needs to be fixed within 15 hours.
 createbug team2 board2 2 TitleForBug2 low major open-work-fix This bug has more complex issues.
+assign member1 1
+assign member2 1
 addcomment 1 member1 this is a comment for work item with id 1
 addcomment 15 member1 this is a comment for work item with id 1
-addcomment 1 member15 this is a comment for work item with id 1
+addcomment 1 member2 this is a comment for work item with id 1
 addcomment 1 
 exit
 ********************************************************
@@ -267,24 +269,24 @@ createteam team2
 createmember member2
 createboard board2 team2
 addmember member2 team2
-assign member1 1
-assign member1 2
-assign member2 10
-assign member2 11
 createteam team3
 createmember member3
 createboard board3 team3
 addmember member3 team3
-assign member3 20
-assign member3 21
-createbug team1 board1 1 TitleForBug1 high minor open-work-fix This bug needs to be fixed within 15 hours.
+createbug team1 board1 1 BugNumber1Title high minor open-work-fix This bug needs to be fixed within 15 hours.
 createbug team1 board1 2 TitleForBug2 low major open-work-fix This bug has more complex issues.
-createbug team1 board1 3 TitleForBug3 high minor open-work-fix This bug is bug number 3.
+createbug team1 board1 3 Number3TitleBug high minor open-work-fix This bug is bug number 3.
 createstory team2 board2 10 TitleforStory1 low small This story has to be fixed immediately.
 createstory team2 board2 11 thefirststory high large This is a story description.
 createstory team2 board2 12 thefirststory low small This has complex problem.
 createfeedback team3 board3 20 FeedbackTitle 6 This is a description for feedback. 
 createfeedback team3 board3 21 thefirstfeedback 3 The feedback number 21 is urgent.
+assign member1 1
+assign member1 2
+assign member2 10
+assign member2 11
+assign member3 20
+assign member3 21
 listworkitems
 listworkitems all
 listworkitems bug active title

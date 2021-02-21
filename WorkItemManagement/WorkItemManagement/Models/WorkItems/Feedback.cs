@@ -70,6 +70,7 @@ namespace WorkItemManagement.Models.WorkItems
         {
             if (rating < 1 || rating > 10)
             {
+                allIds.Remove(this.Id);
                 throw new ArgumentException("Rating should be between 1 and 10.");
             }
         }
