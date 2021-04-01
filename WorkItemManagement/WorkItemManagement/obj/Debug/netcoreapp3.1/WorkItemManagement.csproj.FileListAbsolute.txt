@@ -1,0 +1,13 @@
+C:\Users\Lenovo\source\repos\TEAM 3\WorkItemManagement\WorkItemManagement\bin\Debug\netcoreapp3.1\WorkItemManagement.exe
+C:\Users\Lenovo\source\repos\TEAM 3\WorkItemManagement\WorkItemManagement\bin\Debug\netcoreapp3.1\WorkItemManagement.deps.json
+C:\Users\Lenovo\source\repos\TEAM 3\WorkItemManagement\WorkItemManagement\bin\Debug\netcoreapp3.1\WorkItemManagement.runtimeconfig.json
+C:\Users\Lenovo\source\repos\TEAM 3\WorkItemManagement\WorkItemManagement\bin\Debug\netcoreapp3.1\WorkItemManagement.runtimeconfig.dev.json
+C:\Users\Lenovo\source\repos\TEAM 3\WorkItemManagement\WorkItemManagement\bin\Debug\netcoreapp3.1\WorkItemManagement.dll
+C:\Users\Lenovo\source\repos\TEAM 3\WorkItemManagement\WorkItemManagement\bin\Debug\netcoreapp3.1\WorkItemManagement.pdb
+C:\Users\Lenovo\source\repos\TEAM 3\WorkItemManagement\WorkItemManagement\obj\Debug\netcoreapp3.1\WorkItemManagement.csprojAssemblyReference.cache
+C:\Users\Lenovo\source\repos\TEAM 3\WorkItemManagement\WorkItemManagement\obj\Debug\netcoreapp3.1\WorkItemManagement.AssemblyInfoInputs.cache
+C:\Users\Lenovo\source\repos\TEAM 3\WorkItemManagement\WorkItemManagement\obj\Debug\netcoreapp3.1\WorkItemManagement.AssemblyInfo.cs
+C:\Users\Lenovo\source\repos\TEAM 3\WorkItemManagement\WorkItemManagement\obj\Debug\netcoreapp3.1\WorkItemManagement.csproj.CoreCompileInputs.cache
+C:\Users\Lenovo\source\repos\TEAM 3\WorkItemManagement\WorkItemManagement\obj\Debug\netcoreapp3.1\WorkItemManagement.dll
+C:\Users\Lenovo\source\repos\TEAM 3\WorkItemManagement\WorkItemManagement\obj\Debug\netcoreapp3.1\WorkItemManagement.pdb
+C:\Users\Lenovo\source\repos\TEAM 3\WorkItemManagement\WorkItemManagement\obj\Debug\netcoreapp3.1\WorkItemManagement.genruntimeconfig.cache
